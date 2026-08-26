@@ -225,7 +225,7 @@ HomeScene   day=1 slots=3 running=False busListeners=0
 | maxBounces | 4 | 4 | **2** | 필요 |
 | 환경광 | 0.02 | 0.02 | **완전 검정** | 필요 |
 | 형광등 재질 | Lit + 발광 | Lit + 발광 | **Unlit HDR ×3.5** | 불필요 |
-| 포스트프로세싱 | 없음 | (적용 안 됨) | **Neutral 톤매핑 / 블룸 / 대비 +8 / 채도 -12 / 비네트 0.45** | 불필요 |
+| 포스트프로세싱 | 없음 | (적용 안 됨) | **Neutral 톤매핑 / 블룸 0.55 / 노출 -2 / 대비 +8 / 채도 -12 / 비네트 0.45** | 불필요 |
 | 안개 | 없음 | 없음 | **검정 ExponentialSquared 0.035** | 불필요 |
 
 역할 정리:
@@ -235,6 +235,12 @@ HomeScene   day=1 slots=3 running=False busListeners=0
 - **깊이**는 검은 안개가 만든다. 멀리 있는 형광등이 어둠에 삼켜지면서 거리가 읽힌다.
 - **미세 조정**은 `Assets/02_Res/Backrooms/BackroomsVolumeProfile.asset`의 Post Exposure로 한다.
   리베이크가 필요 없다.
+
+현재 값은 2026.08.26 기준 프로젝트에서 읽은 실제 값이다. 이 중 Post Exposure(-2)와
+Bloom Intensity(0.55)는 손으로 맞춘 값이다. 굽기 값을 바꿔 리베이크하면 이 둘도 다시 봐야 한다.
+
+> 주의: 이 조도는 **손전등이 있어야 성립한다.** 형광등 사이 구간은 사실상 보이지 않는다.
+> Phase 2 전에 맵을 눈으로 확인할 일이 있으면 Post Exposure를 올려서 본다.
 
 **여기서도 함정 두 개를 밟았다. 둘 다 조용히 실패해서 알아채기 어렵다.**
 

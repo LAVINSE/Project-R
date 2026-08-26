@@ -1,0 +1,17 @@
+{
+    "name": "ProjectR.Data",
+    "rootNamespace": "ProjectR.Data",
+    "references": [
+        "SWUtils.Runtime",
+        "ProjectR.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

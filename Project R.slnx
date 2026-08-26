@@ -1,2 +1,8 @@
 ﻿<Solution>
+  <Project Path="ProjectR.Backrooms.csproj" />
+  <Project Path="ProjectR.Core.csproj" />
+  <Project Path="ProjectR.Data.csproj" />
+  <Project Path="ProjectR.Editor.csproj" />
+  <Project Path="ProjectR.Activity.csproj" />
+  <Project Path="ProjectR.Tests.EditMode.csproj" />
 </Solution>

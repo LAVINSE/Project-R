@@ -1,0 +1,23 @@
+{
+    "name": "ProjectR.Editor",
+    "rootNamespace": "ProjectR.Editor",
+    "references": [
+        "SWUtils.Runtime",
+        "SWUtils.Editor",
+        "ProjectR.Core",
+        "ProjectR.Data",
+        "ProjectR.Activity",
+        "ProjectR.Backrooms"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

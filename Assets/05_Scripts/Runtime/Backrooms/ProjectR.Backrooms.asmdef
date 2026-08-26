@@ -1,0 +1,19 @@
+{
+    "name": "ProjectR.Backrooms",
+    "rootNamespace": "ProjectR.Backrooms",
+    "references": [
+        "SWUtils.Runtime",
+        "ProjectR.Core",
+        "ProjectR.Data",
+        "ProjectR.Activity"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

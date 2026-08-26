@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da95098463e36444a050b5c62adb868, type: 3}
+  m_Name: MazeTileLibrary
+  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Assembly.MazeTileLibrary
+  deadEndTile: {fileID: 7765101684882482258, guid: e2a333c7e49cddb4f8714978d536d535, type: 3}
+  straightTile: {fileID: 7433850131533937134, guid: d21c6fee8ee1c9841afd1fe5e7e8df3e, type: 3}
+  cornerTile: {fileID: 3291253523382046943, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+  tJunctionTile: {fileID: 4035211741827814491, guid: 53e1bf18ddb67144ba207b3578af2d03, type: 3}
+  crossTile: {fileID: 3738587054085062582, guid: 240a2fa15c1ec274cbb8e99c0ff79cff, type: 3}
+  cellSize: 4

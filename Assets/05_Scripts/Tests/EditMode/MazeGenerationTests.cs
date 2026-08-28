@@ -186,6 +186,78 @@ namespace ProjectR.Tests
         }
 
         /// <summary>
+        /// 어두운 칸이 설정한 비율만큼 만들어지는지 확인합니다.
+        /// </summary>
+        /// <remarks>
+        /// 덩어리를 키우다 이웃이 막히면 목표보다 적게 나올 수 있으므로 상한만 엄격하게 봅니다.
+        /// </remarks>
+        [Test]
+        public void 어두운_칸은_설정한_비율을_넘지_않습니다()
+        {
+            MazeGenerationSettings settings = CreateDarkZoneSettings();
+            MazeFactory factory = new MazeFactory();
+
+            for (int seed = 0; seed < SampleSeedCount; seed += 1)
+            {
+                MazeBuildResult result = factory.Build(settings, seed);
+                float ratio = (float)result.DarkCellCount / result.Grid.CellCount;
+
+                Assert.LessOrEqual(ratio, settings.DarkCellRatio + 0.02f,
+                    $"시드 {seed}의 어두운 칸 비율 {ratio:P1}이 설정한 {settings.DarkCellRatio:P1}을 넘습니다.");
+                Assert.Greater(result.DarkCellCount, 0, $"시드 {seed}에 어두운 칸이 하나도 없습니다.");
+            }
+        }
+
+        /// <summary>
+        /// 시작 칸과 탈출 칸은 어두워지지 않는지 확인합니다.
+        /// </summary>
+        /// <remarks>
+        /// 시작하자마자 아무것도 보이지 않거나 탈출 지점이 어둠에 묻히면 짜증으로만 작동합니다.
+        /// </remarks>
+        [Test]
+        public void 시작_칸과_탈출_칸은_어두워지지_않습니다()
+        {
+            MazeGenerationSettings settings = CreateDarkZoneSettings();
+            MazeFactory factory = new MazeFactory();
+
+            for (int seed = 0; seed < SampleSeedCount; seed += 1)
+            {
+                MazeBuildResult result = factory.Build(settings, seed);
+
+                Assert.IsFalse(result.IsDark(result.StartCoordinate), $"시드 {seed}의 시작 칸이 어둡습니다.");
+                Assert.IsFalse(result.IsDark(result.ExitCoordinate), $"시드 {seed}의 탈출 칸이 어둡습니다.");
+            }
+        }
+
+        /// <summary>
+        /// 같은 시드에서 어두운 칸이 똑같이 나오는지 확인합니다.
+        /// </summary>
+        [Test]
+        public void 같은_시드는_같은_어두운_칸을_만듭니다()
+        {
+            MazeGenerationSettings settings = CreateDarkZoneSettings();
+            MazeFactory factory = new MazeFactory();
+
+            MazeBuildResult first = factory.Build(settings, 4242);
+            MazeBuildResult second = factory.Build(settings, 4242);
+
+            Assert.AreEqual(first.DarkCellCount, second.DarkCellCount, "어두운 칸 개수가 다릅니다.");
+
+            foreach (MazeCoordinate coordinate in first.Grid.EnumerateCoordinates())
+                Assert.AreEqual(first.IsDark(coordinate), second.IsDark(coordinate),
+                    $"{coordinate}의 밝기가 다릅니다.");
+        }
+
+        /// <summary>
+        /// 어두운 구역을 켠 테스트 설정을 만듭니다.
+        /// </summary>
+        /// <returns>어두운 칸 비율 12%, 덩어리 3개인 생성 설정입니다.</returns>
+        private static MazeGenerationSettings CreateDarkZoneSettings()
+        {
+            return new MazeGenerationSettings(16, 16, 8, 0.1f, 5, 3, 3, 4, 9, 0.12f, 3);
+        }
+
+        /// <summary>
         /// 격자의 벽 배치를 비교하기 쉬운 목록으로 만듭니다.
         /// </summary>
         /// <param name="grid">변환할 격자입니다.</param>

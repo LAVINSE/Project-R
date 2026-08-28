@@ -22,21 +22,30 @@ namespace ProjectR.Activity
         {
             GameState state = GameManager.Instance.State;
 
-            SWLog.Log($"[{nameof(GameDebugCommands)}] {state.Day}일차 / 남은 시간대 {state.RemainingSlots} / " +
+            SWLog.Log($"[{nameof(GameDebugCommands)}] {state.Day}일차 / 남은 방송 시간 {state.RemainingBroadcastMinutes}분 / " +
                 $"후원금 {state.Donation} / 시청자 {state.ViewerCount} / 보유 이상물체 {state.Items.Count}개");
             SWLog.Log($"[{nameof(GameDebugCommands)}] 수면 {state.Condition.Sleep} / 배고픔 {state.Condition.Hunger} / " +
                 $"기분 {state.Condition.Mood} / 피로도 {state.Condition.Fatigue}");
         }
 
         /// <summary>
-        /// 남은 시간대 수를 지정한 값으로 설정합니다.
+        /// 남은 방송 시간을 지정한 값으로 설정합니다.
         /// </summary>
-        /// <param name="slotCount">설정할 남은 시간대 수입니다.</param>
-        [SWCommand("state.slots", "남은 시간대 수를 설정합니다.", "게임")]
-        private static void SetRemainingSlots(int slotCount)
+        /// <param name="minutes">설정할 남은 방송 시간(분)입니다.</param>
+        [SWCommand("state.time", "남은 방송 시간(분)을 설정합니다.", "게임")]
+        private static void SetRemainingBroadcastTime(int minutes)
         {
-            GameManager.Instance.State.ResetSlots(slotCount);
-            SWLog.Log($"[{nameof(GameDebugCommands)}] 남은 시간대를 {slotCount}로 설정했습니다.");
+            GameManager.Instance.State.ResetBroadcastTime(minutes);
+            SWLog.Log($"[{nameof(GameDebugCommands)}] 남은 방송 시간을 {minutes}분으로 설정했습니다.");
+        }
+
+        /// <summary>
+        /// 저장해 둔 진행 상태를 지우고 처음부터 다시 시작합니다.
+        /// </summary>
+        [SWCommand("state.reset", "진행 상태를 지우고 처음부터 다시 시작합니다.", "게임")]
+        private static void ResetState()
+        {
+            GameManager.Instance.ResetState();
         }
 
         /// <summary>

@@ -6,6 +6,7 @@
         "SWUtils.Editor",
         "ProjectR.Core",
         "ProjectR.Data",
+        "ProjectR.Inventory",
         "ProjectR.Activity",
         "ProjectR.Backrooms"
     ],

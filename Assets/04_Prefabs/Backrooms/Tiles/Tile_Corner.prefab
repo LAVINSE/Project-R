@@ -309,19 +309,19 @@ MonoBehaviour:
   rendererInfos:
   - Renderer: {fileID: 5010498445202070969}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.30553517, w: 0.59459764}
+    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.29772267, w: 0.0008476565}
   - Renderer: {fileID: 8573141963635126215}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.10241015, w: 0.19616015}
+    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.008660155, w: 0.59459764}
   - Renderer: {fileID: 6025009256987276326}
     LightmapIndex: 1
-    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.09086268, w: 0.16898768}
+    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.34867516, w: 0.16898768}
   - Renderer: {fileID: 1108795736872382325}
-    LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.7002377, w: 0.20023768}
+    LightmapIndex: 1
+    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.51664394, w: 0.0010189263}
   - Renderer: {fileID: 5375589472680455675}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.06776064, y: 0.06776055, z: 0.20481344, w: 0.0016884353}
+    LightmapScaleOffset: {x: 0.06776064, y: 0.06776055, z: 0.021219686, w: 0.35715717}
   lightmapColors:
   - {fileID: 2800000, guid: 2ee1c4c0fa6de734d8807e9cdf7bff62, type: 3}
   - {fileID: 2800000, guid: 2f93064bf15ea174999263f795d66149, type: 3}
@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 7750041970040093035}
   - component: {fileID: 8573141963635126215}
   - component: {fileID: 111688921145634240}
+  - component: {fileID: 1938634966189593471}
   m_Layer: 0
   m_Name: Ceiling
   m_TagString: Untagged
@@ -649,6 +650,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1938634966189593471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799067080446018907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &8252260868788769235
 GameObject:
   m_ObjectHideFlags: 0

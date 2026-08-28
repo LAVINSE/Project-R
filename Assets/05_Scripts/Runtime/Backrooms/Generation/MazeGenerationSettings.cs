@@ -44,6 +44,13 @@ namespace ProjectR.Backrooms.Generation
         [SerializeField, Min(0), Tooltip("가장 넓은 트인 구역이 반드시 가져야 할 칸 수입니다. 최악 구간 측정 대상이 됩니다.")]
         private int minimumLargestOpenAreaCellCount = 9;
 
+        [SWGroup("어두운 구역")]
+        [SerializeField, Range(0f, 0.5f), Tooltip("전체 칸 대비 전등이 없는 칸의 비율입니다. 0이면 모든 칸이 밝습니다.")]
+        private float darkCellRatio = 0.12f;
+
+        [SerializeField, Min(0), Tooltip("어두운 칸을 몇 덩어리로 뭉칠지입니다. 적을수록 한 덩어리가 넓어집니다.")]
+        private int darkZoneCount = 3;
+
         [SWGroup("검증")]
         [SerializeField, Range(1, 20), Tooltip("검증에 실패했을 때 다시 생성해 볼 최대 횟수입니다.")]
         private int maximumAttemptCount = 5;
@@ -76,6 +83,12 @@ namespace ProjectR.Backrooms.Generation
 
         /// <summary>가장 넓은 트인 구역이 반드시 가져야 할 칸 수입니다.</summary>
         public int MinimumLargestOpenAreaCellCount => minimumLargestOpenAreaCellCount;
+
+        /// <summary>전체 칸 대비 전등이 없는 칸의 비율입니다.</summary>
+        public float DarkCellRatio => darkCellRatio;
+
+        /// <summary>어두운 칸을 몇 덩어리로 뭉칠지입니다.</summary>
+        public int DarkZoneCount => darkZoneCount;
         #endregion // 프로퍼티
 
         #region 함수
@@ -91,10 +104,15 @@ namespace ProjectR.Backrooms.Generation
         /// <param name="minimumRoomSize">홀 한 변의 최소 칸 수입니다.</param>
         /// <param name="maximumRoomSize">홀 한 변의 최대 칸 수입니다.</param>
         /// <param name="minimumLargestOpenAreaCellCount">가장 넓은 트인 구역의 최소 칸 수입니다.</param>
+        /// <param name="darkCellRatio">전체 칸 대비 어두운 칸의 비율입니다. 넘기지 않으면 어두운 구역을 만들지 않습니다.</param>
+        /// <param name="darkZoneCount">어두운 칸을 뭉칠 덩어리 개수입니다. 넘기지 않으면 어두운 구역을 만들지 않습니다.</param>
         public MazeGenerationSettings(int width, int height, int minimumLoopCount,
             float maximumDeadEndRatio, int maximumAttemptCount,
-            int roomCount, int minimumRoomSize, int maximumRoomSize, int minimumLargestOpenAreaCellCount)
+            int roomCount, int minimumRoomSize, int maximumRoomSize, int minimumLargestOpenAreaCellCount,
+            float darkCellRatio = 0f, int darkZoneCount = 0)
         {
+            this.darkCellRatio = darkCellRatio;
+            this.darkZoneCount = darkZoneCount;
             this.width = width;
             this.height = height;
             this.minimumLoopCount = minimumLoopCount;

@@ -50,10 +50,10 @@ MonoBehaviour:
   rendererInfos:
   - Renderer: {fileID: 5665364414179830909}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.50084764, w: 0.39928517}
+    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.000847655, w: 0.0008476565}
   - Renderer: {fileID: 7963225750412601218}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.29772267, w: 0.0008476565}
+    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.39928517, w: 0.19616015}
   - Renderer: {fileID: 8484679713462651681}
     LightmapIndex: 0
     LightmapScaleOffset: {x: 0.06776064, y: 0.06776055, z: 0.8259072, w: 0.013407186}
@@ -216,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 243927760005871311}
   - component: {fileID: 5322256345573890443}
+  - component: {fileID: 8439089943481425846}
   m_Layer: 0
   m_Name: BakedLight
   m_TagString: Untagged
@@ -303,6 +304,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &8439089943481425846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712980802336747269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &7718831802958353524
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +435,7 @@ GameObject:
   - component: {fileID: 7190465010783017695}
   - component: {fileID: 7963225750412601218}
   - component: {fileID: 2972280840892366967}
+  - component: {fileID: 5314534426428732237}
   m_Layer: 0
   m_Name: Ceiling
   m_TagString: Untagged
@@ -505,3 +536,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5314534426428732237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8344667213851466910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff

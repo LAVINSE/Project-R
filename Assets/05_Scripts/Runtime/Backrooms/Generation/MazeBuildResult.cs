@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ProjectR.Backrooms.Generation
 {
     /// <summary>
@@ -8,6 +10,11 @@ namespace ProjectR.Backrooms.Generation
     /// </remarks>
     public class MazeBuildResult
     {
+        #region 필드
+        /// <summary>전등이 달려 있지 않은 칸의 집합입니다.</summary>
+        private readonly HashSet<MazeCoordinate> darkCells;
+        #endregion // 필드
+
         #region 프로퍼티
         /// <summary>생성과 검증이 모두 통과했는지 여부입니다.</summary>
         public bool IsSuccess { get; }
@@ -32,6 +39,9 @@ namespace ProjectR.Backrooms.Generation
 
         /// <summary>실패한 경우의 사유입니다. 성공하면 빈 문자열입니다.</summary>
         public string FailureReason { get; }
+
+        /// <summary>전등이 달려 있지 않은 칸의 개수입니다.</summary>
+        public int DarkCellCount => darkCells.Count;
         #endregion // 프로퍼티
 
         #region 함수
@@ -46,10 +56,13 @@ namespace ProjectR.Backrooms.Generation
         /// <param name="statistics">구조 통계입니다.</param>
         /// <param name="attemptCount">시도 횟수입니다.</param>
         /// <param name="failureReason">실패 사유입니다. 성공하면 빈 문자열을 넘깁니다.</param>
+        /// <param name="darkCells">전등이 달려 있지 않은 칸의 집합입니다. 없으면 null을 넘겨도 됩니다.</param>
         public MazeBuildResult(bool isSuccess, MazeGrid grid, int seed,
             MazeCoordinate startCoordinate, MazeCoordinate exitCoordinate,
-            MazeStatistics statistics, int attemptCount, string failureReason)
+            MazeStatistics statistics, int attemptCount, string failureReason,
+            HashSet<MazeCoordinate> darkCells = null)
         {
+            this.darkCells = darkCells ?? new HashSet<MazeCoordinate>();
             IsSuccess = isSuccess;
             Grid = grid;
             Seed = seed;
@@ -61,14 +74,27 @@ namespace ProjectR.Backrooms.Generation
         }
 
         /// <summary>
+        /// 칸에 전등이 달려 있지 않은지 확인합니다.
+        /// </summary>
+        /// <param name="coordinate">확인할 칸의 좌표입니다.</param>
+        /// <returns>전등이 없으면 true를 반환합니다.</returns>
+        public bool IsDark(MazeCoordinate coordinate)
+        {
+            return darkCells.Contains(coordinate);
+        }
+
+        /// <summary>
         /// 결과를 로그에 남기기 좋은 한 줄 요약으로 만듭니다.
         /// </summary>
         /// <returns>시드와 통계를 담은 요약 문자열입니다.</returns>
         public string ToSummary()
         {
+            float darkRatio = Statistics.CellCount > 0 ? (float)DarkCellCount / Statistics.CellCount : 0f;
+
             return $"시드 {Seed} / 시도 {AttemptCount}회 / 칸 {Statistics.CellCount} / " +
                 $"순환로 {Statistics.LoopCount} / 막다른 길 {Statistics.DeadEndCount}" +
                 $"({Statistics.DeadEndRatio:P1}) / 최대 트인 구역 {Statistics.LargestOpenAreaCellCount}칸 / " +
+                $"어두운 칸 {DarkCellCount}({darkRatio:P1}) / " +
                 $"시작 {StartCoordinate} / 탈출 {ExitCoordinate}";
         }
         #endregion // 함수

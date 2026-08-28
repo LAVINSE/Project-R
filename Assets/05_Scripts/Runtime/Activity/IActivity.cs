@@ -3,7 +3,7 @@ using ProjectR.Data;
 namespace ProjectR.Activity
 {
     /// <summary>
-    /// 하루의 시간대 하나를 소비하는 모든 활동이 따르는 공통 규격입니다.
+    /// 방송 시간을 소비하는 모든 활동이 따르는 공통 규격입니다.
     /// </summary>
     /// <remarks>
     /// 백룸 탐험도 여러 활동 중 하나로 취급합니다.
@@ -12,8 +12,9 @@ namespace ProjectR.Activity
     public interface IActivity
     {
         #region 프로퍼티
-        /// <summary>이 활동이 소비하는 시간대 수입니다.</summary>
-        int SlotCost { get; }
+        /// <summary>이 활동에 들어갈 때 소비하는 방송 시간(분)입니다.</summary>
+        /// <remarks>방송 시간은 활동에 들어가는 순간 한 번에 빠집니다. 탐험 도중에 줄어들지 않습니다.</remarks>
+        int BroadcastCost { get; }
         #endregion // 프로퍼티
 
         #region 함수

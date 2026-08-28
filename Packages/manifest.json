@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.swtools.swutils": "https://github.com/LAVINSE/SWUtils.git#v1.1.0",
+    "com.swtools.swutils": "https://github.com/LAVINSE/SWUtils.git#v1.1.1",
     "com.unity.ai.assistant": "2.18.0-pre.2",
     "com.unity.ai.navigation": "2.0.11",
     "com.unity.collab-proxy": "2.11.4",

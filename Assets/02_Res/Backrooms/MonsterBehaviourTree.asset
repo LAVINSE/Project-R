@@ -1,0 +1,601 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11111111111141118111111111111108, type: 3}
+  m_Name: MonsterBehaviourTree
+  m_EditorClassIdentifier: SWUtils.Runtime::SW.BehaviourTree.SWBehaviourTreeAsset
+  nodes:
+  - rid: 3962695498162766313
+  - rid: 3962695498162766314
+  - rid: 3962695498162766315
+  - rid: 3962695498162766316
+  - rid: 3962695498162766317
+  - rid: 3962695498162766318
+  - rid: 3962695498162766319
+  - rid: 3962695498162766320
+  - rid: 3962695498162766321
+  - rid: 3962695498162766322
+  - rid: 3962695498162766323
+  - rid: 3962695498162766324
+  - rid: 3962695498162766325
+  - rid: 3962695498162766326
+  - rid: 3962695498162766327
+  - rid: 3962695498162766328
+  - rid: 3962695498162766329
+  - rid: 3962695498162766330
+  rootNodeIdentifier: 023197461251462385e8b6b137ac8bf2
+  blackboard:
+    entries:
+    - rid: 3962695498162766331
+    - rid: 3962695498162766332
+    - rid: 3962695498162766333
+    - rid: 3962695498162766334
+    - rid: 3962695498162766335
+    - rid: 3962695498162766336
+    - rid: 3962695498162766337
+    - rid: 3962695498162766338
+    - rid: 3962695498162766339
+    - rid: 3962695498162766340
+    - rid: 3962695498162766341
+    - rid: 3962695498162766342
+    - rid: 3962695498162766343
+    - rid: 3962695498162766344
+    - rid: 3962695498162766345
+    - rid: 3962695498162766346
+    - rid: 3962695498162766347
+    - rid: 3962695498162766348
+    - rid: 3962695498162766349
+    - rid: 3962695498162766350
+  references:
+    version: 2
+    RefIds:
+    - rid: 3962695498162766313
+      type: {class: SWBehaviourRepeatNode, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 023197461251462385e8b6b137ac8bf2
+        displayName: "\uBC18\uBCF5"
+        description: "\uD2B8\uB9AC\uB97C \uACC4\uC18D \uB2E4\uC2DC \uB3CC\uB9BD\uB2C8\uB2E4.
+          \uD589\uB3D9\uC774 \uB05D\uB098\uBA74 Selector\uAC00 \uCC98\uC74C\uBD80\uD130
+          \uB2E4\uC2DC \uD310\uB2E8\uD569\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 682.75
+          y: -58.65
+          width: 220.00006
+          height: 131.00003
+        childIdentifiers:
+        - 62944682a9094a3294ceb043170e7ed0
+        repeatCount: -1
+    - rid: 3962695498162766314
+      type: {class: SWBehaviourSelectorNode, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 62944682a9094a3294ceb043170e7ed0
+        displayName: "\uD589\uB3D9 \uC120\uD0DD"
+        description: "\uC704\uC5D0\uC11C\uBD80\uD130 \uC870\uAC74\uC774 \uB9DE\uB294
+          \uD589\uB3D9\uC744 \uD558\uB098 \uACE0\uB985\uB2C8\uB2E4. \uC67C\uCABD\uC77C\uC218\uB85D
+          \uC6B0\uC120\uD569\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 678.1501
+          y: 108.25001
+          width: 220
+          height: 117.00005
+        childIdentifiers:
+        - a45df9479ab84028b48124b0eff88b00
+        - 706af5b9d48241feb039fc7df5b9614b
+        - 0685269131da4f2da146961e7d583d1d
+        - 569ff4e6c2e04b75bc50ced1d254dd32
+        - 2926543f3f79477e8431f5b3d976e681
+    - rid: 3962695498162766315
+      type: {class: SWBehaviourSequenceNode, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: a45df9479ab84028b48124b0eff88b00
+        displayName: "\uCD94\uACA9 \uD310\uB2E8"
+        description: "\uD50C\uB808\uC774\uC5B4\uAC00 \uBCF4\uC774\uBA74 \uCD94\uACA9\uC73C\uB85C
+          \uB4E4\uC5B4\uAC11\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 0
+          y: 340
+          width: 220
+          height: 110
+        childIdentifiers:
+        - 7df9e12dfbd349db9f576a9532d40916
+        - 8abaf8de4483478aa03e7c54506d85cc
+    - rid: 3962695498162766316
+      type: {class: MonsterSeesPlayerNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 7df9e12dfbd349db9f576a9532d40916
+        displayName: "\uD50C\uB808\uC774\uC5B4\uAC00 \uBCF4\uC774\uB294\uAC00"
+        description: "\uAC10\uC9C0 \uCEF4\uD3EC\uB10C\uD2B8\uAC00 \uC801\uC5B4 \uB454
+          \uC2DC\uC57C \uACB0\uACFC\uB97C \uC77D\uC2B5\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 0
+          y: 520
+          width: 220
+          height: 110
+        childIdentifiers: []
+    - rid: 3962695498162766317
+      type: {class: MonsterAnnounceModeNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 8abaf8de4483478aa03e7c54506d85cc
+        displayName: "\uCD94\uACA9 \uC54C\uB9BC"
+        description: "\uCD94\uACA9\uC774 \uC2E4\uC81C\uB85C \uC2DC\uC791\uB418\uBA74
+          \uC18C\uB9AC\uB85C \uC54C\uB9BD\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 235
+          y: 506
+          width: 220
+          height: 117
+        childIdentifiers:
+        - ca45e47d290a4744929ce92f7900dca1
+        mode: 2
+    - rid: 3962695498162766318
+      type: {class: MonsterChaseNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: ca45e47d290a4744929ce92f7900dca1
+        displayName: "\uCD94\uACA9"
+        description: "\uBCF4\uC774\uB294 \uB3D9\uC548 \uCAD3\uACE0, \uB193\uCE5C
+          \uB4A4\uC5D0\uB3C4 \uC7A0\uC2DC \uB354 \uBC00\uC5B4\uBD99\uC785\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 180
+          y: 700
+          width: 220
+          height: 110
+        childIdentifiers: []
+    - rid: 3962695498162766319
+      type: {class: SWBehaviourSequenceNode, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 706af5b9d48241feb039fc7df5b9614b
+        displayName: "\uC218\uC0C9 \uD310\uB2E8"
+        description: "\uB4E4\uC740 \uC18C\uB9AC\uB098 \uB9C8\uC9C0\uB9C9 \uBAA9\uACA9
+          \uC704\uCE58\uAC00 \uB0A8\uC544 \uC788\uC73C\uBA74 \uC218\uC0C9\uC73C\uB85C
+          \uB4E4\uC5B4\uAC11\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 480
+          y: 340
+          width: 220
+          height: 110
+        childIdentifiers:
+        - d225d3e75461435c8f1b678bc667e557
+        - 89e4c75c24424dfbb0bdcac464ff3d16
+    - rid: 3962695498162766320
+      type: {class: MonsterHasSearchTargetNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: d225d3e75461435c8f1b678bc667e557
+        displayName: "\uB4A4\uC838 \uBCFC \uB2E8\uC11C\uAC00 \uC788\uB294\uAC00"
+        description: "\uB4E4\uC740 \uC18C\uB9AC\uC640 \uB9C8\uC9C0\uB9C9 \uBAA9\uACA9
+          \uC704\uCE58\uB97C \uD568\uAED8 \uBD05\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 480
+          y: 520
+          width: 220
+          height: 110
+        childIdentifiers: []
+    - rid: 3962695498162766321
+      type: {class: MonsterAnnounceModeNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 89e4c75c24424dfbb0bdcac464ff3d16
+        displayName: "\uC218\uC0C9 \uC54C\uB9BC"
+        description: "\uC218\uC0C9\uC774 \uC2E4\uC81C\uB85C \uC2DC\uC791\uB418\uBA74
+          \uC18C\uB9AC\uB85C \uC54C\uB9BD\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 712
+          y: 526
+          width: 220
+          height: 117
+        childIdentifiers:
+        - 3619d649e6e343ee8048b4ebbb927abd
+        mode: 3
+    - rid: 3962695498162766322
+      type: {class: MonsterSearchNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 3619d649e6e343ee8048b4ebbb927abd
+        displayName: "\uC218\uC0C9"
+        description: "\uB9C8\uC9C0\uB9C9 \uB2E8\uC11C \uC8FC\uBCC0\uACFC \uAE30\uC5B5\uD574
+          \uB454 \uC740\uC2E0\uCC98\uB97C \uB4A4\uC9D1\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 714
+          y: 679
+          width: 220
+          height: 117
+        childIdentifiers: []
+        searchRadius: 10
+    - rid: 3962695498162766323
+      type: {class: SWBehaviourSequenceNode, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 0685269131da4f2da146961e7d583d1d
+        displayName: "\uB9E4\uBCF5 \uD310\uB2E8"
+        description: "\uD5DB\uC218\uACE0\uB85C \uB05D\uB09C \uC218\uC0C9 \uB4A4\uC5D0
+          \uD55C \uBC88\uB9CC \uAD74\uB9BD\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 960
+          y: 340
+          width: 220
+          height: 110
+        childIdentifiers:
+        - 9c0659557d634e17a2f749ebbe0fea98
+        - e13dbbc01cfb4383be7b2cecb41ab21e
+    - rid: 3962695498162766324
+      type: {class: MonsterShouldAmbushNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 9c0659557d634e17a2f749ebbe0fea98
+        displayName: "\uB9E4\uBCF5\uD560 \uAC83\uC778\uAC00"
+        description: "\uC218\uC0C9\uC774 \uCF1C \uB454 \uD45C\uC2DD\uC744 \uC18C\uBE44\uD558\uACE0
+          \uD655\uB960\uB85C \uC815\uD569\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 960
+          y: 520
+          width: 220
+          height: 110
+        childIdentifiers: []
+    - rid: 3962695498162766325
+      type: {class: MonsterAnnounceModeNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: e13dbbc01cfb4383be7b2cecb41ab21e
+        displayName: "\uB9E4\uBCF5 \uC54C\uB9BC"
+        description: "\uB9E4\uBCF5\uC774 \uC2E4\uC81C\uB85C \uC2DC\uC791\uB418\uBA74
+          \uC18C\uB9AC\uB85C \uC54C\uB9BD\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 1140
+          y: 520
+          width: 220
+          height: 110
+        childIdentifiers:
+        - 0659d9f1497345fd84cd21d01780cf7f
+        mode: 4
+    - rid: 3962695498162766326
+      type: {class: MonsterAmbushNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 0659d9f1497345fd84cd21d01780cf7f
+        displayName: "\uB9E4\uBCF5"
+        description: "\uD0C8\uCD9C \uC9C0\uC810 \uADFC\uCC98\uB85C \uBB3C\uB7EC\uB098
+          \uBA48\uCDB0 \uC11C\uC11C \uAE30\uB2E4\uB9BD\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 1140
+          y: 700
+          width: 220
+          height: 110
+        childIdentifiers: []
+    - rid: 3962695498162766327
+      type: {class: MonsterAnnounceModeNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 569ff4e6c2e04b75bc50ced1d254dd32
+        displayName: "\uBCF5\uADC0 \uC54C\uB9BC"
+        description: "\uB3CC\uC544\uAC08 \uAE38\uC774 \uB0A8\uC544 \uC788\uC744 \uB54C\uB9CC
+          \uC18C\uB9AC\uB85C \uC54C\uB9BD\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 1440
+          y: 340
+          width: 220
+          height: 110
+        childIdentifiers:
+        - 9dc8702d4aa244d78b0ac4d3a4b412ab
+        mode: 5
+    - rid: 3962695498162766328
+      type: {class: MonsterReturnNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 9dc8702d4aa244d78b0ac4d3a4b412ab
+        displayName: "\uBCF5\uADC0"
+        description: "\uBC30\uD68C\uB97C \uC2DC\uC791\uD588\uB358 \uC790\uB9AC\uB85C
+          \uB3CC\uC544\uAC11\uB2C8\uB2E4. \uC774\uBBF8 \uC788\uC73C\uBA74 \uACE7\uBC14\uB85C
+          \uC2E4\uD328\uD569\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 1440
+          y: 520
+          width: 220
+          height: 110
+        childIdentifiers: []
+        arrivedDistance: 6
+    - rid: 3962695498162766329
+      type: {class: MonsterAnnounceModeNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 2926543f3f79477e8431f5b3d976e681
+        displayName: "\uBC30\uD68C \uC54C\uB9BC"
+        description: "\uBC30\uD68C\uAC00 \uC2DC\uC791\uB418\uBA74 \uC18C\uB9AC\uB85C
+          \uC54C\uB9BD\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 1740
+          y: 340
+          width: 220
+          height: 110
+        childIdentifiers:
+        - 60cf65a661ae4a09bacdc13be61ddd8b
+        mode: 1
+    - rid: 3962695498162766330
+      type: {class: MonsterPatrolNode, ns: ProjectR.Backrooms.Monster.Nodes, asm: ProjectR.Backrooms}
+      data:
+        identifier: 60cf65a661ae4a09bacdc13be61ddd8b
+        displayName: "\uBC30\uD68C"
+        description: "\uC9C0\uAE08 \uC790\uB9AC\uB97C \uC911\uC2EC\uC73C\uB85C \uB2E4\uC74C
+          \uC9C0\uC810\uC744 \uACE8\uB77C \uD758\uB7EC \uB2E4\uB2D9\uB2C8\uB2E4."
+        position:
+          serializedVersion: 2
+          x: 1740
+          y: 520
+          width: 220
+          height: 110
+        childIdentifiers: []
+        wanderRadius: 18
+    - rid: 3962695498162766331
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: f65193f6f8d748abb7c78054ce9a3f57
+        name: PlayerPosition
+        valueType: 5
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766332
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: f58469b8838b43eab4ea00d05d32150e
+        name: CanSeePlayer
+        valueType: 0
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766333
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: e832a8373b324f3f870545683f7d252d
+        name: LastSeenPosition
+        valueType: 5
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766334
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: cdbb8281021e45a2b3c8cbfb909258fe
+        name: HasLastSeen
+        valueType: 0
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766335
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: a0dfcfd7775a4f50aa61413e7941ba33
+        name: HeardPosition
+        valueType: 5
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766336
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 4b7ff4efbe2d4caab8384a6430605480
+        name: HasHeard
+        valueType: 0
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766337
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 0e7298bb5edc4190ac611740d7844fb3
+        name: AmbushPosition
+        valueType: 5
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766338
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: a25fc7e305084b0b919624553285985b
+        name: HasAmbushPosition
+        valueType: 0
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766339
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 52fd2f1fdef54d0bbb74ce14eda0db5a
+        name: AmbushArmed
+        valueType: 0
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766340
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 4aed0412b74b4fc0916dd8d8a840c60a
+        name: SightRange
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 14
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766341
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: c60b999fa6be478c98f99199586584cd
+        name: SightAngle
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 110
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766342
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: f6bba07f414c44ccb04b519184f07369
+        name: HearingRange
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 22
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766343
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: ced1e51b355d4807aad175365ee65214
+        name: PatrolSpeed
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 1.9
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766344
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 472903b31c574f2ba4eafe362cd1c539
+        name: ChaseSpeed
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 3.9
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766345
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: b2433ffb28e748c2b5d08992fd258926
+        name: SearchSpeed
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 2.4
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766346
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 00a272604a264a1fbcaa5f6a3565d21c
+        name: ChaseGraceSeconds
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 2.5
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766347
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 5c189be0cb33461db5f2c0d854235faa
+        name: SearchDurationSeconds
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 14
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766348
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: b5ddb79553fe4cee8b11c9d7986f49e5
+        name: AmbushChance
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 0.45
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766349
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 42259734906e4126aef735a86879bc9a
+        name: AmbushDurationSeconds
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 12
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}
+    - rid: 3962695498162766350
+      type: {class: SWBehaviourBlackboardEntry, ns: SW.BehaviourTree, asm: SWUtils.Runtime}
+      data:
+        identifier: 14cab57d284f4b279afa792f71c9eeba
+        name: CatchDistance
+        valueType: 2
+        booleanValue: 0
+        integerValue: 0
+        floatValue: 1.3
+        stringValue: 
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        objectValue: {fileID: 0}

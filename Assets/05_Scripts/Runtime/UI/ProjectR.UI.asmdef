@@ -1,0 +1,24 @@
+{
+    "name": "ProjectR.UI",
+    "rootNamespace": "ProjectR.UI",
+    "references": [
+        "SWUtils.Runtime",
+        "ProjectR.Core",
+        "ProjectR.Data",
+        "ProjectR.Inventory",
+        "ProjectR.Activity",
+        "ProjectR.Backrooms",
+        "Unity.InputSystem",
+        "UnityEngine.UI",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

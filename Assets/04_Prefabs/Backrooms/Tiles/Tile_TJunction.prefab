@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5931457729410262305}
   - component: {fileID: 2391379549062951875}
   - component: {fileID: 8478124457708072383}
+  - component: {fileID: 2808137671211162989}
   m_Layer: 0
   m_Name: Ceiling
   m_TagString: Untagged
@@ -112,6 +113,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2808137671211162989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806850741872265196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2978092685028702342
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,16 +296,16 @@ MonoBehaviour:
   rendererInfos:
   - Renderer: {fileID: 3299820933264407057}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.000847655, w: 0.0008476565}
+    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.10241015, w: 0.19616015}
   - Renderer: {fileID: 2391379549062951875}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.008660155, w: 0.59459764}
+    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.30553517, w: 0.59459764}
   - Renderer: {fileID: 1030197574918328100}
     LightmapIndex: 1
-    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.2588314, w: 0.0010189263}
+    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.4385189, w: 0.34867516}
   - Renderer: {fileID: 710230559834578607}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.06776064, y: 0.06776055, z: 0.021219686, w: 0.35715717}
+    LightmapScaleOffset: {x: 0.06776064, y: 0.06776055, z: 0.5134072, w: 0.8063759}
   lightmapColors:
   - {fileID: 2800000, guid: 2ee1c4c0fa6de734d8807e9cdf7bff62, type: 3}
   - {fileID: 2800000, guid: 2f93064bf15ea174999263f795d66149, type: 3}

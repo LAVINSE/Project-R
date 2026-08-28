@@ -18,7 +18,7 @@ namespace ProjectR.Editor.Backrooms
     /// <remarks>
     /// 실행 중에 맵을 조립하면 씬 라이트맵을 쓸 수 없으므로,
     /// 전용 굽기 씬에 타일을 하나씩 늘어놓고 구운 뒤 그 결과를 프리팹에 옮겨 담습니다.
-    /// 사용 순서는 메뉴 번호와 같습니다. 2번과 3번 사이에 Unity의 라이팅 굽기를 실행합니다.
+    /// 메뉴는 따로 두지 않습니다. <see cref="TileLightingTunerWindow"/>에서 호출합니다.
     /// </remarks>
     public static class TileLightmapBaker
     {
@@ -37,7 +37,6 @@ namespace ProjectR.Editor.Backrooms
         /// <summary>
         /// 타일 프리팹을 늘어놓은 굽기 전용 씬을 만듭니다.
         /// </summary>
-        [MenuItem("SWTools/프로젝트R/타일 조명/1. 굽기 씬 만들기", priority = 100)]
         public static void CreateBakeScene()
         {
             string[] prefabPaths = FindTilePrefabPaths();
@@ -65,9 +64,27 @@ namespace ProjectR.Editor.Backrooms
         }
 
         /// <summary>
+        /// 굽기 씬을 엽니다. 아직 없으면 새로 만듭니다.
+        /// </summary>
+        /// <remarks>
+        /// 이미 구워 둔 라이트맵을 잃지 않도록, 씬이 있으면 다시 만들지 않고 열기만 합니다.
+        /// </remarks>
+        public static void OpenOrCreateBakeScene()
+        {
+            if (AssetDatabase.LoadAssetAtPath<SceneAsset>(BakeScenePath) == null)
+            {
+                CreateBakeScene();
+                return;
+            }
+
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo() == false) return;
+
+            EditorSceneManager.OpenScene(BakeScenePath);
+        }
+
+        /// <summary>
         /// 열려 있는 굽기 씬의 굽기 결과를 각 타일 프리팹에 저장합니다.
         /// </summary>
-        [MenuItem("SWTools/프로젝트R/타일 조명/2. 구운 결과를 프리팹에 저장", priority = 101)]
         public static void StoreBakedDataIntoPrefabs()
         {
             Scene scene = SceneManager.GetActiveScene();
@@ -95,6 +112,37 @@ namespace ProjectR.Editor.Backrooms
 
             AssetDatabase.SaveAssets();
             SWLog.Log($"[{nameof(TileLightmapBaker)}] 타일 {storedCount}종에 라이트맵 정보를 저장했습니다.");
+        }
+
+        /// <summary>
+        /// 굽기 씬을 열어 조명을 굽고 그 결과를 프리팹에 저장하는 것까지 한 번에 처리합니다.
+        /// </summary>
+        /// <remarks>
+        /// 타일의 조명 값을 바꾼 뒤 백룸 씬에서 확인하려면 매번 이 과정을 거쳐야 합니다.
+        /// 굽기가 끝날 때까지 에디터가 멈추며, 타일 5종 기준으로 6초 안팎이 걸립니다.
+        /// </remarks>
+        public static void BakeAndStore()
+        {
+            if (AssetDatabase.LoadAssetAtPath<SceneAsset>(BakeScenePath) == null)
+            {
+                SWLog.LogWarning($"[{nameof(TileLightmapBaker)}] 굽기 씬이 없어 새로 만듭니다.");
+                CreateBakeScene();
+            }
+
+            Scene scene = SceneManager.GetActiveScene();
+
+            if (scene.path != BakeScenePath)
+            {
+                // 열려 있던 씬을 말없이 버리지 않도록 저장 여부를 먼저 묻습니다.
+                if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo() == false) return;
+
+                scene = EditorSceneManager.OpenScene(BakeScenePath);
+            }
+
+            Lightmapping.Bake();
+            EditorSceneManager.SaveScene(scene);
+
+            StoreBakedDataIntoPrefabs();
         }
 
         /// <summary>

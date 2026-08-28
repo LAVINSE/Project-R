@@ -1,15 +1,17 @@
 {
   "dependencies": {
     "com.swtools.swutils": {
-      "version": "https://github.com/LAVINSE/SWUtils.git#v1.1.0",
+      "version": "https://github.com/LAVINSE/SWUtils.git#v1.1.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.localization": "1.5.0",
         "com.unity.textmeshpro": "3.0.6",
-        "com.unity.ugui": "1.0.0"
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.physics2d": "1.0.0"
       },
-      "hash": "145b11f36e066b7ccd04079327fbe9aa96b95da0"
+      "hash": "91d5f351aadf0c053a0deb89b30a11a77b72b4d6"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

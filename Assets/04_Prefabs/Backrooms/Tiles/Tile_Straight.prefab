@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 6758892413754350785}
   - component: {fileID: 1288432741103814839}
   - component: {fileID: 6074687392241852067}
+  - component: {fileID: 7653590899531782033}
   m_Layer: 0
   m_Name: Ceiling
   m_TagString: Untagged
@@ -426,6 +427,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7653590899531782033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923829671890641708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &6221306177255958790
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,19 +629,19 @@ MonoBehaviour:
   rendererInfos:
   - Renderer: {fileID: 4721001962697645823}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.20397265, w: 0.39928517}
+    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.60241014, w: 0.59459764}
   - Renderer: {fileID: 1288432741103814839}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.39928517, w: 0.19616015}
+    LightmapScaleOffset: {x: 0.28300032, y: 0.28299993, z: 0.50084764, w: 0.39928517}
   - Renderer: {fileID: 1567880333945940219}
     LightmapIndex: 1
-    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.4385189, w: 0.34867516}
+    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.18070643, w: 0.3369564}
   - Renderer: {fileID: 7587275302954542646}
     LightmapIndex: 1
-    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.51664394, w: 0.0010189263}
+    LightmapScaleOffset: {x: 0.23915519, y: 0.23915488, z: 0.09086268, w: 0.16898768}
   - Renderer: {fileID: 4516108397234372299}
     LightmapIndex: 0
-    LightmapScaleOffset: {x: 0.06776064, y: 0.06776055, z: 0.5134072, w: 0.8063759}
+    LightmapScaleOffset: {x: 0.06776064, y: 0.06776055, z: 0.20481344, w: 0.0016884353}
   lightmapColors:
   - {fileID: 2800000, guid: 2ee1c4c0fa6de734d8807e9cdf7bff62, type: 3}
   - {fileID: 2800000, guid: 2f93064bf15ea174999263f795d66149, type: 3}

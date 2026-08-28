@@ -5,7 +5,12 @@
         "SWUtils.Runtime",
         "ProjectR.Core",
         "ProjectR.Data",
-        "ProjectR.Activity"
+        "ProjectR.Inventory",
+        "ProjectR.Activity",
+        "Unity.InputSystem",
+        "Unity.AI.Navigation",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

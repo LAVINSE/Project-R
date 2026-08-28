@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 using SW.Util;
 
@@ -94,10 +95,13 @@ namespace ProjectR.Backrooms.Generation
             MazeCoordinate exit = MazePathValidator.FindFarthest(grid, start);
             MazeStatistics statistics = MazeStatistics.Measure(grid);
 
+            // 어두운 구역은 구조를 바꾸지 않으므로 검증이 끝난 격자 위에 마지막으로 고릅니다.
+            HashSet<MazeCoordinate> darkCells = MazeDarkZoneCarver.Carve(grid, random, settings, start, exit);
+
             string failureReason = Validate(settings, statistics, grid, start, exit);
 
             return new MazeBuildResult(string.IsNullOrEmpty(failureReason), grid, seed,
-                start, exit, statistics, attempt, failureReason);
+                start, exit, statistics, attempt, failureReason, darkCells);
         }
 
         /// <summary>

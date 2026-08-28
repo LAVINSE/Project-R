@@ -19,7 +19,7 @@ namespace ProjectR.Data
     {
         #region 필드
         [SerializeField] private int day = 1;
-        [SerializeField] private int remainingSlots;
+        [SerializeField] private int remainingBroadcastMinutes;
         [SerializeField] private int donation;
         [SerializeField] private int viewerCount;
         [SerializeField] private ConditionState condition = new ConditionState();
@@ -30,8 +30,12 @@ namespace ProjectR.Data
         /// <summary>현재 며칠째인지를 나타냅니다.</summary>
         public int Day => day;
 
-        /// <summary>오늘 남아 있는 활동 시간대 수입니다.</summary>
-        public int RemainingSlots => remainingSlots;
+        /// <summary>오늘 남아 있는 방송 시간(분)입니다.</summary>
+        /// <remarks>
+        /// 활동에 들어갈 때 소비되는 행동력입니다. 탐험 도중에 줄어들지는 않습니다.
+        /// 다 쓰면 그날은 더 방송할 수 없습니다.
+        /// </remarks>
+        public int RemainingBroadcastMinutes => remainingBroadcastMinutes;
 
         /// <summary>보유 후원금입니다.</summary>
         public int Donation => donation;
@@ -48,27 +52,27 @@ namespace ProjectR.Data
 
         #region 함수
         /// <summary>
-        /// 하루의 활동 시간대 수를 설정합니다.
+        /// 하루의 방송 시간을 설정합니다.
         /// </summary>
-        /// <param name="slotCount">오늘 사용할 수 있는 시간대 수입니다.</param>
-        public void ResetSlots(int slotCount)
+        /// <param name="minutes">오늘 사용할 수 있는 방송 시간(분)입니다.</param>
+        public void ResetBroadcastTime(int minutes)
         {
-            remainingSlots = Mathf.Max(0, slotCount);
+            remainingBroadcastMinutes = Mathf.Max(0, minutes);
         }
 
         /// <summary>
-        /// 활동에 시간대를 소비합니다.
+        /// 활동에 들어가며 방송 시간을 소비합니다.
         /// </summary>
-        /// <param name="slotCost">소비할 시간대 수입니다.</param>
+        /// <param name="minutes">소비할 방송 시간(분)입니다.</param>
         /// <remarks>
-        /// 시간대는 활동을 도중에 그만두어도 되돌리지 않습니다.
+        /// 방송 시간은 활동을 도중에 그만두어도 되돌리지 않습니다.
         /// 되돌릴 수 있게 하면 위기 회피 수단이 되기 때문입니다.
         /// </remarks>
-        public void ConsumeSlots(int slotCost)
+        public void ConsumeBroadcastTime(int minutes)
         {
-            if (slotCost <= 0) return;
+            if (minutes <= 0) return;
 
-            remainingSlots = Mathf.Max(0, remainingSlots - slotCost);
+            remainingBroadcastMinutes = Mathf.Max(0, remainingBroadcastMinutes - minutes);
         }
 
         /// <summary>
@@ -94,11 +98,11 @@ namespace ProjectR.Data
         /// <summary>
         /// 다음 날로 넘어갑니다.
         /// </summary>
-        /// <param name="slotCount">다음 날 사용할 수 있는 시간대 수입니다.</param>
-        public void AdvanceDay(int slotCount)
+        /// <param name="minutes">다음 날 사용할 수 있는 방송 시간(분)입니다.</param>
+        public void AdvanceDay(int minutes)
         {
             day += 1;
-            ResetSlots(slotCount);
+            ResetBroadcastTime(minutes);
         }
         #endregion // 함수
     }

@@ -56,6 +56,13 @@ namespace ProjectR.Backrooms.Assembly
 
         /// <summary>진행 중인 조립 코루틴입니다. 없으면 null입니다.</summary>
         private Coroutine buildRoutine;
+
+        /// <summary>정적 배칭이 실행 중에 만들어 낸 합친 메시입니다. 없으면 null입니다.</summary>
+        private Mesh combinedMesh;
+
+        /// <summary>칸 좌표별로 배치한 타일입니다. 조립이 끝난 뒤 타일을 꾸미는 쪽에서 씁니다.</summary>
+        private readonly Dictionary<MazeCoordinate, Transform> placedTiles =
+            new Dictionary<MazeCoordinate, Transform>();
         #endregion // 필드
 
         #region 프로퍼티
@@ -132,6 +139,12 @@ namespace ProjectR.Backrooms.Assembly
                 return;
             }
 
+            if (generationSettings.DarkCellRatio > 0f && tileLibrary.HasDarkTiles == false)
+            {
+                SWLog.LogWarning($"[{nameof(BackroomsMapBuilder)}] 어두운 타일이 비어 있어 " +
+                    "어두운 칸도 밝은 타일로 배치됩니다.");
+            }
+
             if (IsBuilding)
             {
                 StopCoroutine(buildRoutine);
@@ -152,6 +165,17 @@ namespace ProjectR.Backrooms.Assembly
             float cellSize = tileLibrary != null ? tileLibrary.CellSize : 1f;
 
             return tileRoot.position + new Vector3(coordinate.X * cellSize, 0f, coordinate.Y * cellSize);
+        }
+
+        /// <summary>
+        /// 칸 좌표에 배치해 둔 타일을 찾습니다.
+        /// </summary>
+        /// <param name="coordinate">타일을 찾을 칸의 좌표입니다.</param>
+        /// <param name="tile">찾은 타일입니다. 없으면 null입니다.</param>
+        /// <returns>타일을 찾았으면 true를 반환합니다.</returns>
+        public bool TryGetPlacedTile(MazeCoordinate coordinate, out Transform tile)
+        {
+            return placedTiles.TryGetValue(coordinate, out tile);
         }
 
         /// <summary>
@@ -176,7 +200,7 @@ namespace ProjectR.Backrooms.Assembly
 
             foreach (MazeCoordinate coordinate in result.Grid.EnumerateCoordinates())
             {
-                PlaceTile(result.Grid, coordinate);
+                PlaceTile(result, coordinate);
                 placedCount += 1;
 
                 if (placedCount % tilesPerFrame != 0) continue;
@@ -186,7 +210,7 @@ namespace ProjectR.Backrooms.Assembly
                 assemblyWatch.Start();
             }
 
-            if (useStaticBatching) StaticBatchingUtility.Combine(tileRoot.gameObject);
+            if (useStaticBatching) CombineForStaticBatching();
 
             assemblyWatch.Stop();
             LastAssemblyMilliseconds = assemblyWatch.Elapsed.TotalMilliseconds;
@@ -202,16 +226,39 @@ namespace ProjectR.Backrooms.Assembly
         /// <summary>
         /// 칸 하나에 맞는 타일을 배치합니다.
         /// </summary>
-        /// <param name="grid">배치 기준이 되는 격자입니다.</param>
+        /// <param name="result">배치 기준이 되는 미로 결과입니다.</param>
         /// <param name="coordinate">배치할 칸의 좌표입니다.</param>
-        private void PlaceTile(MazeGrid grid, MazeCoordinate coordinate)
+        private void PlaceTile(MazeBuildResult result, MazeCoordinate coordinate)
         {
-            EMazeDirection openings = EMazeDirection.All & ~grid.GetWalls(coordinate);
+            EMazeDirection openings = EMazeDirection.All & ~result.Grid.GetWalls(coordinate);
 
-            if (tileLibrary.TryGetTile(openings, out GameObject tilePrefab, out int rotationSteps) == false) return;
+            if (tileLibrary.TryGetTile(openings, result.IsDark(coordinate),
+                out GameObject tilePrefab, out int rotationSteps) == false) return;
 
-            Instantiate(tilePrefab, GetWorldPosition(coordinate),
+            GameObject tile = Instantiate(tilePrefab, GetWorldPosition(coordinate),
                 Quaternion.Euler(0f, 90f * rotationSteps, 0f), tileRoot);
+
+            placedTiles[coordinate] = tile.transform;
+        }
+
+        /// <summary>
+        /// 배치한 타일을 정적 배칭으로 합쳐 드로우콜을 줄입니다.
+        /// </summary>
+        /// <remarks>
+        /// 합치기는 실행 중에 메시를 새로 만들어 냅니다. 이 메시는 타일을 지워도 저절로 사라지지 않으므로
+        /// 다음 조립 전에 직접 지우려고 참조를 들고 있습니다. 프리팹 원본 메시를 잘못 지우지 않도록
+        /// 합치기 전후의 메시가 실제로 바뀌었을 때만 실행 중에 만들어진 메시로 봅니다.
+        /// </remarks>
+        private void CombineForStaticBatching()
+        {
+            MeshFilter sampleFilter = tileRoot.GetComponentInChildren<MeshFilter>();
+            Mesh meshBeforeCombine = sampleFilter != null ? sampleFilter.sharedMesh : null;
+
+            StaticBatchingUtility.Combine(tileRoot.gameObject);
+
+            Mesh meshAfterCombine = sampleFilter != null ? sampleFilter.sharedMesh : null;
+
+            combinedMesh = meshAfterCombine != meshBeforeCombine ? meshAfterCombine : null;
         }
 
         /// <summary>
@@ -219,6 +266,14 @@ namespace ProjectR.Backrooms.Assembly
         /// </summary>
         private void ClearTiles()
         {
+            if (combinedMesh != null)
+            {
+                Destroy(combinedMesh);
+                combinedMesh = null;
+            }
+
+            placedTiles.Clear();
+
             List<GameObject> tiles = new List<GameObject>(tileRoot.childCount);
 
             for (int index = 0; index < tileRoot.childCount; index += 1)

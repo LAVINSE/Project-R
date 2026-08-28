@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3603681158668775376
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1966942506641778199, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2866351849811368072, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926112648349127064, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291253523382046943, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_Name
+      value: Tile_Corner_Dark
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375589472680455675, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: efd8fa6a0b90f6e4cbd255798c20dbb2, type: 2}
+    - target: {fileID: 6604027405610351059, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891248867457103665, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799067080446018907, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: lightmapColors.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: lightmapDirections.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[0].LightmapScaleOffset.w
+      value: 0.0008476565
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[0].LightmapScaleOffset.z
+      value: 0.5985039
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[1].LightmapScaleOffset.w
+      value: 0.41100392
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[1].LightmapScaleOffset.z
+      value: 0.50084764
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[2].LightmapScaleOffset.w
+      value: 0.51664394
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[2].LightmapScaleOffset.z
+      value: 0.5283627
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[3].LightmapScaleOffset.w
+      value: 0.0010189263
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[3].LightmapScaleOffset.z
+      value: 0.0010189251
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[4].LightmapScaleOffset.w
+      value: 0.099344686
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138741740227165205, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+      propertyPath: rendererInfos.Array.data[4].LightmapScaleOffset.z
+      value: 0.8962197
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 1247153973964855285, guid: cbc6cd89679c02448b65545851c76841, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cbc6cd89679c02448b65545851c76841, type: 3}

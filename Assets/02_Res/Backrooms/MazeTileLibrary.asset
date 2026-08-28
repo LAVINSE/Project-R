@@ -17,4 +17,9 @@ MonoBehaviour:
   cornerTile: {fileID: 3291253523382046943, guid: cbc6cd89679c02448b65545851c76841, type: 3}
   tJunctionTile: {fileID: 4035211741827814491, guid: 53e1bf18ddb67144ba207b3578af2d03, type: 3}
   crossTile: {fileID: 3738587054085062582, guid: 240a2fa15c1ec274cbb8e99c0ff79cff, type: 3}
+  darkDeadEndTile: {fileID: 621299961621394390, guid: 1a84371763fc2a04fa5624cc55075ed1, type: 3}
+  darkStraightTile: {fileID: 7150342889705629381, guid: 2fc486a9819a84f49bce4e1e2b59e59f, type: 3}
+  darkCornerTile: {fileID: 2282825076695432975, guid: 302832fb5e4c39048a1a2a86ed6cf2e1, type: 3}
+  darkTJunctionTile: {fileID: 5442860392693782145, guid: c6c0eed90e465a847b5c1f8a14c6a907, type: 3}
+  darkCrossTile: {fileID: 2741983150207461179, guid: ab2a9c3583733c14aa4c68f626ec6885, type: 3}
   cellSize: 4

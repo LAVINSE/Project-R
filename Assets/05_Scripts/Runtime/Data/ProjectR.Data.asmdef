@@ -3,7 +3,8 @@
     "rootNamespace": "ProjectR.Data",
     "references": [
         "SWUtils.Runtime",
-        "ProjectR.Core"
+        "ProjectR.Core",
+        "ProjectR.Inventory"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

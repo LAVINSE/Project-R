@@ -291,6 +291,88 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &489670835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489670838}
+  - component: {fileID: 489670837}
+  - component: {fileID: 489670836}
+  m_Layer: 0
+  m_Name: Broadcast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &489670836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489670835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4476fb25e6f7b40a9d83708d81e66f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Broadcast.BackroomsBroadcastReporter
+  playerStealth: {fileID: 1288198283}
+--- !u!114 &489670837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489670835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7b9027e9bf12654db5a4fbb025d6577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ProjectR.Broadcast::ProjectR.Broadcast.BroadcastDirector
+  settings:
+    hidden:
+      viewerFlatPerMinute: -2
+      viewerRatePerMinute: -0.04
+      donationPerViewerPerMinute: 0
+    exploring:
+      viewerFlatPerMinute: 2
+      viewerRatePerMinute: 0
+      donationPerViewerPerMinute: 0.02
+    mission:
+      viewerFlatPerMinute: 8
+      viewerRatePerMinute: 0.04
+      donationPerViewerPerMinute: 0.06
+    chased:
+      viewerFlatPerMinute: 30
+      viewerRatePerMinute: 0.15
+      donationPerViewerPerMinute: 0.25
+    revealing:
+      viewerFlatPerMinute: 40
+      viewerRatePerMinute: 0.2
+      donationPerViewerPerMinute: 0.4
+  tickInterval: 0.25
+  chatTemplates: {fileID: 11400000, guid: d289f41b04673c54ebd86f1d34894668, type: 2}
+  idleChatInterval: 6
+--- !u!4 &489670838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489670835}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &506708672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,6 +2011,8 @@ GameObject:
   - component: {fileID: 3108029919935407253}
   - component: {fileID: 8167847521304026221}
   - component: {fileID: 5270662052467660555}
+  - component: {fileID: 8167847521304026223}
+  - component: {fileID: 8167847521304026222}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2024,7 +2108,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd71ff14eab24054f846fd6977846a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ProjectR.Activity::ProjectR.Activity.GameManager
-  broadcastMinutesPerDay: 240
+  dayEndSettings:
+    baseUpkeep: 500
+    upkeepPerViewer: 0.1
+    idleChurnRate: 0.08
+    activeChurnRate: 0.02
+    baseBroadcastMinutes: 240
+    viewersPerStep: 2000
+    minutesPerStep: 30
+    failurePenaltyMinutes: 60
+    minBroadcastMinutes: 120
+  defaultStreamerId: Streamer_01
+  statBoard: {fileID: 8167847521304026222}
+--- !u!114 &8167847521304026222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460057489104287459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf587ecd3316ba40b9864bda98f260e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ProjectR.Activity::ProjectR.Activity.StreamerStatBoard
+  stats: {fileID: 8167847521304026223}
+  statDatabase: {fileID: 11400000, guid: ce4abe7f3cd1a0c46b2fc605df5453c2, type: 2}
+  upgradeDatabase: {fileID: 11400000, guid: c59e07fd1c57bbb40b167f8c0f7b62d2, type: 2}
+--- !u!114 &8167847521304026223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460057489104287459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140a583aa206bde41a5f02f563223280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SWUtils.Runtime::SW.Stat.SWStats
+  setupOnAwake: 1
+  statOverrides:
+  - stat: {fileID: 11400000, guid: bbb1085f8cea78f4290fb8bd7f425f0a, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 322e1f5d3dbf3654aa9aa78d61f43470, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 891740dc73a2108408e1b9aabd246359, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: f353211f62a3ff247bacff32ceb8e0d6, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 977c078b9b475e240a3210e00a7ba673, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 7915d388ae26b1e45937e3bf5edb06a7, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: c3ddaab5f3d9273418c41686fade233d, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 5cc1725665e12c046a80aff5f4782c38, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2037,3 +2185,4 @@ SceneRoots:
   - {fileID: 3117924605154096838}
   - {fileID: 7187395226280636461}
   - {fileID: 6728674324835875484}
+  - {fileID: 489670838}

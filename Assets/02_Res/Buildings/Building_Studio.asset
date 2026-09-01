@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a468d1ebc0c75f4781f284bf70ca116, type: 3}
+  m_Name: Building_Studio
+  m_EditorClassIdentifier: ProjectR.Activity::ProjectR.Activity.BuildingDefinition
+  categories: []
+  id: 2
+  codeName: Studio
+  displayName: "\uBC29\uC1A1\uAD6D"
+  description: "\uCC44\uB110\uC744 \uD0A4\uC6B0\uB294 \uACF3\uC785\uB2C8\uB2E4. \uBB34\uC5C7\uC744
+    \uD560 \uC218 \uC788\uC744\uC9C0\uB294 \uC544\uC9C1 \uC815\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4."
+  spriteIcon: {fileID: 0}
+  icon: {fileID: 0}
+  activityFactory:
+    rid: -2
+  opensRoom: 0
+  effectNotice: "\uCC44\uB110 \uAD00\uB9AC"
+  requiredDay: 3
+  lockedNotice: "\uC544\uC9C1 \uC0C1\uB300\uD574 \uC8FC\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4
+    (3\uC77C\uCC28)"
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

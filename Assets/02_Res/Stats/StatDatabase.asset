@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c70ddc5843e2448bd12db3d2f46d61, type: 3}
+  m_Name: StatDatabase
+  m_EditorClassIdentifier: SWUtils.Runtime::SW.Base.SWIODatabase
+  datas:
+  - {fileID: 11400000, guid: bbb1085f8cea78f4290fb8bd7f425f0a, type: 2}
+  - {fileID: 11400000, guid: 322e1f5d3dbf3654aa9aa78d61f43470, type: 2}
+  - {fileID: 11400000, guid: 891740dc73a2108408e1b9aabd246359, type: 2}
+  - {fileID: 11400000, guid: f353211f62a3ff247bacff32ceb8e0d6, type: 2}
+  - {fileID: 11400000, guid: 977c078b9b475e240a3210e00a7ba673, type: 2}
+  - {fileID: 11400000, guid: 7915d388ae26b1e45937e3bf5edb06a7, type: 2}
+  - {fileID: 11400000, guid: c3ddaab5f3d9273418c41686fade233d, type: 2}
+  - {fileID: 11400000, guid: 5cc1725665e12c046a80aff5f4782c38, type: 2}

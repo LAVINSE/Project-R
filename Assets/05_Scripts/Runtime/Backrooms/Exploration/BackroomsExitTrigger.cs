@@ -50,6 +50,9 @@ namespace ProjectR.Backrooms.Exploration
 
             SWLog.Log($"[{nameof(BackroomsExitTrigger)}] 탈출 지점에 도달했습니다.");
 
+            // 정산보다 먼저 알립니다. 정산이 끝나면 방송이 이미 꺼져 있어 채팅이 올라갈 자리가 없습니다.
+            SWEventBus.Publish(new BroadcastMomentEvent(EBroadcastMoment.Escape));
+
             if (GameManager.Instance.EndActivity() == null) return;
 
             SceneFlow.ChangeScene(SceneNames.Home);

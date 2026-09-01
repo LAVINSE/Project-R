@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a468d1ebc0c75f4781f284bf70ca116, type: 3}
+  m_Name: Building_Elevator
+  m_EditorClassIdentifier: ProjectR.Activity::ProjectR.Activity.BuildingDefinition
+  categories: []
+  id: 4
+  codeName: Elevator
+  displayName: "\uD0D0\uD5D8"
+  description: "\uC544\uB798\uB85C \uB0B4\uB824\uAC00\uB294 \uC218\uC9C1 \uD1B5\uB85C\uC785\uB2C8\uB2E4.
+    \uC5EC\uAE30\uC11C \uBC31\uB8F8\uC73C\uB85C \uB4E4\uC5B4\uAC11\uB2C8\uB2E4."
+  spriteIcon: {fileID: 0}
+  icon: {fileID: 0}
+  activityFactory:
+    rid: 3962695573786853648
+  opensRoom: 0
+  effectNotice: "\uBC31\uB8F8 \uD0D0\uD5D8 \xB7 \uC774\uC0C1\uBB3C\uCCB4 \uC218\uC9D1"
+  requiredDay: 1
+  lockedNotice: 
+  references:
+    version: 2
+    RefIds:
+    - rid: 3962695573786853648
+      type: {class: BackroomsActivityFactory, ns: ProjectR.Backrooms, asm: ProjectR.Backrooms}
+      data: 

@@ -1,0 +1,19 @@
+{
+    "name": "ProjectR.Broadcast",
+    "rootNamespace": "ProjectR.Broadcast",
+    "references": [
+        "SWUtils.Runtime",
+        "ProjectR.Core",
+        "ProjectR.Data",
+        "ProjectR.Activity"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

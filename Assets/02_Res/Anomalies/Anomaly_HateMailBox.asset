@@ -16,9 +16,8 @@ MonoBehaviour:
   id: 2
   codeName: HateMailBox
   displayName: "\uC545\uD50C \uBA54\uC77C\uBC15\uC2A4"
-  description: "\uC7AC\uC0DD\uD558\uBA74 \uC544\uBB34 \uC18C\uB9AC\uB3C4 \uB098\uC9C0
-    \uC54A\uC9C0\uB9CC \uB418\uAC10\uC73C\uBA74 \uC0AC\uB78C \uBAA9\uC18C\uB9AC\uAC00
-    \uC11E\uC5EC \uC788\uC2B5\uB2C8\uB2E4."
+  description: "\uC5F4\uC5B4 \uBCF8 \uC801 \uC5C6\uB294 \uD3B8\uC9C0\uAC00 \uAC00\uB4DD\uD569\uB2C8\uB2E4.
+    \uBD09\uD22C\uB9C8\uB2E4 \uBC1C\uC2E0\uC778 \uC790\uB9AC\uAC00 \uBE44\uC5B4 \uC788\uC2B5\uB2C8\uB2E4."
   spriteIcon: {fileID: 21300000, guid: f80b60eb5b84bd64bb1af8796ab7975c, type: 3}
   shapeWidth: 2
   shapeHeight: 2
@@ -26,5 +25,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f80b60eb5b84bd64bb1af8796ab7975c, type: 3}
   worldPrefab: {fileID: 4457420589186944807, guid: 401cc50e9439b87419c04b5b84abb2b3, type: 3}
   displayColor: {r: 1, g: 1, b: 1, a: 1}
-  donationBonus: 120
-  viewerBonus: 15
+  donationBonus: 200
+  viewerBonus: 20

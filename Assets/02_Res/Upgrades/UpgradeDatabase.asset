@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c70ddc5843e2448bd12db3d2f46d61, type: 3}
+  m_Name: UpgradeDatabase
+  m_EditorClassIdentifier: SWUtils.Runtime::SW.Base.SWIODatabase
+  datas:
+  - {fileID: 11400000, guid: 303f8ecf71622e547964ac823c2b1ec9, type: 2}
+  - {fileID: 11400000, guid: 905b04d4b63efd44c939dd926e2b6692, type: 2}
+  - {fileID: 11400000, guid: 97d8008bf4b015346ad3a7c79d2d9d3b, type: 2}
+  - {fileID: 11400000, guid: 9b9e734577f55a34fa1e31d1f4e95879, type: 2}

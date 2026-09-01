@@ -154,6 +154,9 @@ namespace ProjectR.Backrooms.Collect
             if (anomalyPlacer != null) anomalyPlacer.Despawn(pickup);
             else Destroy(pickup.gameObject);
 
+            // 방송에 알립니다. 백룸은 이 알림을 누가 듣는지 모르고, 시청자 수도 모릅니다.
+            SWEventBus.Publish(new BroadcastMomentEvent(EBroadcastMoment.Collect));
+
             return true;
         }
         #endregion // 함수

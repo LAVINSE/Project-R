@@ -22,9 +22,9 @@ MonoBehaviour:
   spriteIcon: {fileID: 21300000, guid: c440e6a74a3c1b74eb1821708503374c, type: 3}
   shapeWidth: 2
   shapeHeight: 1
-  grade: 0
+  grade: 1
   icon: {fileID: 21300000, guid: c440e6a74a3c1b74eb1821708503374c, type: 3}
   worldPrefab: {fileID: 5105102922446286999, guid: a70c24293b0b731438221334856ce95b, type: 3}
   displayColor: {r: 1, g: 1, b: 1, a: 1}
-  donationBonus: 120
-  viewerBonus: 15
+  donationBonus: 220
+  viewerBonus: 45

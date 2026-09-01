@@ -297,6 +297,8 @@ GameObject:
   - component: {fileID: 8884104881580920529}
   - component: {fileID: 2391790616508462633}
   - component: {fileID: 1823528872928329039}
+  - component: {fileID: 8884104881580920531}
+  - component: {fileID: 8884104881580920530}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -347,7 +349,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd71ff14eab24054f846fd6977846a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ProjectR.Activity::ProjectR.Activity.GameManager
-  broadcastMinutesPerDay: 240
+  dayEndSettings:
+    baseUpkeep: 500
+    upkeepPerViewer: 0.1
+    idleChurnRate: 0.08
+    activeChurnRate: 0.02
+    baseBroadcastMinutes: 240
+    viewersPerStep: 2000
+    minutesPerStep: 30
+    failurePenaltyMinutes: 60
+    minBroadcastMinutes: 120
+  defaultStreamerId: Streamer_01
+  statBoard: {fileID: 8884104881580920530}
 --- !u!4 &3735066355535403625
 Transform:
   m_ObjectHideFlags: 0
@@ -482,6 +495,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8884104881580920530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994351041058790567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf587ecd3316ba40b9864bda98f260e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ProjectR.Activity::ProjectR.Activity.StreamerStatBoard
+  stats: {fileID: 8884104881580920531}
+  statDatabase: {fileID: 11400000, guid: ce4abe7f3cd1a0c46b2fc605df5453c2, type: 2}
+  upgradeDatabase: {fileID: 11400000, guid: c59e07fd1c57bbb40b167f8c0f7b62d2, type: 2}
+--- !u!114 &8884104881580920531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994351041058790567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140a583aa206bde41a5f02f563223280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SWUtils.Runtime::SW.Stat.SWStats
+  setupOnAwake: 1
+  statOverrides:
+  - stat: {fileID: 11400000, guid: bbb1085f8cea78f4290fb8bd7f425f0a, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 322e1f5d3dbf3654aa9aa78d61f43470, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 891740dc73a2108408e1b9aabd246359, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: f353211f62a3ff247bacff32ceb8e0d6, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 977c078b9b475e240a3210e00a7ba673, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 7915d388ae26b1e45937e3bf5edb06a7, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: c3ddaab5f3d9273418c41686fade233d, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
+  - stat: {fileID: 11400000, guid: 5cc1725665e12c046a80aff5f4782c38, type: 2}
+    isUseOverride: 0
+    overrideDefaultValue: 0
 --- !u!1 &9159668339166620404
 GameObject:
   m_ObjectHideFlags: 0

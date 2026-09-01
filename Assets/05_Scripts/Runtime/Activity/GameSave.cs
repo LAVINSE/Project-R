@@ -15,7 +15,8 @@ namespace ProjectR.Activity
     /// 시간대는 활동 시작 직후에 이미 저장되어 있으므로 되돌려도 복구되지 않습니다.
     /// 위기 상황에서 강제 종료로 도망쳐도 얻는 것이 없게 만드는 것이 이 규칙의 목적입니다.
     /// 클라우드 백업은 쓰지 않습니다. 저장은 전부 로컬에서 그 자리에서 끝납니다.
-    /// 채널 진행도와 스트리머별 진행도의 분리는 1일 시연판 단계에서 도입합니다.
+    /// 불러올 때 저장 데이터의 구조 번호를 확인합니다. 번호가 다르면 읽지 않고 새 진행으로 시작합니다.
+    /// 구버전을 새 구조로 옮기는 경로는 아직 없습니다. 지금 억지로 읽으면 어긋난 상태로 조용히 진행됩니다.
     /// </remarks>
     public static class GameSave
     {
@@ -42,6 +43,15 @@ namespace ProjectR.Activity
 
             if (isLoaded == false) return false;
             if (SWSaveDataManager.TryGetData(out GameState loaded) == false) return false;
+
+            if (loaded.SaveVersion != GameState.CurrentSaveVersion)
+            {
+                SWLog.LogWarning($"[{nameof(GameSave)}] 저장 데이터 구조가 달라 읽지 않습니다. " +
+                    $"파일 {loaded.SaveVersion}번 / 지금 {GameState.CurrentSaveVersion}번. " +
+                    $"새 진행으로 시작합니다. 원본은 {SWSaveDataManager.SaveDirectoryPath}에 남아 있습니다.");
+
+                return false;
+            }
 
             state = loaded;
 

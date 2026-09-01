@@ -21,18 +21,20 @@ namespace ProjectR.Backrooms
     public class BackroomsActivity : IActivity
     {
         #region 상수
-        /// <summary>기본 가방의 가로 칸 수입니다.</summary>
-        private const int DefaultBackpackWidth = 6;
+        /// <summary>가방 스탯을 찾지 못했을 때 쓰는 가로 칸 수입니다.</summary>
+        /// <remarks>부르는 쪽이 스탯을 못 읽었을 때 넘겨 줄 값이라 공개해 둡니다.</remarks>
+        public const int DefaultBackpackWidth = 6;
 
-        /// <summary>기본 가방의 세로 칸 수입니다.</summary>
-        private const int DefaultBackpackHeight = 4;
+        /// <summary>가방 스탯을 찾지 못했을 때 쓰는 세로 칸 수입니다.</summary>
+        public const int DefaultBackpackHeight = 4;
 
         /// <summary>백룸 탐험 한 번에 드는 방송 시간(분)입니다.</summary>
         /// <remarks>
         /// 들어가는 순간 한 번에 빠집니다. 탐험 안에는 제한 시간이 없습니다.
         /// 층이 깊어지면 더 드는 것은 층 정의가 생길 때 붙입니다.
+        /// 화면이 탐험을 만들지 않고도 비용을 물어볼 수 있어야 하므로 공개해 둡니다.
         /// </remarks>
-        private const int BroadcastMinutes = 60;
+        public const int BroadcastMinutes = 60;
         #endregion // 상수
 
         #region 필드

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a468d1ebc0c75f4781f284bf70ca116, type: 3}
+  m_Name: Building_Job
+  m_EditorClassIdentifier: ProjectR.Activity::ProjectR.Activity.BuildingDefinition
+  categories: []
+  id: 3
+  codeName: Job
+  displayName: "\uC544\uB974\uBC14\uC774\uD2B8"
+  description: "\uCD08\uBC18 \uC0DD\uACC4\uB97C \uD574\uACB0\uD569\uB2C8\uB2E4. \uCC44\uB110\uC774
+    \uC790\uB9AC\uB97C \uC7A1\uC73C\uBA74 \uC0AC\uB77C\uC9D1\uB2C8\uB2E4."
+  spriteIcon: {fileID: 0}
+  icon: {fileID: 0}
+  activityFactory:
+    rid: -2
+  opensRoom: 0
+  effectNotice: "\uC548\uC804\uD55C \uC218\uC785 \xB7 \uBC29\uC1A1 \uC2DC\uAC04\uC744
+    \uD06C\uAC8C \uC4F4\uB2E4"
+  requiredDay: 1
+  lockedNotice: 
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

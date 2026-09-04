@@ -33,7 +33,7 @@ namespace ProjectR.Inventory
         public int Height => Shape.GetHeight(IsRotated);
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 놓인 물건을 만듭니다.
         /// </summary>
@@ -51,7 +51,9 @@ namespace ProjectR.Inventory
             Position = position;
             IsRotated = isRotated;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 놓인 자리와 회전을 바꿉니다.
         /// </summary>

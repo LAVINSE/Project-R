@@ -18,7 +18,7 @@ namespace ProjectR.Backrooms.Generation
         public int Y { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 좌표를 만듭니다.
         /// </summary>
@@ -29,7 +29,9 @@ namespace ProjectR.Backrooms.Generation
             X = x;
             Y = y;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 두 좌표를 더한 좌표를 구합니다.
         /// </summary>
@@ -76,11 +78,11 @@ namespace ProjectR.Backrooms.Generation
         /// <summary>
         /// 다른 객체와 같은지 비교합니다.
         /// </summary>
-        /// <param name="obj">비교할 객체입니다.</param>
+        /// <param name="otherObject">비교할 객체입니다.</param>
         /// <returns>같은 좌표이면 true를 반환합니다.</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object otherObject)
         {
-            return obj is MazeCoordinate other && Equals(other);
+            return otherObject is MazeCoordinate other && Equals(other);
         }
 
         /// <summary>

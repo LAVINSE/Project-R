@@ -30,6 +30,7 @@ namespace ProjectR.Backrooms.Monster
     public class BackroomsNavMeshBaker : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>생성 결과를 받아 올 맵 조립 컴포넌트입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("생성 결과를 받아 올 맵 조립 컴포넌트입니다.")]
         private BackroomsMapBuilder mapBuilder;

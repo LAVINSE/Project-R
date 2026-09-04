@@ -19,26 +19,32 @@ namespace ProjectR.UI.Backrooms
     public class BackroomsHud : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>바라보는 대상을 읽어 올 줍기 컴포넌트입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("바라보는 대상을 읽어 올 줍기 컴포넌트입니다.")]
         private PlayerPickupInteractor pickupInteractor;
 
+        /// <summary>화면 가운데에 둘 조준선입니다.</summary>
         [SWGroup("표시")]
         [SerializeField, Tooltip("화면 가운데에 둘 조준선입니다.")]
         private Graphic crosshair;
 
+        /// <summary>주울 수 있는 물건을 알릴 글상자입니다.</summary>
         [SerializeField, Tooltip("주울 수 있는 물건을 알릴 글상자입니다.")]
         private Text pickupPromptText;
 
+        /// <summary>평소 조준선 색입니다.</summary>
         [SWGroup("색")]
         [SerializeField, Tooltip("평소 조준선 색입니다.")]
-        private Color idleColor = new Color(1f, 1f, 1f, 0.35f);
+        private Color idleColor = new(1f, 1f, 1f, 0.35f);
 
+        /// <summary>주울 수 있는 것을 겨눴을 때의 조준선 색입니다.</summary>
         [SerializeField, Tooltip("주울 수 있는 것을 겨눴을 때의 조준선 색입니다.")]
-        private Color focusedColor = new Color(1f, 1f, 1f, 0.95f);
+        private Color focusedColor = new(1f, 1f, 1f, 0.95f);
 
+        /// <summary>가방이 꽉 찼을 때의 색입니다.</summary>
         [SerializeField, Tooltip("가방이 꽉 찼을 때의 색입니다.")]
-        private Color fullColor = new Color(1f, 0.35f, 0.3f);
+        private Color fullColor = new(1f, 0.35f, 0.3f);
         #endregion // 필드
 
         #region 함수

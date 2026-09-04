@@ -20,7 +20,7 @@ namespace ProjectR.Backrooms
         public float Radius { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 소리가 난 위치와 들리는 반경을 담아 이벤트를 만듭니다.
         /// </summary>
@@ -31,6 +31,6 @@ namespace ProjectR.Backrooms
             Position = position;
             Radius = radius;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 }

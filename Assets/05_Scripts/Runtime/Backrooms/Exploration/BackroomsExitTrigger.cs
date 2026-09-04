@@ -5,7 +5,9 @@ using SW.Base;
 using SW.Util;
 
 using ProjectR.Activity;
+using ProjectR.Activity.Broadcast;
 using ProjectR.Core;
+using ProjectR.Enum;
 
 namespace ProjectR.Backrooms.Exploration
 {
@@ -20,6 +22,7 @@ namespace ProjectR.Backrooms.Exploration
     public class BackroomsExitTrigger : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>탈출로 인정할 대상의 태그입니다.</summary>
         [SWGroup("판정")]
         [SerializeField, Tooltip("탈출로 인정할 대상의 태그입니다.")]
         private string playerTag = "Player";

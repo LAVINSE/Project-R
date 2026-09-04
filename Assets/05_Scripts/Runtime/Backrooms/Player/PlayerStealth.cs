@@ -19,23 +19,29 @@ namespace ProjectR.Backrooms.Player
     public class PlayerStealth : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>걸을 때 발소리가 들리는 반경(미터)입니다.</summary>
         [SWGroup("소음 반경")]
         [SerializeField, Min(0f), Tooltip("걸을 때 발소리가 들리는 반경(미터)입니다.")]
         private float walkNoiseRadius = 12f;
 
+        /// <summary>달릴 때 발소리가 들리는 반경(미터)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("달릴 때 발소리가 들리는 반경(미터)입니다.")]
         private float runNoiseRadius = 22f;
 
+        /// <summary>앉아서 움직일 때 발소리가 들리는 반경(미터)입니다. 0이면 무음입니다.</summary>
         [SerializeField, Min(0f), Tooltip("앉아서 움직일 때 발소리가 들리는 반경(미터)입니다. 0이면 무음입니다.")]
         private float crouchNoiseRadius = 0f;
 
+        /// <summary>앉았을 때 몬스터의 시야 거리에 곱할 값입니다.</summary>
         [SWGroup("눈에 띄는 정도")]
         [SerializeField, Range(0.1f, 1f), Tooltip("앉았을 때 몬스터의 시야 거리에 곱할 값입니다.")]
         private float crouchSightMultiplier = 0.55f;
 
+        /// <summary>서 있을 때 눈높이(미터)입니다. 시선 판정의 가장 높은 표본입니다.</summary>
         [SerializeField, Min(0f), Tooltip("서 있을 때 눈높이(미터)입니다. 시선 판정의 가장 높은 표본입니다.")]
         private float standingEyeHeight = 1.65f;
 
+        /// <summary>앉았을 때 눈높이(미터)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("앉았을 때 눈높이(미터)입니다.")]
         private float crouchingEyeHeight = 1.0f;
 

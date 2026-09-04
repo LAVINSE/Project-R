@@ -18,30 +18,38 @@ namespace ProjectR.Backrooms.Audio
     public class BackroomsAmbientEvents : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>환경음 사이의 최소 간격(초)입니다.</summary>
         [SWGroup("간격")]
         [SerializeField, Min(1f), Tooltip("환경음 사이의 최소 간격(초)입니다.")]
         private float minimumIntervalSeconds = 9f;
 
+        /// <summary>환경음 사이의 최대 간격(초)입니다.</summary>
         [SerializeField, Min(1f), Tooltip("환경음 사이의 최대 간격(초)입니다.")]
         private float maximumIntervalSeconds = 26f;
 
+        /// <summary>소리를 낼 최소 거리(미터)입니다.</summary>
         [SWGroup("위치")]
         [SerializeField, Min(1f), Tooltip("소리를 낼 최소 거리(미터)입니다.")]
         private float minimumDistance = 5f;
 
+        /// <summary>소리를 낼 최대 거리(미터)입니다.</summary>
         [SerializeField, Min(1f), Tooltip("소리를 낼 최대 거리(미터)입니다.")]
         private float maximumDistance = 18f;
 
+        /// <summary>환경음의 크기입니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("환경음의 크기입니다.")]
         private float volume = 0.55f;
 
+        /// <summary>환경음을 낼 차례에 대신 정적 구간으로 들어갈 확률입니다.</summary>
         [SWGroup("정적 구간")]
         [SerializeField, Range(0f, 1f), Tooltip("환경음을 낼 차례에 대신 정적 구간으로 들어갈 확률입니다.")]
         private float quietChance = 0.22f;
 
+        /// <summary>정적 구간의 최소 길이(초)입니다.</summary>
         [SerializeField, Min(1f), Tooltip("정적 구간의 최소 길이(초)입니다.")]
         private float minimumQuietSeconds = 12f;
 
+        /// <summary>정적 구간의 최대 길이(초)입니다.</summary>
         [SerializeField, Min(1f), Tooltip("정적 구간의 최대 길이(초)입니다.")]
         private float maximumQuietSeconds = 30f;
 
@@ -76,7 +84,7 @@ namespace ProjectR.Backrooms.Audio
                 ProceduralAudioBank.CreateVentGust(),
             };
 
-            GameObject sourceObject = new GameObject("AmbientEventSource");
+            GameObject sourceObject = new("AmbientEventSource");
             sourceObject.transform.SetParent(transform, false);
 
             eventSource = sourceObject.AddComponent<AudioSource>();

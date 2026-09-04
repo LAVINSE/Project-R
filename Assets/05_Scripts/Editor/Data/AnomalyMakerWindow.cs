@@ -31,7 +31,7 @@ namespace ProjectR.Editor.Data
     {
         #region 상수
         /// <summary>EditorPrefs에 설정을 남길 때 앞에 붙이는 말입니다.</summary>
-        private const string PrefPrefix = "ProjectR.AnomalyMaker.";
+        private const string PreferenceKeyPrefix = "ProjectR.AnomalyMaker.";
 
         /// <summary>정의 에셋을 만들 기본 폴더입니다.</summary>
         private const string DefaultDefinitionFolder = "Assets/02_Res/Anomalies";
@@ -45,9 +45,16 @@ namespace ProjectR.Editor.Data
         /// <summary>새로 만드는 정의에 붙일 임시 이름입니다.</summary>
         private const string NewAssetName = "New";
 
+        /// <summary>이상물체 목록의 기본 너비입니다.</summary>
         private const float DefaultListWidth = 300f;
+
+        /// <summary>이상물체 목록 행의 기본 높이입니다.</summary>
         private const float DefaultListRowHeight = 24f;
+
+        /// <summary>이상물체 목록 아이콘의 기본 크기입니다.</summary>
         private const float DefaultListIconSize = 20f;
+
+        /// <summary>이상물체 목록 이름의 기본 글자 크기입니다.</summary>
         private const int DefaultListLabelFontSize = 12;
 
         /// <summary>목록 행 안쪽 여백입니다.</summary>
@@ -56,11 +63,19 @@ namespace ProjectR.Editor.Data
         /// <summary>세로 스크롤바에 가리지 않도록 목록 행 오른쪽에 비워 두는 폭입니다.</summary>
         private const float ListRowRightSafePadding = 18f;
 
+        /// <summary>목록 행에 표시할 삭제 버튼의 너비입니다.</summary>
         private const float DeleteButtonWidth = 22f;
+
+        /// <summary>목록 행에 표시할 삭제 버튼의 높이입니다.</summary>
         private const float DeleteButtonHeight = 18f;
 
+        /// <summary>편집 창의 탭에 표시할 이름 목록입니다.</summary>
         private static readonly string[] TabNames = { "이상물체", "설정" };
+
+        /// <summary>목록 정렬 방식의 표시 이름입니다.</summary>
         private static readonly string[] SortModeNames = { "코드명순", "표시명순", "ID순" };
+
+        /// <summary>목록에서 사용할 이름 표시 방식입니다.</summary>
         private static readonly string[] LabelModeNames = { "코드명", "표시명", "에셋 이름" };
         #endregion // 상수
 
@@ -69,7 +84,7 @@ namespace ProjectR.Editor.Data
         private int tabIndex;
 
         /// <summary>프로젝트에서 모아 온 정의 목록입니다.</summary>
-        private readonly List<AnomalyDefinition> definitions = new List<AnomalyDefinition>();
+        private readonly List<AnomalyDefinition> definitions = new();
 
         /// <summary>목록에서 고른 정의입니다. 고른 것이 없으면 null입니다.</summary>
         private AnomalyDefinition selectedDefinition;
@@ -77,8 +92,13 @@ namespace ProjectR.Editor.Data
         /// <summary>고른 정의의 인스펙터입니다.</summary>
         private UnityEditor.Editor cachedEditor;
 
+        /// <summary>이상물체 목록의 스크롤 위치입니다.</summary>
         private Vector2 listScrollPosition;
+
+        /// <summary>선택한 이상물체 인스펙터의 스크롤 위치입니다.</summary>
         private Vector2 inspectorScrollPosition;
+
+        /// <summary>편집 창 설정 화면의 스크롤 위치입니다.</summary>
         private Vector2 settingsScrollPosition;
 
         /// <summary>목록을 걸러 낼 검색어입니다.</summary>
@@ -90,15 +110,34 @@ namespace ProjectR.Editor.Data
         /// <summary>고른 행을 칠할 때 쓰는 모양입니다.</summary>
         private GUIStyle selectedRowStyle;
 
+        /// <summary>이상물체 정의를 검색하고 생성할 폴더입니다.</summary>
         private string definitionFolder = DefaultDefinitionFolder;
+
+        /// <summary>이상물체를 등록할 데이터베이스 에셋 경로입니다.</summary>
         private string databasePath = DefaultDatabasePath;
+
+        /// <summary>생성할 에셋 이름 앞에 붙이는 문자열입니다.</summary>
         private string assetPrefix = DefaultAssetPrefix;
+
+        /// <summary>수정한 에셋을 자동으로 저장할지 여부입니다.</summary>
         private bool autoSaveAssets = true;
+
+        /// <summary>이상물체 목록의 너비입니다.</summary>
         private float listWidth = DefaultListWidth;
+
+        /// <summary>이상물체 목록 행의 높이입니다.</summary>
         private float listRowHeight = DefaultListRowHeight;
+
+        /// <summary>이상물체 목록 아이콘의 크기입니다.</summary>
         private float listIconSize = DefaultListIconSize;
+
+        /// <summary>이상물체 목록 이름의 글자 크기입니다.</summary>
         private int listLabelFontSize = DefaultListLabelFontSize;
+
+        /// <summary>이상물체 목록에 적용할 정렬 방식의 번호입니다.</summary>
         private int sortMode;
+
+        /// <summary>이상물체 목록에 적용할 이름 표시 방식의 번호입니다.</summary>
         private int labelMode;
         #endregion // 필드
 
@@ -163,16 +202,16 @@ namespace ProjectR.Editor.Data
         /// </summary>
         private void LoadSettings()
         {
-            definitionFolder = SWEditorUtils.LoadPref($"{PrefPrefix}Folder", DefaultDefinitionFolder);
-            databasePath = SWEditorUtils.LoadPref($"{PrefPrefix}Database", DefaultDatabasePath);
-            assetPrefix = SWEditorUtils.LoadPref($"{PrefPrefix}Prefix", DefaultAssetPrefix);
-            autoSaveAssets = SWEditorUtils.LoadPref($"{PrefPrefix}AutoSave", true);
-            listWidth = SWEditorUtils.LoadPref($"{PrefPrefix}ListWidth", DefaultListWidth);
-            listRowHeight = SWEditorUtils.LoadPref($"{PrefPrefix}ListRowHeight", DefaultListRowHeight);
-            listIconSize = SWEditorUtils.LoadPref($"{PrefPrefix}ListIconSize", DefaultListIconSize);
-            listLabelFontSize = SWEditorUtils.LoadPref($"{PrefPrefix}ListLabelFontSize", DefaultListLabelFontSize);
-            sortMode = SWEditorUtils.LoadPref($"{PrefPrefix}SortMode", 0);
-            labelMode = SWEditorUtils.LoadPref($"{PrefPrefix}LabelMode", 0);
+            definitionFolder = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}Folder", DefaultDefinitionFolder);
+            databasePath = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}Database", DefaultDatabasePath);
+            assetPrefix = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}Prefix", DefaultAssetPrefix);
+            autoSaveAssets = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}AutoSave", true);
+            listWidth = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}ListWidth", DefaultListWidth);
+            listRowHeight = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}ListRowHeight", DefaultListRowHeight);
+            listIconSize = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}ListIconSize", DefaultListIconSize);
+            listLabelFontSize = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}ListLabelFontSize", DefaultListLabelFontSize);
+            sortMode = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}SortMode", 0);
+            labelMode = SWEditorUtils.LoadPref($"{PreferenceKeyPrefix}LabelMode", 0);
         }
 
         /// <summary>
@@ -180,16 +219,16 @@ namespace ProjectR.Editor.Data
         /// </summary>
         private void SaveSettings()
         {
-            SWEditorUtils.SavePref($"{PrefPrefix}Folder", definitionFolder);
-            SWEditorUtils.SavePref($"{PrefPrefix}Database", databasePath);
-            SWEditorUtils.SavePref($"{PrefPrefix}Prefix", assetPrefix);
-            SWEditorUtils.SavePref($"{PrefPrefix}AutoSave", autoSaveAssets);
-            SWEditorUtils.SavePref($"{PrefPrefix}ListWidth", listWidth);
-            SWEditorUtils.SavePref($"{PrefPrefix}ListRowHeight", listRowHeight);
-            SWEditorUtils.SavePref($"{PrefPrefix}ListIconSize", listIconSize);
-            SWEditorUtils.SavePref($"{PrefPrefix}ListLabelFontSize", listLabelFontSize);
-            SWEditorUtils.SavePref($"{PrefPrefix}SortMode", sortMode);
-            SWEditorUtils.SavePref($"{PrefPrefix}LabelMode", labelMode);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}Folder", definitionFolder);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}Database", databasePath);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}Prefix", assetPrefix);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}AutoSave", autoSaveAssets);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}ListWidth", listWidth);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}ListRowHeight", listRowHeight);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}ListIconSize", listIconSize);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}ListLabelFontSize", listLabelFontSize);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}SortMode", sortMode);
+            SWEditorUtils.SavePref($"{PreferenceKeyPrefix}LabelMode", labelMode);
         }
 
         /// <summary>
@@ -347,9 +386,9 @@ namespace ProjectR.Editor.Data
 
             float drawRowHeight = GetListRowDrawHeight();
 
-            for (int i = 0; i < definitions.Count; i++)
+            for (int index = 0; index < definitions.Count; index++)
             {
-                AnomalyDefinition definition = definitions[i];
+                AnomalyDefinition definition = definitions[index];
 
                 if (definition == null) continue;
 
@@ -362,15 +401,15 @@ namespace ProjectR.Editor.Data
                     continue;
                 }
 
-                Rect rowRect = GUILayoutUtility.GetRect(0f, drawRowHeight, GUILayout.ExpandWidth(true));
+                Rect rowRectangle = GUILayoutUtility.GetRect(0f, drawRowHeight, GUILayout.ExpandWidth(true));
                 string idText = definition.ID != 0 ? $"[{definition.ID}] " : string.Empty;
 
                 bool isDeleteClicked = DrawListRow(
-                    rowRect,
+                    rowRectangle,
                     $"{idText}{label}",
                     selectedDefinition == definition,
                     definition,
-                    out Rect deleteButtonRect);
+                    out Rect deleteButtonRectangle);
 
                 if (isDeleteClicked)
                 {
@@ -379,8 +418,8 @@ namespace ProjectR.Editor.Data
                 }
 
                 if (Event.current.type != EventType.MouseDown) continue;
-                if (rowRect.Contains(Event.current.mousePosition) == false) continue;
-                if (deleteButtonRect.Contains(Event.current.mousePosition)) continue;
+                if (rowRectangle.Contains(Event.current.mousePosition) == false) continue;
+                if (deleteButtonRectangle.Contains(Event.current.mousePosition)) continue;
 
                 Select(definition);
                 Event.current.Use();
@@ -390,51 +429,51 @@ namespace ProjectR.Editor.Data
         /// <summary>
         /// 목록 행 하나를 그립니다.
         /// </summary>
-        /// <param name="rowRect">행이 차지할 자리입니다.</param>
+        /// <param name="rowRectangle">행이 차지할 자리입니다.</param>
         /// <param name="label">행에 적을 말입니다.</param>
         /// <param name="isSelected">지금 고른 행인지 여부입니다.</param>
         /// <param name="definition">행이 가리키는 정의입니다.</param>
-        /// <param name="deleteButtonRect">삭제 버튼이 차지한 자리입니다.</param>
+        /// <param name="deleteButtonRectangle">삭제 버튼이 차지한 자리입니다.</param>
         /// <returns>삭제 버튼을 눌렀으면 true를 반환합니다.</returns>
-        private bool DrawListRow(Rect rowRect, string label, bool isSelected,
-            AnomalyDefinition definition, out Rect deleteButtonRect)
+        private bool DrawListRow(Rect rowRectangle, string label, bool isSelected,
+            AnomalyDefinition definition, out Rect deleteButtonRectangle)
         {
-            if (isSelected) GUI.Box(rowRect, GUIContent.none, selectedRowStyle);
+            if (isSelected) GUI.Box(rowRectangle, GUIContent.none, selectedRowStyle);
 
-            Rect iconRect = new Rect(
-                rowRect.x + ListRowPadding,
-                rowRect.y + ((rowRect.height - listIconSize) * 0.5f),
+            Rect iconRectangle = new(
+                rowRectangle.x + ListRowPadding,
+                rowRectangle.y + ((rowRectangle.height - listIconSize) * 0.5f),
                 listIconSize,
                 listIconSize);
 
-            if (definition.Icon != null) SWEditorUtils.DrawSpriteIcon(iconRect, definition.Icon);
-            else EditorGUI.DrawRect(iconRect, definition.DisplayColor);
+            if (definition.Icon != null) SWEditorUtils.DrawSpriteIcon(iconRectangle, definition.Icon);
+            else EditorGUI.DrawRect(iconRectangle, definition.DisplayColor);
 
-            deleteButtonRect = new Rect(
-                rowRect.xMax - ListRowRightSafePadding - DeleteButtonWidth - ListRowPadding,
-                rowRect.y + ((rowRect.height - DeleteButtonHeight) * 0.5f),
+            deleteButtonRectangle = new Rect(
+                rowRectangle.xMax - ListRowRightSafePadding - DeleteButtonWidth - ListRowPadding,
+                rowRectangle.y + ((rowRectangle.height - DeleteButtonHeight) * 0.5f),
                 DeleteButtonWidth,
                 DeleteButtonHeight);
 
-            Rect labelRect = new Rect(
-                iconRect.xMax + 4f,
-                rowRect.y + ListRowPadding,
-                Mathf.Max(1f, deleteButtonRect.x - iconRect.xMax - 8f),
-                rowRect.height - (ListRowPadding * 2f));
+            Rect labelRectangle = new(
+                iconRectangle.xMax + 4f,
+                rowRectangle.y + ListRowPadding,
+                Mathf.Max(1f, deleteButtonRectangle.x - iconRectangle.xMax - 8f),
+                rowRectangle.height - (ListRowPadding * 2f));
 
-            GUIStyle labelStyle = new GUIStyle(EditorStyles.label)
+            GUIStyle labelStyle = new(EditorStyles.label)
             {
                 alignment = TextAnchor.MiddleLeft,
                 fontSize = listLabelFontSize
             };
 
-            EditorGUI.LabelField(labelRect, label, labelStyle);
+            EditorGUI.LabelField(labelRectangle, label, labelStyle);
 
             using (new SWEditorUtils.GUIBgColorScope(new Color(1f, 0.6f, 0.6f)))
             {
-                GUIStyle deleteButtonStyle = new GUIStyle(GUI.skin.button) { fontSize = listLabelFontSize };
+                GUIStyle deleteButtonStyle = new(GUI.skin.button) { fontSize = listLabelFontSize };
 
-                return GUI.Button(deleteButtonRect, "x", deleteButtonStyle);
+                return GUI.Button(deleteButtonRectangle, "x", deleteButtonStyle);
             }
         }
 
@@ -478,7 +517,7 @@ namespace ProjectR.Editor.Data
             {
                 for (int x = 0; x < shape.Width; x++)
                 {
-                    Rect cell = new Rect(
+                    Rect cell = new(
                         area.x + (x * CellSize),
                         area.y + (y * CellSize),
                         CellSize - 1f,
@@ -502,12 +541,12 @@ namespace ProjectR.Editor.Data
 
             int missingArtCount = 0;
             int unregisteredCount = 0;
-            HashSet<string> seenCodeNames = new HashSet<string>();
-            HashSet<string> duplicatedCodeNames = new HashSet<string>();
+            HashSet<string> seenCodeNames = new();
+            HashSet<string> duplicatedCodeNames = new();
 
-            for (int i = 0; i < definitions.Count; i++)
+            for (int index = 0; index < definitions.Count; index++)
             {
-                AnomalyDefinition definition = definitions[i];
+                AnomalyDefinition definition = definitions[index];
 
                 if (definition == null) continue;
 
@@ -655,9 +694,9 @@ namespace ProjectR.Editor.Data
 
             string[] guids = AssetDatabase.FindAssets($"t:{nameof(AnomalyDefinition)}");
 
-            for (int i = 0; i < guids.Length; i++)
+            for (int index = 0; index < guids.Length; index++)
             {
-                string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+                string path = AssetDatabase.GUIDToAssetPath(guids[index]);
                 AnomalyDefinition definition = AssetDatabase.LoadAssetAtPath<AnomalyDefinition>(path);
 
                 if (definition != null) definitions.Add(definition);
@@ -745,7 +784,7 @@ namespace ProjectR.Editor.Data
 
             AssetDatabase.CreateAsset(definition, assetPath);
 
-            SerializedObject serialized = new SerializedObject(definition);
+            SerializedObject serialized = new(definition);
             serialized.FindProperty("codeName").stringValue = Path.GetFileNameWithoutExtension(assetPath);
             serialized.ApplyModifiedPropertiesWithoutUndo();
 
@@ -831,12 +870,12 @@ namespace ProjectR.Editor.Data
         /// <param name="database">등록할 데이터베이스입니다.</param>
         private void RegisterMissing(SWIODatabase database)
         {
-            for (int i = 0; i < definitions.Count; i++)
+            for (int index = 0; index < definitions.Count; index++)
             {
-                if (definitions[i] == null) continue;
-                if (database.Contains(definitions[i])) continue;
+                if (definitions[index] == null) continue;
+                if (database.Contains(definitions[index])) continue;
 
-                database.Add(definitions[i]);
+                database.Add(definitions[index]);
             }
 
             if (autoSaveAssets) AssetDatabase.SaveAssets();
@@ -904,11 +943,11 @@ namespace ProjectR.Editor.Data
             string[] parts = folderPath.Split('/');
             string currentPath = parts[0];
 
-            for (int i = 1; i < parts.Length; i++)
+            for (int index = 1; index < parts.Length; index++)
             {
-                string nextPath = $"{currentPath}/{parts[i]}";
+                string nextPath = $"{currentPath}/{parts[index]}";
 
-                if (AssetDatabase.IsValidFolder(nextPath) == false) AssetDatabase.CreateFolder(currentPath, parts[i]);
+                if (AssetDatabase.IsValidFolder(nextPath) == false) AssetDatabase.CreateFolder(currentPath, parts[index]);
 
                 currentPath = nextPath;
             }

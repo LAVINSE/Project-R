@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Generation
 {
     /// <summary>
@@ -28,7 +30,7 @@ namespace ProjectR.Backrooms.Generation
         public int CellCount => Width * Height;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 모든 벽이 세워진 격자를 만듭니다.
         /// </summary>
@@ -47,7 +49,9 @@ namespace ProjectR.Backrooms.Generation
             for (int index = 0; index < cellWalls.Length; index += 1)
                 cellWalls[index] = EMazeDirection.All;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 좌표가 격자 안에 있는지 확인합니다.
         /// </summary>
@@ -110,7 +114,7 @@ namespace ProjectR.Backrooms.Generation
         /// <returns>통로로 이어진 이웃 좌표 목록입니다. 없으면 빈 목록을 반환합니다.</returns>
         public List<MazeCoordinate> GetConnectedNeighbors(MazeCoordinate coordinate)
         {
-            List<MazeCoordinate> neighbors = new List<MazeCoordinate>(4);
+            List<MazeCoordinate> neighbors = new(4);
 
             for (int index = 0; index < MazeDirections.All.Count; index += 1)
             {

@@ -17,40 +17,51 @@ namespace ProjectR.Backrooms.Generation
     public class MazeGenerationSettings
     {
         #region 필드
+        /// <summary>미로의 가로 칸 수입니다.</summary>
         [SWGroup("격자 크기")]
         [SerializeField, Range(3, 64), Tooltip("미로의 가로 칸 수입니다.")]
         private int width = 16;
 
+        /// <summary>미로의 세로 칸 수입니다.</summary>
         [SerializeField, Range(3, 64), Tooltip("미로의 세로 칸 수입니다.")]
         private int height = 16;
 
+        /// <summary>생성 결과가 반드시 가져야 할 최소 순환로 개수입니다. 벽 짚기 공략을 막습니다.</summary>
         [SWGroup("생성 보정")]
         [SerializeField, Min(0), Tooltip("생성 결과가 반드시 가져야 할 최소 순환로 개수입니다. 벽 짚기 공략을 막습니다.")]
         private int minimumLoopCount = 8;
 
+        /// <summary>전체 칸 대비 허용하는 막다른 길의 최대 비율입니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("전체 칸 대비 허용하는 막다른 길의 최대 비율입니다.")]
         private float maximumDeadEndRatio = 0.1f;
 
+        /// <summary>트여 있는 홀을 몇 개 만들지입니다. 0이면 전부 한 칸 폭 복도가 됩니다.</summary>
         [SWGroup("넓은 홀")]
         [SerializeField, Min(0), Tooltip("트여 있는 홀을 몇 개 만들지입니다. 0이면 전부 한 칸 폭 복도가 됩니다.")]
         private int roomCount = 5;
 
+        /// <summary>홀 한 변의 최소 칸 수입니다.</summary>
         [SerializeField, Range(2, 8), Tooltip("홀 한 변의 최소 칸 수입니다.")]
         private int minimumRoomSize = 3;
 
+        /// <summary>홀 한 변의 최대 칸 수입니다.</summary>
         [SerializeField, Range(2, 8), Tooltip("홀 한 변의 최대 칸 수입니다.")]
         private int maximumRoomSize = 5;
 
+        /// <summary>가장 넓은 트인 구역이 반드시 가져야 할 칸 수입니다. 최악 구간 측정 대상이 됩니다.</summary>
         [SerializeField, Min(0), Tooltip("가장 넓은 트인 구역이 반드시 가져야 할 칸 수입니다. 최악 구간 측정 대상이 됩니다.")]
         private int minimumLargestOpenAreaCellCount = 9;
 
+        /// <summary>전체 칸 대비 전등이 없는 칸의 비율입니다. 0이면 모든 칸이 밝습니다.</summary>
         [SWGroup("어두운 구역")]
         [SerializeField, Range(0f, 0.5f), Tooltip("전체 칸 대비 전등이 없는 칸의 비율입니다. 0이면 모든 칸이 밝습니다.")]
         private float darkCellRatio = 0.12f;
 
+        /// <summary>어두운 칸을 몇 덩어리로 뭉칠지입니다. 적을수록 한 덩어리가 넓어집니다.</summary>
         [SerializeField, Min(0), Tooltip("어두운 칸을 몇 덩어리로 뭉칠지입니다. 적을수록 한 덩어리가 넓어집니다.")]
         private int darkZoneCount = 3;
 
+        /// <summary>검증에 실패했을 때 다시 생성해 볼 최대 횟수입니다.</summary>
         [SWGroup("검증")]
         [SerializeField, Range(1, 20), Tooltip("검증에 실패했을 때 다시 생성해 볼 최대 횟수입니다.")]
         private int maximumAttemptCount = 5;
@@ -91,7 +102,7 @@ namespace ProjectR.Backrooms.Generation
         public int DarkZoneCount => darkZoneCount;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 설정값을 지정해 만듭니다. 단위 테스트에서 사용합니다.
         /// </summary>
@@ -130,6 +141,6 @@ namespace ProjectR.Backrooms.Generation
         public MazeGenerationSettings()
         {
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 }

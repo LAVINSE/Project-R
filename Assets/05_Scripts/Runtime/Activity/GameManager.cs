@@ -19,14 +19,17 @@ namespace ProjectR.Activity
     public class GameManager : SWSingleton<GameManager>
     {
         #region 필드
+        /// <summary>하루를 마감할 때 쓰는 유지비·이탈·방송 시간 조정값입니다.</summary>
         [SWGroup("하루 설정")]
         [SerializeField, Tooltip("하루를 마감할 때 쓰는 유지비·이탈·방송 시간 조정값입니다.")]
         private DayEndSettings dayEndSettings = DayEndSettings.Default;
 
+        /// <summary>진행할 스트리머의 식별자입니다. 스트리머 선택 화면이 생기기 전까지 쓰는 자리입니다.</summary>
         [SWGroup("스트리머")]
         [SerializeField, Tooltip("진행할 스트리머의 식별자입니다. 스트리머 선택 화면이 생기기 전까지 쓰는 자리입니다.")]
         private string defaultStreamerId = "Streamer_01";
 
+        /// <summary>스탯과 업그레이드 보너스를 들고 있는 스탯판입니다.</summary>
         [SerializeField, Tooltip("스탯과 업그레이드 보너스를 들고 있는 스탯판입니다.")]
         private StreamerStatBoard statBoard;
         #endregion // 필드
@@ -105,7 +108,7 @@ namespace ProjectR.Activity
         /// </remarks>
         private GameState CreateNewState()
         {
-            GameState created = new GameState();
+            GameState created = new();
 
             created.MarkAsCurrentVersion();
             created.SelectStreamer(defaultStreamerId);

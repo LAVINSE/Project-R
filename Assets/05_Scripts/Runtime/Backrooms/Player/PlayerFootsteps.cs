@@ -4,6 +4,7 @@ using SW.Attributes;
 using SW.Base;
 
 using ProjectR.Backrooms.Audio;
+using ProjectR.Enum;
 
 namespace ProjectR.Backrooms.Player
 {
@@ -21,30 +22,38 @@ namespace ProjectR.Backrooms.Player
     public class PlayerFootsteps : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>걸을 때 한 걸음에 나아가는 거리(미터)입니다.</summary>
         [SWGroup("걸음 간격")]
         [SerializeField, Min(0.1f), Tooltip("걸을 때 한 걸음에 나아가는 거리(미터)입니다.")]
         private float strideLength = 0.85f;
 
+        /// <summary>앉아서 움직일 때 한 걸음에 나아가는 거리(미터)입니다.</summary>
         [SerializeField, Min(0.1f), Tooltip("앉아서 움직일 때 한 걸음에 나아가는 거리(미터)입니다.")]
         private float crouchStrideLength = 1.15f;
 
+        /// <summary>걸을 때의 발소리 크기입니다.</summary>
         [SWGroup("크기")]
         [SerializeField, Range(0f, 1f), Tooltip("걸을 때의 발소리 크기입니다.")]
         private float walkVolume = 0.5f;
 
+        /// <summary>달릴 때의 발소리 크기입니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("달릴 때의 발소리 크기입니다.")]
         private float runVolume = 0.85f;
 
+        /// <summary>앉아서 움직일 때의 발소리 크기입니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("앉아서 움직일 때의 발소리 크기입니다.")]
         private float crouchVolume = 0.12f;
 
+        /// <summary>재질마다 만들어 둘 발소리 변형의 개수입니다.</summary>
         [SWGroup("변화")]
         [SerializeField, Range(1, 8), Tooltip("재질마다 만들어 둘 발소리 변형의 개수입니다.")]
         private int variationCount = 4;
 
+        /// <summary>걸음마다 음높이를 흔드는 폭입니다.</summary>
         [SerializeField, Range(0f, 0.3f), Tooltip("걸음마다 음높이를 흔드는 폭입니다.")]
         private float pitchVariation = 0.09f;
 
+        /// <summary>바닥 재질을 확인할 때 아래로 쏘는 거리(미터)입니다.</summary>
         [SWGroup("바닥 판정")]
         [SerializeField, Min(0.1f), Tooltip("바닥 재질을 확인할 때 아래로 쏘는 거리(미터)입니다.")]
         private float surfaceCheckDistance = 1.5f;

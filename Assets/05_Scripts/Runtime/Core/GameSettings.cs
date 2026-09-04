@@ -161,7 +161,7 @@ namespace ProjectR.Core
         public float MouseSensitivity { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 바뀐 설정값을 담아 이벤트를 만듭니다.
         /// </summary>
@@ -174,6 +174,6 @@ namespace ProjectR.Core
             IsMuted = isMuted;
             MouseSensitivity = mouseSensitivity;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 }

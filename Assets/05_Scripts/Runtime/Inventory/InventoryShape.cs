@@ -24,7 +24,7 @@ namespace ProjectR.Inventory
         public bool IsSquare => Width == Height;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 형태를 만듭니다. 가로세로는 최소 1칸으로 맞춰집니다.
         /// </summary>
@@ -35,7 +35,9 @@ namespace ProjectR.Inventory
             Width = width < 1 ? 1 : width;
             Height = height < 1 ? 1 : height;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 회전 여부에 따른 가로 칸 수를 구합니다.
         /// </summary>

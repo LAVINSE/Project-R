@@ -169,9 +169,9 @@ namespace ProjectR.Editor.Backrooms
                     return false;
                 }
 
-                List<RendererLightmapInfo> infos = new List<RendererLightmapInfo>(prefabRenderers.Length);
-                List<Texture2D> colors = new List<Texture2D>();
-                List<Texture2D> directions = new List<Texture2D>();
+                List<RendererLightmapInformation> rendererInformationList = new(prefabRenderers.Length);
+                List<Texture2D> colors = new();
+                List<Texture2D> directions = new();
 
                 for (int index = 0; index < instanceRenderers.Length; index += 1)
                 {
@@ -188,7 +188,7 @@ namespace ProjectR.Editor.Backrooms
                         localIndex = colors.Count - 1;
                     }
 
-                    infos.Add(new RendererLightmapInfo
+                    rendererInformationList.Add(new RendererLightmapInformation
                     {
                         Renderer = prefabRenderers[index],
                         LightmapIndex = localIndex,
@@ -199,11 +199,11 @@ namespace ProjectR.Editor.Backrooms
                 BakedLightmapData bakedData = prefabContents.GetComponent<BakedLightmapData>();
                 if (bakedData == null) bakedData = prefabContents.AddComponent<BakedLightmapData>();
 
-                bakedData.StoreBakedData(infos.ToArray(), colors.ToArray(), directions.ToArray());
+                bakedData.StoreBakedData(rendererInformationList.ToArray(), colors.ToArray(), directions.ToArray());
                 PrefabUtility.SaveAsPrefabAsset(prefabContents, prefabPath);
 
                 SWLog.Log($"[{nameof(TileLightmapBaker)}] {System.IO.Path.GetFileNameWithoutExtension(prefabPath)}: " +
-                    $"렌더러 {infos.Count}개 / 라이트맵 {colors.Count}장");
+                    $"렌더러 {rendererInformationList.Count}개 / 라이트맵 {colors.Count}장");
 
                 return true;
             }
@@ -225,7 +225,7 @@ namespace ProjectR.Editor.Backrooms
             RenderSettings.ambientLight = Color.black;
             RenderSettings.fog = false;
 
-            LightingSettings settings = new LightingSettings
+            LightingSettings settings = new()
             {
                 name = "TileBakeSettings",
                 bakedGI = true,
@@ -264,7 +264,7 @@ namespace ProjectR.Editor.Backrooms
             if (AssetDatabase.IsValidFolder(TilePrefabFolder) == false) return new string[0];
 
             string[] guids = AssetDatabase.FindAssets("t:Prefab", new[] { TilePrefabFolder });
-            List<string> paths = new List<string>(guids.Length);
+            List<string> paths = new(guids.Length);
 
             for (int index = 0; index < guids.Length; index += 1)
                 paths.Add(AssetDatabase.GUIDToAssetPath(guids[index]));

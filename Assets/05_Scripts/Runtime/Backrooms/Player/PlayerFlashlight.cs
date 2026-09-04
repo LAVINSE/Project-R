@@ -19,34 +19,43 @@ namespace ProjectR.Backrooms.Player
     public class PlayerFlashlight : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>켜고 끌 스포트라이트입니다. 카메라의 자식으로 두지 않습니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("켜고 끌 스포트라이트입니다. 카메라의 자식으로 두지 않습니다.")]
         private Light spotLight;
 
+        /// <summary>손전등이 따라갈 시점 기준입니다. 보통 카메라를 넣습니다.</summary>
         [SerializeField, Tooltip("손전등이 따라갈 시점 기준입니다. 보통 카메라를 넣습니다.")]
         private Transform aimTransform;
 
+        /// <summary>가득 찼을 때 켜 둘 수 있는 시간(초)입니다.</summary>
         [SWGroup("배터리")]
         [SerializeField, Min(1f), Tooltip("가득 찼을 때 켜 둘 수 있는 시간(초)입니다.")]
         private float fullBatterySeconds = 600f;
 
+        /// <summary>씬을 시작할 때 손전등을 켜 둘지 여부입니다.</summary>
         [SerializeField, Tooltip("씬을 시작할 때 손전등을 켜 둘지 여부입니다.")]
         private bool startTurnedOn = true;
 
+        /// <summary>배터리가 가득 찼을 때의 밝기입니다.</summary>
         [SWGroup("밝기")]
         [SerializeField, Min(0f), Tooltip("배터리가 가득 찼을 때의 밝기입니다.")]
         private float fullIntensity = 3.2f;
 
+        /// <summary>이 잔량 아래로 내려가면 밝기가 줄기 시작합니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("이 잔량 아래로 내려가면 밝기가 줄기 시작합니다.")]
         private float dimStartRatio = 0.25f;
 
+        /// <summary>배터리가 바닥났을 때 남는 밝기 비율입니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("배터리가 바닥났을 때 남는 밝기 비율입니다.")]
         private float minimumIntensityRatio = 0.25f;
 
+        /// <summary>시점을 따라오는 빠르기입니다. 낮을수록 크게 흔들립니다.</summary>
         [SWGroup("흔들림")]
         [SerializeField, Min(0.1f), Tooltip("시점을 따라오는 빠르기입니다. 낮을수록 크게 흔들립니다.")]
         private float followSpeed = 11f;
 
+        /// <summary>배터리가 바닥났을 때 따라오는 빠르기에 곱할 값입니다.</summary>
         [SerializeField, Min(0f), Tooltip("배터리가 바닥났을 때 따라오는 빠르기에 곱할 값입니다.")]
         private float lowBatteryFollowScale = 0.55f;
 

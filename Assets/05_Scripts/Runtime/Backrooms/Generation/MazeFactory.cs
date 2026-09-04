@@ -25,7 +25,7 @@ namespace ProjectR.Backrooms.Generation
         public string GeneratorName => generator.DisplayName;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 생성기를 지정해 조립자를 만듭니다.
         /// </summary>
@@ -42,7 +42,9 @@ namespace ProjectR.Backrooms.Generation
         public MazeFactory() : this(new RecursiveBacktrackerGenerator())
         {
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 시드에서 미로를 만들고 보정과 검증까지 마칩니다.
         /// </summary>
@@ -84,14 +86,14 @@ namespace ProjectR.Backrooms.Generation
         /// </remarks>
         private MazeBuildResult BuildOnce(MazeGenerationSettings settings, int seed, int attempt)
         {
-            Random random = new Random(unchecked(seed * 397 + attempt));
+            Random random = new(unchecked(seed * 397 + attempt));
 
             MazeGrid grid = generator.Generate(settings, random);
             MazeRoomCarver.Carve(grid, random, settings);
             MazeDeadEndReducer.Reduce(grid, random, settings.MaximumDeadEndRatio);
             MazeLoopCarver.Carve(grid, random, settings.MinimumLoopCount);
 
-            MazeCoordinate start = new MazeCoordinate(random.Next(grid.Width), random.Next(grid.Height));
+            MazeCoordinate start = new(random.Next(grid.Width), random.Next(grid.Height));
             MazeCoordinate exit = MazePathValidator.FindFarthest(grid, start);
             MazeStatistics statistics = MazeStatistics.Measure(grid);
 

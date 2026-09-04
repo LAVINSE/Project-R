@@ -4,7 +4,7 @@ using SW.Attributes;
 using SW.Base;
 using SW.Util;
 
-using ProjectR.Backrooms.Generation;
+using ProjectR.Enum;
 
 namespace ProjectR.Backrooms.Assembly
 {
@@ -22,38 +22,49 @@ namespace ProjectR.Backrooms.Assembly
     public class MazeTileLibrary : SWScriptableObject
     {
         #region 필드
+        /// <summary>북쪽 한 방향만 열린 막다른 길 타일입니다.</summary>
         [SWGroup("타일 프리팹")]
         [SerializeField, Tooltip("북쪽 한 방향만 열린 막다른 길 타일입니다.")]
         private GameObject deadEndTile;
 
+        /// <summary>북쪽과 남쪽이 열린 직선 복도 타일입니다.</summary>
         [SerializeField, Tooltip("북쪽과 남쪽이 열린 직선 복도 타일입니다.")]
         private GameObject straightTile;
 
+        /// <summary>북쪽과 동쪽이 열린 모퉁이 타일입니다.</summary>
         [SerializeField, Tooltip("북쪽과 동쪽이 열린 모퉁이 타일입니다.")]
         private GameObject cornerTile;
 
+        /// <summary>남쪽만 막힌 삼거리 타일입니다.</summary>
         [SerializeField, Tooltip("남쪽만 막힌 삼거리 타일입니다.")]
         private GameObject tJunctionTile;
 
+        /// <summary>네 방향이 모두 열린 사거리 타일입니다.</summary>
         [SerializeField, Tooltip("네 방향이 모두 열린 사거리 타일입니다.")]
         private GameObject crossTile;
 
+        /// <summary>전등이 달려 있지 않은 막다른 길 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.</summary>
         [SWGroup("어두운 타일 프리팹")]
         [SerializeField, Tooltip("전등이 달려 있지 않은 막다른 길 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.")]
         private GameObject darkDeadEndTile;
 
+        /// <summary>전등이 달려 있지 않은 직선 복도 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.</summary>
         [SerializeField, Tooltip("전등이 달려 있지 않은 직선 복도 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.")]
         private GameObject darkStraightTile;
 
+        /// <summary>전등이 달려 있지 않은 모퉁이 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.</summary>
         [SerializeField, Tooltip("전등이 달려 있지 않은 모퉁이 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.")]
         private GameObject darkCornerTile;
 
+        /// <summary>전등이 달려 있지 않은 삼거리 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.</summary>
         [SerializeField, Tooltip("전등이 달려 있지 않은 삼거리 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.")]
         private GameObject darkTJunctionTile;
 
+        /// <summary>전등이 달려 있지 않은 사거리 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.</summary>
         [SerializeField, Tooltip("전등이 달려 있지 않은 사거리 타일입니다. 비워 두면 밝은 타일을 대신 씁니다.")]
         private GameObject darkCrossTile;
 
+        /// <summary>타일 한 칸의 한 변 길이(미터)입니다. 프리팹 크기와 반드시 같아야 합니다.</summary>
         [SWGroup("배치")]
         [SerializeField, Min(0.1f), Tooltip("타일 한 칸의 한 변 길이(미터)입니다. 프리팹 크기와 반드시 같아야 합니다.")]
         private float cellSize = 4f;

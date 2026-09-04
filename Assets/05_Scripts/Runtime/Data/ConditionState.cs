@@ -24,24 +24,31 @@ namespace ProjectR.Data
     {
         #region 상수
         /// <summary>각 컨디션 수치의 최소값입니다.</summary>
-        public const int MinValue = 0;
+        public const int MinimumValue = 0;
 
         /// <summary>각 컨디션 수치의 최대값입니다.</summary>
-        public const int MaxValue = 100;
+        public const int MaximumValue = 100;
 
         /// <summary>피로도가 최대일 때에도 남겨 두는 수면·배고픔·기분의 상한입니다.</summary>
         /// <remarks>
         /// 하한선입니다. 이 값이 0이면 피로도가 최대일 때 아무것도 회복할 수 없게 되어
         /// 실패가 실패를 부르는 구조가 됩니다(기획서 설계 원칙 4번).
         /// </remarks>
-        public const int MinCapValue = 40;
+        public const int MinimumUpperLimitValue = 40;
         #endregion // 상수
 
         #region 필드
-        [SerializeField] private int sleep = MaxValue;
-        [SerializeField] private int hunger = MaxValue;
-        [SerializeField] private int mood = MaxValue;
-        [SerializeField] private int fatigue = MinValue;
+        /// <summary>수면 수치입니다. 낮을수록 백룸에서 시야가 흐려집니다.</summary>
+        [SerializeField] private int sleep = MaximumValue;
+
+        /// <summary>배고픔 수치입니다. 낮을수록 달리기 지속 시간이 줄어듭니다.</summary>
+        [SerializeField] private int hunger = MaximumValue;
+
+        /// <summary>기분 수치입니다. 낮을수록 리액션 판정이 둔해집니다.</summary>
+        [SerializeField] private int mood = MaximumValue;
+
+        /// <summary>피로도 수치입니다. 높을수록 나머지 세 수치의 상한이 낮아집니다.</summary>
+        [SerializeField] private int fatigue = MinimumValue;
         #endregion // 필드
 
         #region 프로퍼티
@@ -59,18 +66,18 @@ namespace ProjectR.Data
 
         /// <summary>지금 피로도에서 수면·배고픔·기분이 올라갈 수 있는 상한입니다.</summary>
         /// <remarks>
-        /// 피로도 0이면 <see cref="MaxValue"/>이고, 피로도가 최대면 <see cref="MinCapValue"/>입니다.
+        /// 피로도 0이면 <see cref="MaximumValue"/>이고, 피로도가 최대면 <see cref="MinimumUpperLimitValue"/>입니다.
         /// 그 사이는 선형입니다. 피로도 50이면 상한이 70입니다.
         /// 곡선을 쓰지 않은 것은 플레이어가 "피로도를 절반 풀면 절반 돌아온다"고 예상할 수 있어야
         /// 휴방을 며칠 할지 스스로 계산할 수 있기 때문입니다.
         /// </remarks>
-        public int EffectiveMax
+        public int EffectiveMaximum
         {
             get
             {
-                int pressure = (MaxValue - MinCapValue) * fatigue / MaxValue;
+                int pressure = (MaximumValue - MinimumUpperLimitValue) * fatigue / MaximumValue;
 
-                return MaxValue - pressure;
+                return MaximumValue - pressure;
             }
         }
         #endregion // 프로퍼티
@@ -86,21 +93,21 @@ namespace ProjectR.Data
         /// </remarks>
         public void Apply(ConditionDelta delta)
         {
-            fatigue = Mathf.Clamp(fatigue + delta.Fatigue, MinValue, MaxValue);
+            fatigue = Mathf.Clamp(fatigue + delta.Fatigue, MinimumValue, MaximumValue);
 
-            sleep = ClampToCap(sleep + delta.Sleep);
-            hunger = ClampToCap(hunger + delta.Hunger);
-            mood = ClampToCap(mood + delta.Mood);
+            sleep = ClampToUpperLimit(sleep + delta.Sleep);
+            hunger = ClampToUpperLimit(hunger + delta.Hunger);
+            mood = ClampToUpperLimit(mood + delta.Mood);
         }
 
         /// <summary>
         /// 값을 최소값과 지금 상한 사이로 잘라 냅니다.
         /// </summary>
         /// <param name="value">잘라 낼 원본 값입니다.</param>
-        /// <returns>최소값과 <see cref="EffectiveMax"/> 사이로 보정된 값입니다.</returns>
-        private int ClampToCap(int value)
+        /// <returns>최소값과 <see cref="EffectiveMaximum"/> 사이로 보정된 값입니다.</returns>
+        private int ClampToUpperLimit(int value)
         {
-            return Mathf.Clamp(value, MinValue, EffectiveMax);
+            return Mathf.Clamp(value, MinimumValue, EffectiveMaximum);
         }
         #endregion // 함수
     }

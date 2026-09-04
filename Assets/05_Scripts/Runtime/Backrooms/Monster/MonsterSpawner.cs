@@ -27,21 +27,26 @@ namespace ProjectR.Backrooms.Monster
     public class MonsterSpawner : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>NavMesh 굽기 완료를 알려 줄 컴포넌트입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("NavMesh 굽기 완료를 알려 줄 컴포넌트입니다.")]
         private BackroomsNavMeshBaker navMeshBaker;
 
+        /// <summary>칸 좌표를 월드 위치로 바꿔 줄 맵 조립 컴포넌트입니다.</summary>
         [SerializeField, Tooltip("칸 좌표를 월드 위치로 바꿔 줄 맵 조립 컴포넌트입니다.")]
         private BackroomsMapBuilder mapBuilder;
 
+        /// <summary>맵에 놓을 몬스터 프리팹입니다.</summary>
         [SWGroup("몬스터")]
         [SerializeField, Tooltip("맵에 놓을 몬스터 프리팹입니다.")]
         private GameObject monsterPrefab;
 
+        /// <summary>시작 칸에서 최소 몇 칸 떨어진 곳에 놓을지입니다.</summary>
         [SWGroup("배치")]
         [SerializeField, Min(1), Tooltip("시작 칸에서 최소 몇 칸 떨어진 곳에 놓을지입니다.")]
         private int minimumStartCellDistance = 10;
 
+        /// <summary>놓을 자리를 NavMesh 위로 끌어올 때 허용할 거리(미터)입니다.</summary>
         [SerializeField, Min(1f), Tooltip("놓을 자리를 NavMesh 위로 끌어올 때 허용할 거리(미터)입니다.")]
         private float navMeshSampleDistance = 4f;
 
@@ -135,7 +140,7 @@ namespace ProjectR.Backrooms.Monster
         /// <remarks>조건을 만족하는 칸이 없으면 가장 멀리 떨어진 칸을 씁니다.</remarks>
         private MazeCoordinate PickSpawnCoordinate(MazeBuildResult result)
         {
-            List<MazeCoordinate> candidates = new List<MazeCoordinate>();
+            List<MazeCoordinate> candidates = new();
             MazeCoordinate farthest = result.StartCoordinate;
             int farthestDistance = -1;
 
@@ -157,7 +162,7 @@ namespace ProjectR.Backrooms.Monster
 
             if (candidates.Count == 0) return farthest;
 
-            System.Random random = new System.Random(result.Seed);
+            System.Random random = new(result.Seed);
 
             return candidates[random.Next(candidates.Count)];
         }

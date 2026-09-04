@@ -23,20 +23,25 @@ namespace ProjectR.Backrooms.Monster
     public class MonsterSenses : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>감지 대상으로 삼을 태그입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("감지 대상으로 삼을 태그입니다.")]
         private string playerTag = "Player";
 
+        /// <summary>감지를 다시 확인하는 간격(초)입니다.</summary>
         [SWGroup("감지")]
         [SerializeField, Min(0.02f), Tooltip("감지를 다시 확인하는 간격(초)입니다.")]
         private float checkInterval = 0.1f;
 
+        /// <summary>몬스터의 눈높이(미터)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("몬스터의 눈높이(미터)입니다.")]
         private float eyeHeight = 1.7f;
 
+        /// <summary>시선을 막는 것으로 볼 레이어입니다.</summary>
         [SerializeField, Tooltip("시선을 막는 것으로 볼 레이어입니다.")]
         private LayerMask obstacleMask = ~0;
 
+        /// <summary>숨는 것을 봤다고 인정할 최대 거리(미터)입니다.</summary>
         [SWGroup("기억")]
         [SerializeField, Min(1f), Tooltip("숨는 것을 봤다고 인정할 최대 거리(미터)입니다.")]
         private float hidingRecordDistance = 20f;
@@ -173,7 +178,7 @@ namespace ProjectR.Backrooms.Monster
             if (toPlayer.sqrMagnitude > sightRange * sightRange) return false;
 
             float sightAngle = runner.GetBlackboardValue(MonsterBlackboardKeys.SightAngle, 110f);
-            Vector3 flatDirection = new Vector3(toPlayer.x, 0f, toPlayer.z);
+            Vector3 flatDirection = new(toPlayer.x, 0f, toPlayer.z);
 
             if (Vector3.Angle(transform.forward, flatDirection) > sightAngle * 0.5f) return false;
 

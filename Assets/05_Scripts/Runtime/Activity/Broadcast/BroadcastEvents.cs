@@ -1,4 +1,8 @@
-namespace ProjectR.Activity
+using UnityEngine.Scripting.APIUpdating;
+
+using ProjectR.Enum;
+
+namespace ProjectR.Activity.Broadcast
 {
     /// <summary>
     /// 방송 상황이 바뀌었음을 알리는 이벤트입니다.
@@ -10,6 +14,7 @@ namespace ProjectR.Activity
     /// 백룸 안에서 시청자 수를 알고 싶어지는 순간이 반드시 오는데, 같은 어셈블리라면
     /// using 한 줄로 조용히 넘어가게 됩니다.
     /// </remarks>
+    [MovedFrom(true, sourceNamespace: "ProjectR.Activity", sourceAssembly: "ProjectR.Activity", sourceClassName: "BroadcastStateChangedEvent")]
     public readonly struct BroadcastStateChangedEvent
     {
         #region 프로퍼티
@@ -17,7 +22,7 @@ namespace ProjectR.Activity
         public EBroadcastState State { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 바뀐 방송 상황을 담아 이벤트를 만듭니다.
         /// </summary>
@@ -26,7 +31,7 @@ namespace ProjectR.Activity
         {
             State = state;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 
     /// <summary>
@@ -36,6 +41,7 @@ namespace ProjectR.Activity
     /// 채팅과 후원 알림이 이 알림을 듣습니다.
     /// 지속 상태가 아니라 순간이므로, 같은 태그가 연달아 와도 그때마다 한 번씩 반응합니다.
     /// </remarks>
+    [MovedFrom(true, sourceNamespace: "ProjectR.Activity", sourceAssembly: "ProjectR.Activity", sourceClassName: "BroadcastMomentEvent")]
     public readonly struct BroadcastMomentEvent
     {
         #region 프로퍼티
@@ -43,7 +49,7 @@ namespace ProjectR.Activity
         public EBroadcastMoment Moment { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 상황 태그를 담아 이벤트를 만듭니다.
         /// </summary>
@@ -52,6 +58,6 @@ namespace ProjectR.Activity
         {
             Moment = moment;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 }

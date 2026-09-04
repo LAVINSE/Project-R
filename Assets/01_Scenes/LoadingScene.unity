@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f967b5e694d94848b07729baf85fa0d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Measurement.BackroomsBuildVerifier
+  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Debugging.BackroomsBuildVerifier
   settleSeconds: 2
   timeoutSeconds: 180
   eyeHeight: 1.6
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c08292774b9668d4caa83af0df0e13b7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: ProjectR.UI::ProjectR.UI.PopupHotkeyController
+  m_EditorClassIdentifier: ProjectR.UI::ProjectR.UI.Popup.PopupHotkeyController
   entries:
   - key: 60
     popupKey: options

@@ -12,7 +12,7 @@ namespace ProjectR.Activity
         public IActivity Activity { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 시작된 활동을 담아 이벤트를 만듭니다.
         /// </summary>
@@ -21,7 +21,7 @@ namespace ProjectR.Activity
         {
             Activity = activity;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ namespace ProjectR.Activity
         public ActivityResult Result { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 끝난 활동과 아직 반영되지 않은 결과를 담아 이벤트를 만듭니다.
         /// </summary>
@@ -56,7 +56,7 @@ namespace ProjectR.Activity
             Activity = activity;
             Result = result;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 
     /// <summary>
@@ -72,7 +72,7 @@ namespace ProjectR.Activity
         public ActivityResult Result { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 끝난 활동과 그 결과를 담아 이벤트를 만듭니다.
         /// </summary>
@@ -83,7 +83,7 @@ namespace ProjectR.Activity
             Activity = activity;
             Result = result;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ namespace ProjectR.Activity
         public DayEndResult Result { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 넘어간 날짜와 마감 결과를 담아 이벤트를 만듭니다.
         /// </summary>
@@ -114,6 +114,6 @@ namespace ProjectR.Activity
             Day = day;
             Result = result;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 }

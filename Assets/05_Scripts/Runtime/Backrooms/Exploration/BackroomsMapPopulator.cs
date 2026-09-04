@@ -6,6 +6,7 @@ using SW.Util;
 
 using ProjectR.Backrooms.Assembly;
 using ProjectR.Backrooms.Generation;
+using ProjectR.Enum;
 
 namespace ProjectR.Backrooms.Exploration
 {
@@ -19,17 +20,21 @@ namespace ProjectR.Backrooms.Exploration
     public class BackroomsMapPopulator : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>생성 결과를 받아 올 맵 조립 컴포넌트입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("생성 결과를 받아 올 맵 조립 컴포넌트입니다.")]
         private BackroomsMapBuilder mapBuilder;
 
+        /// <summary>시작 칸으로 옮길 플레이어입니다.</summary>
         [SerializeField, Tooltip("시작 칸으로 옮길 플레이어입니다.")]
         private Transform playerTransform;
 
+        /// <summary>탈출 칸에 놓을 프리팹입니다.</summary>
         [SWGroup("탈출 지점")]
         [SerializeField, Tooltip("탈출 칸에 놓을 프리팹입니다.")]
         private GameObject exitPrefab;
 
+        /// <summary>탈출 지점을 바닥에서 얼마나 띄울지(미터)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("탈출 지점을 바닥에서 얼마나 띄울지(미터)입니다.")]
         private float exitHeight = 0f;
 

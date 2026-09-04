@@ -19,7 +19,7 @@ namespace ProjectR.Tests
         [Test]
         public void 빈_가방에_넣으면_왼쪽_위에_놓인다()
         {
-            GridInventory inventory = new GridInventory(6, 4);
+            GridInventory inventory = new(6, 4);
 
             bool isAdded = inventory.TryAdd("a", new InventoryShape(2, 2), out PlacedItem placed);
 
@@ -35,7 +35,7 @@ namespace ProjectR.Tests
         [Test]
         public void 이미_찬_칸에는_겹쳐_놓지_못한다()
         {
-            GridInventory inventory = new GridInventory(6, 4);
+            GridInventory inventory = new(6, 4);
 
             inventory.TryPlaceAt("a", new InventoryShape(2, 2), new GridPosition(0, 0), false, out _);
 
@@ -50,7 +50,7 @@ namespace ProjectR.Tests
         [Test]
         public void 격자_밖으로_나가면_놓지_못한다()
         {
-            GridInventory inventory = new GridInventory(6, 4);
+            GridInventory inventory = new(6, 4);
 
             Assert.IsFalse(inventory.CanPlace(new InventoryShape(1, 4), new GridPosition(0, 1), false));
             Assert.IsFalse(inventory.CanPlace(new InventoryShape(1, 1), new GridPosition(6, 0), false));
@@ -63,8 +63,8 @@ namespace ProjectR.Tests
         [Test]
         public void 세워서는_안_들어가도_눕히면_들어간다()
         {
-            GridInventory inventory = new GridInventory(4, 2);
-            InventoryShape longShape = new InventoryShape(1, 4);
+            GridInventory inventory = new(4, 2);
+            InventoryShape longShape = new(1, 4);
 
             Assert.IsFalse(inventory.CanPlace(longShape, new GridPosition(0, 0), false));
             Assert.IsTrue(inventory.CanPlace(longShape, new GridPosition(0, 0), true));
@@ -76,7 +76,7 @@ namespace ProjectR.Tests
         [Test]
         public void 자동_배치는_필요하면_돌려서_넣는다()
         {
-            GridInventory inventory = new GridInventory(4, 2);
+            GridInventory inventory = new(4, 2);
 
             bool isAdded = inventory.TryAdd("long", new InventoryShape(1, 4), out PlacedItem placed);
 
@@ -92,7 +92,7 @@ namespace ProjectR.Tests
         [Test]
         public void 자리가_없으면_넣지_못한다()
         {
-            GridInventory inventory = new GridInventory(2, 2);
+            GridInventory inventory = new(2, 2);
 
             Assert.IsTrue(inventory.TryAdd("a", new InventoryShape(2, 2), out _));
             Assert.IsFalse(inventory.TryAdd("b", new InventoryShape(1, 1), out _));
@@ -105,7 +105,7 @@ namespace ProjectR.Tests
         [Test]
         public void 자기_자리와_겹치게_옮길_수_있다()
         {
-            GridInventory inventory = new GridInventory(4, 4);
+            GridInventory inventory = new(4, 4);
 
             inventory.TryPlaceAt("a", new InventoryShape(2, 2), new GridPosition(0, 0), false,
                 out PlacedItem placed);
@@ -122,7 +122,7 @@ namespace ProjectR.Tests
         [Test]
         public void 옮길_수_없으면_원래_자리에_남는다()
         {
-            GridInventory inventory = new GridInventory(4, 4);
+            GridInventory inventory = new(4, 4);
 
             inventory.TryPlaceAt("a", new InventoryShape(2, 2), new GridPosition(0, 0), false,
                 out PlacedItem moving);
@@ -140,7 +140,7 @@ namespace ProjectR.Tests
         [Test]
         public void 빼내면_자리가_다시_빈다()
         {
-            GridInventory inventory = new GridInventory(2, 2);
+            GridInventory inventory = new(2, 2);
 
             inventory.TryAdd("a", new InventoryShape(2, 2), out PlacedItem placed);
 
@@ -155,7 +155,7 @@ namespace ProjectR.Tests
         [Test]
         public void 같은_종류를_여러_개_넣어도_서로_구분된다()
         {
-            GridInventory inventory = new GridInventory(4, 1);
+            GridInventory inventory = new(4, 1);
 
             inventory.TryAdd("a", new InventoryShape(1, 1), out PlacedItem first);
             inventory.TryAdd("a", new InventoryShape(1, 1), out PlacedItem second);
@@ -172,7 +172,7 @@ namespace ProjectR.Tests
         [Test]
         public void 칸_좌표로_놓인_물건을_찾는다()
         {
-            GridInventory inventory = new GridInventory(4, 4);
+            GridInventory inventory = new(4, 4);
 
             inventory.TryPlaceAt("a", new InventoryShape(2, 3), new GridPosition(1, 1), false,
                 out PlacedItem placed);
@@ -188,7 +188,7 @@ namespace ProjectR.Tests
         [Test]
         public void 전부_비우면_처음_상태로_돌아간다()
         {
-            GridInventory inventory = new GridInventory(4, 4);
+            GridInventory inventory = new(4, 4);
 
             inventory.TryAdd("a", new InventoryShape(2, 2), out _);
             inventory.TryAdd("b", new InventoryShape(1, 4), out _);

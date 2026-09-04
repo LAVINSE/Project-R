@@ -4,6 +4,7 @@ using SW.Attributes;
 using SW.Base;
 
 using ProjectR.Inventory;
+using ProjectR.Enum;
 
 namespace ProjectR.Data
 {
@@ -21,30 +22,38 @@ namespace ProjectR.Data
     public class AnomalyDefinition : SWIdentifiedObject
     {
         #region 필드
+        /// <summary>인벤토리에서 차지하는 가로 칸 수입니다.</summary>
         [SWGroup("형태")]
         [SerializeField, Min(1), Tooltip("인벤토리에서 차지하는 가로 칸 수입니다.")]
         private int shapeWidth = 1;
 
+        /// <summary>인벤토리에서 차지하는 세로 칸 수입니다.</summary>
         [SerializeField, Min(1), Tooltip("인벤토리에서 차지하는 세로 칸 수입니다.")]
         private int shapeHeight = 1;
 
+        /// <summary>등급입니다. 인벤토리와 정산 화면에서 표시에만 쓰입니다.</summary>
         [SWGroup("표시")]
         [SerializeField, Tooltip("등급입니다. 인벤토리와 정산 화면에서 표시에만 쓰입니다.")]
         private EAnomalyGrade grade = EAnomalyGrade.Common;
 
+        /// <summary>인벤토리 칸에 그릴 아이콘입니다. 비우면 색만 칠합니다.</summary>
         [SerializeField, Tooltip("인벤토리 칸에 그릴 아이콘입니다. 비우면 색만 칠합니다.")]
         private Sprite icon;
 
+        /// <summary>월드에 놓을 모델 프리팹입니다. 비우면 형태대로 만든 상자를 대신 씁니다.</summary>
         [SerializeField, Tooltip("월드에 놓을 모델 프리팹입니다. 비우면 형태대로 만든 상자를 대신 씁니다.")]
         private GameObject worldPrefab;
 
+        /// <summary>아이콘이나 모델이 없을 때 대신 칠할 색입니다.</summary>
         [SerializeField, Tooltip("아이콘이나 모델이 없을 때 대신 칠할 색입니다.")]
         private Color displayColor = Color.white;
 
+        /// <summary>가지고 나왔을 때 더해지는 후원금입니다.</summary>
         [SWGroup("정산")]
         [SerializeField, Min(0), Tooltip("가지고 나왔을 때 더해지는 후원금입니다.")]
         private int donationBonus = 100;
 
+        /// <summary>가지고 나왔을 때 더해지는 시청자 수입니다.</summary>
         [SerializeField, Min(0), Tooltip("가지고 나왔을 때 더해지는 시청자 수입니다.")]
         private int viewerBonus = 20;
         #endregion // 필드

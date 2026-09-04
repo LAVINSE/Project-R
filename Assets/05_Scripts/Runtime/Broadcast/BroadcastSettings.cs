@@ -4,7 +4,7 @@ using UnityEngine;
 
 using SW.Attributes;
 
-using ProjectR.Activity;
+using ProjectR.Enum;
 
 namespace ProjectR.Broadcast
 {
@@ -20,19 +20,24 @@ namespace ProjectR.Broadcast
     public struct BroadcastSettings
     {
         #region 필드
+        /// <summary>안전한 곳에 숨어 있을 때입니다. 시청자가 빠지고 후원이 없습니다.</summary>
         [SWGroup("상황별 증감")]
         [SerializeField, Tooltip("안전한 곳에 숨어 있을 때입니다. 시청자가 빠지고 후원이 없습니다.")]
         private BroadcastStateRate hidden;
 
+        /// <summary>탐험 중일 때입니다. 시청자가 유지되고 후원이 소액 들어옵니다.</summary>
         [SerializeField, Tooltip("탐험 중일 때입니다. 시청자가 유지되고 후원이 소액 들어옵니다.")]
         private BroadcastStateRate exploring;
 
+        /// <summary>미션을 수행 중일 때입니다. 시청자가 오릅니다.</summary>
         [SerializeField, Tooltip("미션을 수행 중일 때입니다. 시청자가 오릅니다.")]
         private BroadcastStateRate mission;
 
+        /// <summary>몬스터에게 쫓기고 있을 때입니다. 시청자가 급증하고 후원이 터집니다.</summary>
         [SerializeField, Tooltip("몬스터에게 쫓기고 있을 때입니다. 시청자가 급증하고 후원이 터집니다.")]
         private BroadcastStateRate chased;
 
+        /// <summary>이상물체를 공개하고 있을 때입니다. 시청자가 급증하고 후원이 대량으로 들어옵니다.</summary>
         [SerializeField, Tooltip("이상물체를 공개하고 있을 때입니다. 시청자가 급증하고 후원이 대량으로 들어옵니다.")]
         private BroadcastStateRate revealing;
         #endregion // 필드
@@ -53,7 +58,7 @@ namespace ProjectR.Broadcast
             revealing: new BroadcastStateRate(40f, 0.20f, 0.40f));
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 상황마다의 증감 규칙을 지정해 조정값을 만듭니다.
         /// </summary>
@@ -72,7 +77,9 @@ namespace ProjectR.Broadcast
             this.chased = chased;
             this.revealing = revealing;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 방송 상황에 해당하는 증감 규칙을 가져옵니다.
         /// </summary>

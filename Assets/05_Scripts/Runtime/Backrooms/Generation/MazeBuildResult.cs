@@ -44,7 +44,7 @@ namespace ProjectR.Backrooms.Generation
         public int DarkCellCount => darkCells.Count;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 생성 결과를 만듭니다.
         /// </summary>
@@ -72,7 +72,9 @@ namespace ProjectR.Backrooms.Generation
             AttemptCount = attemptCount;
             FailureReason = failureReason ?? string.Empty;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 칸에 전등이 달려 있지 않은지 확인합니다.
         /// </summary>

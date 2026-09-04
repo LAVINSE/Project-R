@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Generation
 {
     /// <summary>
@@ -34,7 +36,7 @@ namespace ProjectR.Backrooms.Generation
         public int LargestOpenAreaCellCount { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 통계 값을 지정해 만듭니다.
         /// </summary>
@@ -54,7 +56,9 @@ namespace ProjectR.Backrooms.Generation
             DeadEndRatio = cellCount > 0 ? (float)deadEndCount / cellCount : 0f;
             LoopCount = passageCount - cellCount + regionCount;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 격자를 훑어 통계를 계산합니다.
         /// </summary>
@@ -91,7 +95,7 @@ namespace ProjectR.Backrooms.Generation
         private static int MeasureLargestOpenArea(MazeGrid grid)
         {
             HashSet<MazeCoordinate> openCells = CollectOpenCells(grid);
-            HashSet<MazeCoordinate> visited = new HashSet<MazeCoordinate>();
+            HashSet<MazeCoordinate> visited = new();
             int largest = 0;
 
             foreach (MazeCoordinate coordinate in openCells)
@@ -99,7 +103,7 @@ namespace ProjectR.Backrooms.Generation
                 if (visited.Add(coordinate) == false) continue;
 
                 int size = 0;
-                Queue<MazeCoordinate> frontier = new Queue<MazeCoordinate>();
+                Queue<MazeCoordinate> frontier = new();
                 frontier.Enqueue(coordinate);
 
                 while (frontier.Count > 0)
@@ -131,16 +135,16 @@ namespace ProjectR.Backrooms.Generation
         /// <returns>트인 칸의 좌표 집합입니다. 없으면 빈 집합을 반환합니다.</returns>
         private static HashSet<MazeCoordinate> CollectOpenCells(MazeGrid grid)
         {
-            HashSet<MazeCoordinate> openCells = new HashSet<MazeCoordinate>();
+            HashSet<MazeCoordinate> openCells = new();
 
             for (int y = 0; y + 1 < grid.Height; y += 1)
             {
                 for (int x = 0; x + 1 < grid.Width; x += 1)
                 {
-                    MazeCoordinate leftBottom = new MazeCoordinate(x, y);
-                    MazeCoordinate rightBottom = new MazeCoordinate(x + 1, y);
-                    MazeCoordinate leftTop = new MazeCoordinate(x, y + 1);
-                    MazeCoordinate rightTop = new MazeCoordinate(x + 1, y + 1);
+                    MazeCoordinate leftBottom = new(x, y);
+                    MazeCoordinate rightBottom = new(x + 1, y);
+                    MazeCoordinate leftTop = new(x, y + 1);
+                    MazeCoordinate rightTop = new(x + 1, y + 1);
 
                     if (grid.HasWall(leftBottom, EMazeDirection.East)) continue;
                     if (grid.HasWall(leftBottom, EMazeDirection.North)) continue;
@@ -164,7 +168,7 @@ namespace ProjectR.Backrooms.Generation
         /// <returns>칸 덩어리의 개수입니다.</returns>
         private static int CountRegions(MazeGrid grid)
         {
-            HashSet<MazeCoordinate> visited = new HashSet<MazeCoordinate>();
+            HashSet<MazeCoordinate> visited = new();
             int regionCount = 0;
 
             foreach (MazeCoordinate coordinate in grid.EnumerateCoordinates())

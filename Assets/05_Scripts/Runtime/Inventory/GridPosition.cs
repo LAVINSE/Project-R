@@ -19,7 +19,7 @@ namespace ProjectR.Inventory
         public int Y { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 칸 좌표를 만듭니다.
         /// </summary>
@@ -30,7 +30,9 @@ namespace ProjectR.Inventory
             X = x;
             Y = y;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 다른 좌표와 같은 칸인지 확인합니다.
         /// </summary>
@@ -44,11 +46,11 @@ namespace ProjectR.Inventory
         /// <summary>
         /// 다른 객체와 같은 칸인지 확인합니다.
         /// </summary>
-        /// <param name="obj">비교할 객체입니다.</param>
+        /// <param name="otherObject">비교할 객체입니다.</param>
         /// <returns>같은 칸이면 true를 반환합니다.</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object otherObject)
         {
-            return obj is GridPosition other && Equals(other);
+            return otherObject is GridPosition other && Equals(other);
         }
 
         /// <summary>

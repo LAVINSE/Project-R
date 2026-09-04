@@ -20,6 +20,7 @@ namespace ProjectR.Backrooms.Monster.Nodes
     public sealed class MonsterPatrolNode : MonsterNodeBase
     {
         #region 필드
+        /// <summary>다음 배회 지점을 고를 반경(미터)입니다.</summary>
         [SerializeField, Min(1f), Tooltip("다음 배회 지점을 고를 반경(미터)입니다.")]
         private float wanderRadius = 18f;
 

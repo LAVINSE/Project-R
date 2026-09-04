@@ -20,11 +20,20 @@ namespace ProjectR.Data
     public class StreamerProgress
     {
         #region 필드
+        /// <summary>진행 상태를 소유한 스트리머의 식별자입니다.</summary>
         [SerializeField] private string streamerId;
+
+        /// <summary>현재 시청자 수입니다.</summary>
         [SerializeField] private int viewerCount;
-        [SerializeField] private ConditionState condition = new ConditionState();
-        [SerializeField] private List<ItemInstance> items = new List<ItemInstance>();
-        [SerializeField] private List<string> upgradeIds = new List<string>();
+
+        /// <summary>현재 컨디션 상태입니다.</summary>
+        [SerializeField] private ConditionState condition = new();
+
+        /// <summary>보유 중인 이상물체 목록입니다. 없으면 빈 목록입니다.</summary>
+        [SerializeField] private List<ItemInstance> items = new();
+
+        /// <summary>보유 중인 업그레이드의 식별자 목록입니다. 없으면 빈 목록입니다.</summary>
+        [SerializeField] private List<string> upgradeIds = new();
         #endregion // 필드
 
         #region 프로퍼티
@@ -49,11 +58,13 @@ namespace ProjectR.Data
         public IReadOnlyList<string> UpgradeIds => upgradeIds;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// JSON 역직렬화가 쓰는 기본 생성자입니다.
         /// </summary>
-        public StreamerProgress() { }
+        public StreamerProgress()
+        {
+        }
 
         /// <summary>
         /// 스트리머 식별자를 지정해 새 진행도를 만듭니다.
@@ -63,7 +74,9 @@ namespace ProjectR.Data
         {
             this.streamerId = streamerId;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 시청자 수를 더하거나 뺍니다. 결과는 0 아래로 내려가지 않습니다.
         /// </summary>
@@ -81,11 +94,11 @@ namespace ProjectR.Data
         {
             if (gained == null) return;
 
-            for (int i = 0; i < gained.Count; i++)
+            for (int index = 0; index < gained.Count; index++)
             {
-                if (gained[i] == null) continue;
+                if (gained[index] == null) continue;
 
-                items.Add(gained[i]);
+                items.Add(gained[index]);
             }
         }
 

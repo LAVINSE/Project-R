@@ -20,13 +20,16 @@ namespace ProjectR.Backrooms.Player
     public class PlayerInputReader : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>플레이어 입력을 읽을 입력 액션 에셋입니다.</summary>
         [SWGroup("입력")]
         [SerializeField, Tooltip("플레이어 입력을 읽을 입력 액션 에셋입니다.")]
         private InputActionAsset inputActions;
 
+        /// <summary>사용할 액션 맵의 이름입니다.</summary>
         [SerializeField, Tooltip("사용할 액션 맵의 이름입니다.")]
         private string actionMapName = "Player";
 
+        /// <summary>켜면 조작 중에 커서를 화면 가운데에 가둡니다.</summary>
         [SWGroup("커서")]
         [SerializeField, Tooltip("켜면 조작 중에 커서를 화면 가운데에 가둡니다.")]
         private bool lockCursor = true;

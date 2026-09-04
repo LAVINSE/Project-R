@@ -34,14 +34,14 @@ namespace ProjectR.Tests
         /// 시험용 스탯을 만듭니다.
         /// </summary>
         /// <param name="defaultValue">기본값입니다.</param>
-        /// <param name="maxValue">상한입니다.</param>
+        /// <param name="maximumValue">상한입니다.</param>
         /// <returns>만들어진 스탯입니다.</returns>
-        private static SWStat CreateStat(float defaultValue, float maxValue)
+        private static SWStat CreateStat(float defaultValue, float maximumValue)
         {
             SWStat stat = ScriptableObject.CreateInstance<SWStat>();
 
             stat.MinValue = 0f;
-            stat.MaxValue = maxValue;
+            stat.MaxValue = maximumValue;
             stat.DefaultValue = defaultValue;
 
             return stat;
@@ -53,7 +53,7 @@ namespace ProjectR.Tests
         [Test]
         public void 같은_업그레이드를_두_번_넣어도_하나만_남는다()
         {
-            StreamerProgress streamer = new StreamerProgress("Streamer_A");
+            StreamerProgress streamer = new("Streamer_A");
 
             Assert.IsTrue(streamer.AddUpgrade("Backpack_01"));
             Assert.IsFalse(streamer.AddUpgrade("Backpack_01"));
@@ -68,7 +68,7 @@ namespace ProjectR.Tests
         [Test]
         public void 갖지_않은_업그레이드는_없다고_한다()
         {
-            StreamerProgress streamer = new StreamerProgress("Streamer_A");
+            StreamerProgress streamer = new("Streamer_A");
 
             Assert.IsFalse(streamer.HasUpgrade("Backpack_01"));
             Assert.IsFalse(streamer.HasUpgrade(string.Empty));

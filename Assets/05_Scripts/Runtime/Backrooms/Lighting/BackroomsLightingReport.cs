@@ -43,7 +43,7 @@ namespace ProjectR.Backrooms.Lighting
         public static BackroomsLightingReport Capture()
         {
             LightmapData[] lightmaps = LightmapSettings.lightmaps;
-            BackroomsLightingReport report = new BackroomsLightingReport
+            BackroomsLightingReport report = new()
             {
                 LightmapCount = lightmaps.Length,
                 Mode = LightmapSettings.lightmapsMode,
@@ -84,7 +84,7 @@ namespace ProjectR.Backrooms.Lighting
         public string ToTextureDetail()
         {
             LightmapData[] lightmaps = LightmapSettings.lightmaps;
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new();
 
             for (int index = 0; index < lightmaps.Length; index += 1)
             {

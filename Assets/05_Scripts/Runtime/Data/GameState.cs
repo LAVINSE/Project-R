@@ -34,10 +34,17 @@ namespace ProjectR.Data
         #endregion // 상수
 
         #region 필드
+        /// <summary>이 저장 데이터가 만들어진 구조 번호입니다.</summary>
         [SerializeField] private int saveVersion;
+
+        /// <summary>현재 선택한 스트리머의 식별자입니다.</summary>
         [SerializeField] private string activeStreamerId;
-        [SerializeField] private ChannelProgress channel = new ChannelProgress();
-        [SerializeField] private List<StreamerProgress> streamers = new List<StreamerProgress>();
+
+        /// <summary>스트리머가 바뀌어도 이어지는 채널 진행도입니다.</summary>
+        [SerializeField] private ChannelProgress channel = new();
+
+        /// <summary>스트리머별로 보관하는 진행 상태 목록입니다.</summary>
+        [SerializeField] private List<StreamerProgress> streamers = new();
         #endregion // 필드
 
         #region 프로퍼티
@@ -79,7 +86,7 @@ namespace ProjectR.Data
         public IReadOnlyList<ItemInstance> Items => ActiveStreamer?.Items ?? Array.Empty<ItemInstance>();
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 새 진행 상태를 만듭니다.
         /// </summary>
@@ -88,8 +95,12 @@ namespace ProjectR.Data
         /// 넣으면 버전 필드가 없던 구버전 저장 파일까지 최신 버전으로 읽힙니다.
         /// 새 진행을 시작하는 자리에서 <see cref="MarkAsCurrentVersion"/>을 부릅니다.
         /// </remarks>
-        public GameState() { }
+        public GameState()
+        {
+        }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 이 진행 상태를 현재 구조 번호로 표시합니다.
         /// </summary>
@@ -138,12 +149,12 @@ namespace ProjectR.Data
         {
             if (string.IsNullOrEmpty(streamerId)) return null;
 
-            for (int i = 0; i < streamers.Count; i++)
+            for (int index = 0; index < streamers.Count; index++)
             {
-                if (streamers[i] == null) continue;
-                if (streamers[i].StreamerId != streamerId) continue;
+                if (streamers[index] == null) continue;
+                if (streamers[index].StreamerId != streamerId) continue;
 
-                return streamers[i];
+                return streamers[index];
             }
 
             return null;

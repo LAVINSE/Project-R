@@ -6,7 +6,7 @@ using UnityEngine;
 using SW.Attributes;
 using SW.Base;
 
-using ProjectR.Activity;
+using ProjectR.Enum;
 
 namespace ProjectR.Broadcast
 {
@@ -37,9 +37,11 @@ namespace ProjectR.Broadcast
         public class MomentTemplates
         {
             #region 필드
+            /// <summary>이 문장들이 쓰이는 상황 태그입니다.</summary>
             [SerializeField, Tooltip("이 문장들이 쓰이는 상황 태그입니다.")]
             private EBroadcastMoment moment;
 
+            /// <summary>이 상황에서 올라올 문장 후보입니다.</summary>
             [SerializeField, TextArea, Tooltip("이 상황에서 올라올 문장 후보입니다.")]
             private string[] lines = Array.Empty<string>();
             #endregion // 필드
@@ -55,13 +57,15 @@ namespace ProjectR.Broadcast
         #endregion // 타입
 
         #region 필드
+        /// <summary>채팅을 치는 시청자 이름 후보입니다.</summary>
         [SWGroup("시청자")]
         [SerializeField, Tooltip("채팅을 치는 시청자 이름 후보입니다.")]
         private string[] nicknames = Array.Empty<string>();
 
+        /// <summary>상황 태그마다의 문장 후보입니다.</summary>
         [SWGroup("문장")]
         [SerializeField, Tooltip("상황 태그마다의 문장 후보입니다.")]
-        private List<MomentTemplates> templates = new List<MomentTemplates>();
+        private List<MomentTemplates> templates = new();
         #endregion // 필드
 
         #region 프로퍼티
@@ -79,12 +83,12 @@ namespace ProjectR.Broadcast
         {
             if (templates == null) return Array.Empty<string>();
 
-            for (int i = 0; i < templates.Count; i++)
+            for (int index = 0; index < templates.Count; index++)
             {
-                if (templates[i] == null) continue;
-                if (templates[i].Moment != moment) continue;
+                if (templates[index] == null) continue;
+                if (templates[index].Moment != moment) continue;
 
-                return templates[i].Lines;
+                return templates[index].Lines;
             }
 
             return Array.Empty<string>();

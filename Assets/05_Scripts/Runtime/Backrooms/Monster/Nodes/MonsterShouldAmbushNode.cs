@@ -1,7 +1,5 @@
 using System;
 
-using UnityEngine;
-
 using SW.BehaviourTree;
 
 namespace ProjectR.Backrooms.Monster.Nodes

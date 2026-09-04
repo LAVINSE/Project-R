@@ -19,24 +19,30 @@ namespace ProjectR.Backrooms.Monster
     public class MonsterFootsteps : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>한 걸음에 나아가는 거리(미터)입니다.</summary>
         [SWGroup("걸음 간격")]
         [SerializeField, Min(0.1f), Tooltip("한 걸음에 나아가는 거리(미터)입니다.")]
         private float strideLength = 1.5f;
 
+        /// <summary>발소리의 크기입니다.</summary>
         [SWGroup("소리")]
         [SerializeField, Range(0f, 1f), Tooltip("발소리의 크기입니다.")]
         private float volume = 0.8f;
 
+        /// <summary>만들어 둘 발소리 변형의 개수입니다.</summary>
         [SerializeField, Range(1, 8), Tooltip("만들어 둘 발소리 변형의 개수입니다.")]
         private int variationCount = 4;
 
+        /// <summary>걸음마다 음높이를 흔드는 폭입니다.</summary>
         [SerializeField, Range(0f, 0.3f), Tooltip("걸음마다 음높이를 흔드는 폭입니다.")]
         private float pitchVariation = 0.07f;
 
+        /// <summary>소리가 줄어들기 시작하는 거리(미터)입니다.</summary>
         [SWGroup("거리")]
         [SerializeField, Min(1f), Tooltip("소리가 줄어들기 시작하는 거리(미터)입니다.")]
         private float minimumDistance = 3f;
 
+        /// <summary>소리가 완전히 사라지는 거리(미터)입니다.</summary>
         [SerializeField, Min(2f), Tooltip("소리가 완전히 사라지는 거리(미터)입니다.")]
         private float maximumDistance = 35f;
 
@@ -66,7 +72,7 @@ namespace ProjectR.Backrooms.Monster
             for (int index = 0; index < variationCount; index += 1)
                 footstepClips[index] = ProceduralAudioBank.CreateMonsterFootstep(index);
 
-            GameObject sourceObject = new GameObject("FootstepSource");
+            GameObject sourceObject = new("FootstepSource");
             sourceObject.transform.SetParent(transform, false);
 
             audioSource = sourceObject.AddComponent<AudioSource>();

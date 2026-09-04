@@ -922,7 +922,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b34b7a5dac802247a77ed926d657c0f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Measurement.BackroomsSoakRunner
+  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Debugging.BackroomsSoakRunner
   defaultCycleCount: 100
   logInterval: 10
 --- !u!1 &1288198271
@@ -1733,7 +1733,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ac04572fa362184296d0702c697e58a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Measurement.BackroomsSceneView
+  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Debugging.BackroomsSceneView
   mapBuilder: {fileID: 1085914783}
   overviewExposure: 2.5
 --- !u!1 &1905701297
@@ -1981,7 +1981,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c08292774b9668d4caa83af0df0e13b7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: ProjectR.UI::ProjectR.UI.PopupHotkeyController
+  m_EditorClassIdentifier: ProjectR.UI::ProjectR.UI.Popup.PopupHotkeyController
   entries:
   - key: 60
     popupKey: options
@@ -1996,7 +1996,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f967b5e694d94848b07729baf85fa0d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Measurement.BackroomsBuildVerifier
+  m_EditorClassIdentifier: ProjectR.Backrooms::ProjectR.Backrooms.Debugging.BackroomsBuildVerifier
   settleSeconds: 2
   timeoutSeconds: 180
   eyeHeight: 1.6

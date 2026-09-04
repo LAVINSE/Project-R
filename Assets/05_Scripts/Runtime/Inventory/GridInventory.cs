@@ -18,10 +18,10 @@ namespace ProjectR.Inventory
         private readonly int[] cells;
 
         /// <summary>실체 번호로 물건을 찾기 위한 표입니다.</summary>
-        private readonly Dictionary<int, PlacedItem> itemsById = new Dictionary<int, PlacedItem>();
+        private readonly Dictionary<int, PlacedItem> itemsById = new();
 
         /// <summary>넣은 순서대로 담아 둔 물건 목록입니다.</summary>
-        private readonly List<PlacedItem> items = new List<PlacedItem>();
+        private readonly List<PlacedItem> items = new();
 
         /// <summary>다음에 매길 실체 번호입니다.</summary>
         private int nextInstanceId = 1;
@@ -44,7 +44,7 @@ namespace ProjectR.Inventory
         public IReadOnlyList<PlacedItem> Items => items;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 격자 인벤토리를 만듭니다. 가로세로는 최소 1칸으로 맞춰집니다.
         /// </summary>
@@ -56,7 +56,9 @@ namespace ProjectR.Inventory
             Height = height < 1 ? 1 : height;
             cells = new int[Width * Height];
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 지정한 자리에 형태를 놓을 수 있는지 판정합니다.
         /// </summary>
@@ -189,7 +191,7 @@ namespace ProjectR.Inventory
         /// <remarks>탐험 실패로 가방을 통째로 잃을 때 씁니다.</remarks>
         public void Clear()
         {
-            for (int i = 0; i < cells.Length; i++) cells[i] = 0;
+            for (int index = 0; index < cells.Length; index++) cells[index] = 0;
 
             itemsById.Clear();
             items.Clear();

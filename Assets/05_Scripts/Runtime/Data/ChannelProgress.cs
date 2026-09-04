@@ -18,11 +18,22 @@ namespace ProjectR.Data
     public class ChannelProgress
     {
         #region 필드
+        /// <summary>현재 며칠째인지를 나타냅니다.</summary>
         [SerializeField] private int day = 1;
+
+        /// <summary>오늘 배정받은 방송 시간(분)입니다.</summary>
         [SerializeField] private int dailyBroadcastMinutes;
+
+        /// <summary>오늘 남아 있는 방송 시간(분)입니다.</summary>
         [SerializeField] private int remainingBroadcastMinutes;
+
+        /// <summary>보유 후원금입니다.</summary>
         [SerializeField] private int donation;
+
+        /// <summary>오늘 진행한 활동 횟수입니다.</summary>
         [SerializeField] private int todayActivityCount;
+
+        /// <summary>오늘 실패로 끝난 활동이 있었는지 여부입니다.</summary>
         [SerializeField] private bool todayHasFailure;
         #endregion // 필드
 

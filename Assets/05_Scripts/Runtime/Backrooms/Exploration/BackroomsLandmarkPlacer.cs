@@ -23,14 +23,17 @@ namespace ProjectR.Backrooms.Exploration
     public class BackroomsLandmarkPlacer : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>생성 결과를 받아 올 맵 조립 컴포넌트입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("생성 결과를 받아 올 맵 조립 컴포넌트입니다.")]
         private BackroomsMapBuilder mapBuilder;
 
+        /// <summary>구역마다 하나씩 골라 놓을 랜드마크 프리팹 목록입니다.</summary>
         [SWGroup("랜드마크")]
         [SerializeField, Tooltip("구역마다 하나씩 골라 놓을 랜드마크 프리팹 목록입니다.")]
         private GameObject[] landmarkPrefabs = new GameObject[0];
 
+        /// <summary>랜드마크를 하나씩 놓을 구역의 한 변 칸 수입니다.</summary>
         [SerializeField, Range(2, 16), Tooltip("랜드마크를 하나씩 놓을 구역의 한 변 칸 수입니다.")]
         private int regionSize = 6;
 
@@ -38,7 +41,7 @@ namespace ProjectR.Backrooms.Exploration
         private Transform landmarkRoot;
 
         /// <summary>배치해 둔 랜드마크 목록입니다.</summary>
-        private readonly List<GameObject> placedLandmarks = new List<GameObject>();
+        private readonly List<GameObject> placedLandmarks = new();
         #endregion // 필드
 
         #region 프로퍼티
@@ -94,7 +97,7 @@ namespace ProjectR.Backrooms.Exploration
                 return;
             }
 
-            System.Random random = new System.Random(result.Seed);
+            System.Random random = new(result.Seed);
 
             for (int regionY = 0; regionY < result.Grid.Height; regionY += regionSize)
             {
@@ -119,7 +122,7 @@ namespace ProjectR.Backrooms.Exploration
             int width = Mathf.Min(regionSize, result.Grid.Width - regionX);
             int height = Mathf.Min(regionSize, result.Grid.Height - regionY);
 
-            MazeCoordinate coordinate = new MazeCoordinate(
+            MazeCoordinate coordinate = new(
                 regionX + random.Next(width), regionY + random.Next(height));
 
             // 시작 칸과 탈출 칸은 이미 그 자체로 표식이므로 랜드마크를 겹쳐 놓지 않습니다.

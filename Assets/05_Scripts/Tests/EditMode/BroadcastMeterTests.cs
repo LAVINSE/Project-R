@@ -1,7 +1,6 @@
 using NUnit.Framework;
-
-using ProjectR.Activity;
 using ProjectR.Broadcast;
+using ProjectR.Enum;
 
 namespace ProjectR.Tests
 {
@@ -36,7 +35,7 @@ namespace ProjectR.Tests
         [Test]
         public void 탐험_중에는_시청자가_조금씩_는다()
         {
-            BroadcastMeter meter = new BroadcastMeter(CreateSettings(), 100);
+            BroadcastMeter meter = new(CreateSettings(), 100);
 
             meter.SetState(EBroadcastState.Exploring);
             meter.Tick(10f);
@@ -52,7 +51,7 @@ namespace ProjectR.Tests
         [Test]
         public void 숨어_있으면_시청자가_빠진다()
         {
-            BroadcastMeter meter = new BroadcastMeter(CreateSettings(), 100);
+            BroadcastMeter meter = new(CreateSettings(), 100);
 
             meter.SetState(EBroadcastState.Hidden);
             meter.Tick(1f);
@@ -71,8 +70,8 @@ namespace ProjectR.Tests
         [Test]
         public void 추격이_탐험보다_시청자와_후원을_모두_크게_만든다()
         {
-            BroadcastMeter exploring = new BroadcastMeter(CreateSettings(), 100);
-            BroadcastMeter chased = new BroadcastMeter(CreateSettings(), 100);
+            BroadcastMeter exploring = new(CreateSettings(), 100);
+            BroadcastMeter chased = new(CreateSettings(), 100);
 
             exploring.SetState(EBroadcastState.Exploring);
             chased.SetState(EBroadcastState.Chased);
@@ -94,15 +93,15 @@ namespace ProjectR.Tests
         [Test]
         public void 잘게_나눠_굴려도_한_번에_굴린_것과_같다()
         {
-            BroadcastMeter atOnce = new BroadcastMeter(CreateSettings(), 100);
-            BroadcastMeter bitByBit = new BroadcastMeter(CreateSettings(), 100);
+            BroadcastMeter atOnce = new(CreateSettings(), 100);
+            BroadcastMeter bitByBit = new(CreateSettings(), 100);
 
             atOnce.SetState(EBroadcastState.Exploring);
             bitByBit.SetState(EBroadcastState.Exploring);
 
             atOnce.Tick(10f);
 
-            for (int i = 0; i < 600; i++) bitByBit.Tick(1f / 60f);
+            for (int index = 0; index < 600; index++) bitByBit.Tick(1f / 60f);
 
             Assert.AreEqual(atOnce.ViewerCount, bitByBit.ViewerCount);
         }
@@ -114,11 +113,11 @@ namespace ProjectR.Tests
         [Test]
         public void 초_단위로_굴려도_시청자가_는다()
         {
-            BroadcastMeter meter = new BroadcastMeter(CreateSettings(), 100);
+            BroadcastMeter meter = new(CreateSettings(), 100);
 
             meter.SetState(EBroadcastState.Exploring);
 
-            for (int i = 0; i < 60; i++) meter.Tick(1f / 60f);
+            for (int index = 0; index < 60; index++) meter.Tick(1f / 60f);
 
             Assert.AreEqual(102, meter.ViewerCount);
         }
@@ -130,8 +129,8 @@ namespace ProjectR.Tests
         [Test]
         public void 후원금이_시청자_수에_비례한다()
         {
-            BroadcastMeter small = new BroadcastMeter(CreateSettings(), 100);
-            BroadcastMeter large = new BroadcastMeter(CreateSettings(), 1000);
+            BroadcastMeter small = new(CreateSettings(), 100);
+            BroadcastMeter large = new(CreateSettings(), 1000);
 
             small.SetState(EBroadcastState.Exploring);
             large.SetState(EBroadcastState.Exploring);
@@ -149,7 +148,7 @@ namespace ProjectR.Tests
         [Test]
         public void 시청자는_0_아래로_내려가지_않는다()
         {
-            BroadcastMeter meter = new BroadcastMeter(CreateSettings(), 10);
+            BroadcastMeter meter = new(CreateSettings(), 10);
 
             meter.SetState(EBroadcastState.Hidden);
             meter.Tick(100f);
@@ -163,7 +162,7 @@ namespace ProjectR.Tests
         [Test]
         public void 시간이_흐르지_않으면_움직이지_않는다()
         {
-            BroadcastMeter meter = new BroadcastMeter(CreateSettings(), 100);
+            BroadcastMeter meter = new(CreateSettings(), 100);
 
             meter.SetState(EBroadcastState.Chased);
             meter.Tick(0f);
@@ -183,7 +182,7 @@ namespace ProjectR.Tests
         [Test]
         public void 후원은_늘어나기_전_시청자_수로_센다()
         {
-            BroadcastMeter meter = new BroadcastMeter(CreateSettings(), 100);
+            BroadcastMeter meter = new(CreateSettings(), 100);
 
             meter.SetState(EBroadcastState.Exploring);
             meter.Tick(1f);

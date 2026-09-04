@@ -21,20 +21,25 @@ namespace ProjectR.Backrooms.Exploration
         /// <summary>덮어쓸 발광 색 속성의 이름입니다.</summary>
         private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
 
+        /// <summary>가장 밝을 때의 색입니다.</summary>
         [SWGroup("색")]
         [SerializeField, ColorUsage(false, true), Tooltip("가장 밝을 때의 색입니다.")]
-        private Color brightColor = new Color(3.5f, 3.4f, 3.2f);
+        private Color brightColor = new(3.5f, 3.4f, 3.2f);
 
+        /// <summary>꺼졌을 때의 색입니다.</summary>
         [SerializeField, ColorUsage(false, true), Tooltip("꺼졌을 때의 색입니다.")]
-        private Color dimColor = new Color(0.08f, 0.08f, 0.09f);
+        private Color dimColor = new(0.08f, 0.08f, 0.09f);
 
+        /// <summary>깜빡임이 이어지는 속도입니다.</summary>
         [SWGroup("깜빡임")]
         [SerializeField, Min(0.01f), Tooltip("깜빡임이 이어지는 속도입니다.")]
         private float flickerSpeed = 11f;
 
+        /// <summary>꺼져 있는 시간의 비율입니다. 높을수록 자주 꺼집니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("꺼져 있는 시간의 비율입니다. 높을수록 자주 꺼집니다.")]
         private float darkRatio = 0.35f;
 
+        /// <summary>등마다 깜빡임이 어긋나도록 흔드는 폭(초)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("등마다 깜빡임이 어긋나도록 흔드는 폭(초)입니다.")]
         private float phaseSpread = 10f;
 

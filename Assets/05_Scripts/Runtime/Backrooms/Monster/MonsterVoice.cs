@@ -4,6 +4,7 @@ using SW.Attributes;
 using SW.Base;
 
 using ProjectR.Backrooms.Audio;
+using ProjectR.Enum;
 
 namespace ProjectR.Backrooms.Monster
 {
@@ -21,20 +22,25 @@ namespace ProjectR.Backrooms.Monster
     public class MonsterVoice : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>추격을 시작할 때 내는 소리의 크기입니다.</summary>
         [SWGroup("크기")]
         [SerializeField, Range(0f, 1f), Tooltip("추격을 시작할 때 내는 소리의 크기입니다.")]
         private float screechVolume = 0.9f;
 
+        /// <summary>배회와 복귀에서 내는 소리의 크기입니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("배회와 복귀에서 내는 소리의 크기입니다.")]
         private float growlVolume = 0.55f;
 
+        /// <summary>수색과 매복에서 내는 소리의 크기입니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("수색과 매복에서 내는 소리의 크기입니다.")]
         private float breathVolume = 0.7f;
 
+        /// <summary>소리가 줄어들기 시작하는 거리(미터)입니다.</summary>
         [SWGroup("거리")]
         [SerializeField, Min(1f), Tooltip("소리가 줄어들기 시작하는 거리(미터)입니다.")]
         private float minimumDistance = 4f;
 
+        /// <summary>소리가 완전히 사라지는 거리(미터)입니다.</summary>
         [SerializeField, Min(2f), Tooltip("소리가 완전히 사라지는 거리(미터)입니다.")]
         private float maximumDistance = 45f;
 
@@ -66,7 +72,7 @@ namespace ProjectR.Backrooms.Monster
             screechClip = ProceduralAudioBank.CreateMonsterScreech();
             breathClip = ProceduralAudioBank.CreateMonsterBreath();
 
-            GameObject sourceObject = new GameObject("VoiceSource");
+            GameObject sourceObject = new("VoiceSource");
             sourceObject.transform.SetParent(transform, false);
 
             voiceSource = sourceObject.AddComponent<AudioSource>();

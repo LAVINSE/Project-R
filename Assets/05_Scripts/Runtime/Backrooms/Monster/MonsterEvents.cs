@@ -1,3 +1,5 @@
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Monster
 {
     /// <summary>
@@ -17,7 +19,7 @@ namespace ProjectR.Backrooms.Monster
         public EMonsterMode CurrentMode { get; }
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 바뀌기 전후의 모드를 담아 이벤트를 만듭니다.
         /// </summary>
@@ -28,6 +30,6 @@ namespace ProjectR.Backrooms.Monster
             PreviousMode = previousMode;
             CurrentMode = currentMode;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 }

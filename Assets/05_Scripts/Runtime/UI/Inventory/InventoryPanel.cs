@@ -32,48 +32,59 @@ namespace ProjectR.UI.Inventory
     public class InventoryPanel : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>칸과 물건을 놓을 격자 영역입니다.</summary>
         [SWGroup("격자")]
         [SerializeField, Tooltip("칸과 물건을 놓을 격자 영역입니다.")]
         private RectTransform gridRoot;
 
+        /// <summary>칸 한 개의 한 변 길이(픽셀)입니다.</summary>
         [SerializeField, Min(16f), Tooltip("칸 한 개의 한 변 길이(픽셀)입니다.")]
         private float cellSize = 56f;
 
+        /// <summary>칸 사이를 띄워 격자선처럼 보이게 할 간격(픽셀)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("칸 사이를 띄워 격자선처럼 보이게 할 간격(픽셀)입니다.")]
         private float cellGap = 2f;
 
+        /// <summary>빈 칸을 그릴 이미지 프리팹입니다.</summary>
         [SWGroup("프리팹")]
         [SerializeField, Tooltip("빈 칸을 그릴 이미지 프리팹입니다.")]
         private Image cellPrefab;
 
+        /// <summary>물건 하나를 그릴 표시 프리팹입니다.</summary>
         [SerializeField, Tooltip("물건 하나를 그릴 표시 프리팹입니다.")]
         private InventoryItemView itemViewPrefab;
 
+        /// <summary>화면 전체의 진하기를 다룰 그룹입니다.</summary>
         [SWGroup("표시")]
         [SerializeField, Tooltip("화면 전체의 진하기를 다룰 그룹입니다.")]
         private CanvasGroup canvasGroup;
 
+        /// <summary>사용 중인 칸 수를 적을 글상자입니다.</summary>
         [SerializeField, Tooltip("사용 중인 칸 수를 적을 글상자입니다.")]
         private Text usageText;
 
+        /// <summary>정리 중에만 보여 줄 조작 안내 글상자입니다.</summary>
         [SerializeField, Tooltip("정리 중에만 보여 줄 조작 안내 글상자입니다.")]
         private Text hintText;
 
+        /// <summary>보기만 할 때의 진하기입니다.</summary>
         [SerializeField, Range(0.1f, 1f), Tooltip("보기만 할 때의 진하기입니다.")]
         private float idleAlpha = 0.55f;
 
+        /// <summary>정리 모드를 켜고 끄는 키입니다.</summary>
         [SWGroup("조작")]
         [SerializeField, Tooltip("정리 모드를 켜고 끄는 키입니다.")]
         private Key toggleKey = Key.I;
 
+        /// <summary>정리 중에 이동을 막을 입력 컴포넌트입니다.</summary>
         [SerializeField, Tooltip("정리 중에 이동을 막을 입력 컴포넌트입니다.")]
         private PlayerInputReader inputReader;
 
         /// <summary>지금 그려 둔 물건 표시 목록입니다.</summary>
-        private readonly List<InventoryItemView> itemViews = new List<InventoryItemView>();
+        private readonly List<InventoryItemView> itemViews = new();
 
         /// <summary>지금 그려 둔 빈 칸 목록입니다.</summary>
-        private readonly List<Image> cellViews = new List<Image>();
+        private readonly List<Image> cellViews = new();
 
         /// <summary>화면이 보고 있는 탐험입니다. 없으면 null입니다.</summary>
         private BackroomsActivity activity;
@@ -179,7 +190,7 @@ namespace ProjectR.UI.Inventory
         /// </summary>
         private void BuildCells()
         {
-            for (int i = 0; i < cellViews.Count; i++) Destroy(cellViews[i].gameObject);
+            for (int index = 0; index < cellViews.Count; index++) Destroy(cellViews[index].gameObject);
 
             cellViews.Clear();
 
@@ -206,7 +217,7 @@ namespace ProjectR.UI.Inventory
         /// </summary>
         private void Refresh()
         {
-            for (int i = 0; i < itemViews.Count; i++) Destroy(itemViews[i].gameObject);
+            for (int index = 0; index < itemViews.Count; index++) Destroy(itemViews[index].gameObject);
 
             itemViews.Clear();
             draggedView = null;
@@ -287,7 +298,7 @@ namespace ProjectR.UI.Inventory
             draggedView = null;
 
             Vector2 position = view.Rect.anchoredPosition;
-            GridPosition target = new GridPosition(
+            GridPosition target = new(
                 Mathf.RoundToInt(position.x / cellSize), Mathf.RoundToInt(-position.y / cellSize));
 
             if (activity.TryRearrange(view.InstanceId, target, view.IsRotated) == false) Refresh();
@@ -312,14 +323,14 @@ namespace ProjectR.UI.Inventory
         {
             draggedView.ToggleRotation();
 
-            Vector2 size = new Vector2(
+            Vector2 size = new(
                 (draggedView.Shape.GetWidth(draggedView.IsRotated) * cellSize) - cellGap,
                 (draggedView.Shape.GetHeight(draggedView.IsRotated) * cellSize) - cellGap);
 
             draggedView.Rect.sizeDelta = size;
 
             // 돌리면 크기가 바뀌므로 잡고 있던 자리도 함께 옮겨 손끝이 물건 가운데에 오게 맞춥니다.
-            Vector2 rotatedOffset = new Vector2(-size.x * 0.5f, size.y * 0.5f);
+            Vector2 rotatedOffset = new(-size.x * 0.5f, size.y * 0.5f);
 
             draggedView.Rect.anchoredPosition += rotatedOffset - dragOffset;
             dragOffset = rotatedOffset;

@@ -17,6 +17,7 @@ namespace ProjectR.Core
     public class LoadingSceneRunner : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>목적지 씬을 불러오기 전에 대기할 최소 시간(초)입니다.</summary>
         [SWGroup("로딩 설정")]
         [SerializeField, Tooltip("목적지 씬을 불러오기 전에 대기할 최소 시간(초)입니다.")]
         private float minimumDelaySeconds = 0.2f;

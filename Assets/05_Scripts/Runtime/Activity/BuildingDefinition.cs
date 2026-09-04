@@ -1,5 +1,3 @@
-using System;
-
 using UnityEngine;
 
 using SW.Attributes;
@@ -32,24 +30,30 @@ namespace ProjectR.Activity
     public class BuildingDefinition : SWIdentifiedObject
     {
         #region 필드
+        /// <summary>화면에 이 건물을 작게 나타낼 아이콘입니다. 마을의 모델은 씬에 있습니다.</summary>
         [SWGroup("겉모습")]
         [SerializeField, Tooltip("화면에 이 건물을 작게 나타낼 아이콘입니다. 마을의 모델은 씬에 있습니다.")]
         private Sprite icon;
 
+        /// <summary>이 건물에 들어갔을 때 시작할 활동을 만드는 방법입니다. 비우면 활동이 아닙니다.</summary>
         [SWGroup("활동")]
         [SerializeReference, SWSubClassSelector, Tooltip("이 건물에 들어갔을 때 시작할 활동을 만드는 방법입니다. 비우면 활동이 아닙니다.")]
         private IActivityFactory activityFactory;
 
+        /// <summary>활동이 아니라 방 화면으로 들어가는 건물이면 켭니다. 집이 그렇습니다.</summary>
         [SerializeField, Tooltip("활동이 아니라 방 화면으로 들어가는 건물이면 켭니다. 집이 그렇습니다.")]
         private bool opensRoom;
 
+        /// <summary>건물 아래에 적을 한 줄입니다. 이 건물이 무엇을 바꾸는지를 적습니다.</summary>
         [SerializeField, Tooltip("건물 아래에 적을 한 줄입니다. 이 건물이 무엇을 바꾸는지를 적습니다.")]
         private string effectNotice;
 
+        /// <summary>이 날짜부터 들어갈 수 있습니다. 1이면 처음부터 열려 있습니다.</summary>
         [SWGroup("해금")]
         [SerializeField, Min(1), Tooltip("이 날짜부터 들어갈 수 있습니다. 1이면 처음부터 열려 있습니다.")]
         private int requiredDay = 1;
 
+        /// <summary>잠겼을 때 알려 줄 이유입니다. 비우면 날짜로 만든 문구를 씁니다.</summary>
         [SerializeField, Tooltip("잠겼을 때 알려 줄 이유입니다. 비우면 날짜로 만든 문구를 씁니다.")]
         private string lockedNotice;
         #endregion // 필드

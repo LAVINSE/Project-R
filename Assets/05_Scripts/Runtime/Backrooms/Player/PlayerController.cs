@@ -3,7 +3,6 @@ using UnityEngine;
 using SW.Attributes;
 using SW.Base;
 using SW.Debugging;
-using SW.Util;
 
 namespace ProjectR.Backrooms.Player
 {
@@ -19,33 +18,42 @@ namespace ProjectR.Backrooms.Player
     public class PlayerController : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>걸을 때의 속도(m/s)입니다.</summary>
         [SWGroup("이동 속도")]
         [SerializeField, Min(0f), Tooltip("걸을 때의 속도(m/s)입니다.")]
         private float walkSpeed = 2.6f;
 
+        /// <summary>달릴 때의 속도(m/s)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("달릴 때의 속도(m/s)입니다.")]
         private float runSpeed = 4.6f;
 
+        /// <summary>앉아서 움직일 때의 속도(m/s)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("앉아서 움직일 때의 속도(m/s)입니다.")]
         private float crouchSpeed = 1.2f;
 
+        /// <summary>목표 속도에 도달하는 빠르기입니다. 낮을수록 미끄러집니다.</summary>
         [SerializeField, Min(0.1f), Tooltip("목표 속도에 도달하는 빠르기입니다. 낮을수록 미끄러집니다.")]
         private float acceleration = 14f;
 
+        /// <summary>서 있을 때의 키(미터)입니다.</summary>
         [SWGroup("앉기")]
         [SerializeField, Min(0.5f), Tooltip("서 있을 때의 키(미터)입니다.")]
         private float standingHeight = 1.8f;
 
+        /// <summary>앉았을 때의 키(미터)입니다.</summary>
         [SerializeField, Min(0.5f), Tooltip("앉았을 때의 키(미터)입니다.")]
         private float crouchingHeight = 1.1f;
 
+        /// <summary>앉고 일어서는 데 걸리는 빠르기입니다.</summary>
         [SerializeField, Min(0.1f), Tooltip("앉고 일어서는 데 걸리는 빠르기입니다.")]
         private float crouchTransitionSpeed = 9f;
 
+        /// <summary>적용할 중력 가속도(m/s²)입니다.</summary>
         [SWGroup("중력")]
         [SerializeField, Tooltip("적용할 중력 가속도(m/s²)입니다.")]
         private float gravity = -18f;
 
+        /// <summary>바닥에 붙어 있도록 계속 눌러 주는 속도(m/s)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("바닥에 붙어 있도록 계속 눌러 주는 속도(m/s)입니다.")]
         private float groundedStickSpeed = 2f;
 

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Generation
 {
     /// <summary>
@@ -31,17 +33,17 @@ namespace ProjectR.Backrooms.Generation
             if (settings == null) throw new ArgumentNullException(nameof(settings));
             if (random == null) throw new ArgumentNullException(nameof(random));
 
-            MazeGrid grid = new MazeGrid(settings.Width, settings.Height);
+            MazeGrid grid = new(settings.Width, settings.Height);
             bool[] visited = new bool[grid.CellCount];
 
-            MazeCoordinate startCoordinate = new MazeCoordinate(
+            MazeCoordinate startCoordinate = new(
                 random.Next(grid.Width), random.Next(grid.Height));
 
-            Stack<MazeCoordinate> stack = new Stack<MazeCoordinate>(grid.CellCount);
+            Stack<MazeCoordinate> stack = new(grid.CellCount);
             stack.Push(startCoordinate);
             visited[ToIndex(grid, startCoordinate)] = true;
 
-            List<EMazeDirection> candidates = new List<EMazeDirection>(4);
+            List<EMazeDirection> candidates = new(4);
 
             while (stack.Count > 0)
             {

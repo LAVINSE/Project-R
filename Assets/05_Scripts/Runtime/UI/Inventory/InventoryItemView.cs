@@ -21,13 +21,16 @@ namespace ProjectR.UI.Inventory
         IPointerClickHandler
     {
         #region 필드
+        /// <summary>물건의 색을 칠할 배경 이미지입니다.</summary>
         [SWGroup("표시")]
         [SerializeField, Tooltip("물건의 색을 칠할 배경 이미지입니다.")]
         private Image background;
 
+        /// <summary>아이콘을 그릴 이미지입니다.</summary>
         [SerializeField, Tooltip("아이콘을 그릴 이미지입니다.")]
         private Image icon;
 
+        /// <summary>아이콘이 없을 때 이름을 적을 글상자입니다.</summary>
         [SerializeField, Tooltip("아이콘이 없을 때 이름을 적을 글상자입니다.")]
         private Text label;
 

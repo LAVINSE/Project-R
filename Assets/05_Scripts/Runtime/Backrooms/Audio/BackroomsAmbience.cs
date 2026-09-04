@@ -17,43 +17,55 @@ namespace ProjectR.Backrooms.Audio
     public class BackroomsAmbience : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>형광등 환경음의 크기입니다.</summary>
         [SWGroup("크기")]
         [SerializeField, Range(0f, 1f), Tooltip("형광등 환경음의 크기입니다.")]
         private float humVolume = 0.18f;
 
+        /// <summary>공간 바닥 소음의 크기입니다.</summary>
         [SerializeField, Range(0f, 1f), Tooltip("공간 바닥 소음의 크기입니다.")]
         private float roomToneVolume = 0.1f;
 
+        /// <summary>공간 크기를 다시 재는 간격(초)입니다.</summary>
         [SWGroup("공간 측정")]
         [SerializeField, Min(0.1f), Tooltip("공간 크기를 다시 재는 간격(초)입니다.")]
         private float measureIntervalSeconds = 0.4f;
 
+        /// <summary>공간 크기를 잴 때 광선을 쏘는 최대 거리(미터)입니다.</summary>
         [SerializeField, Min(1f), Tooltip("공간 크기를 잴 때 광선을 쏘는 최대 거리(미터)입니다.")]
         private float measureDistance = 30f;
 
+        /// <summary>이 평균 거리 이하면 가장 좁은 공간으로 봅니다.</summary>
         [SerializeField, Min(0.1f), Tooltip("이 평균 거리 이하면 가장 좁은 공간으로 봅니다.")]
         private float narrowDistance = 2.5f;
 
+        /// <summary>이 평균 거리 이상이면 가장 넓은 공간으로 봅니다.</summary>
         [SerializeField, Min(0.1f), Tooltip("이 평균 거리 이상이면 가장 넓은 공간으로 봅니다.")]
         private float wideDistance = 12f;
 
+        /// <summary>잔향을 적용할 필터입니다. 비워 두면 오디오 리스너에 붙입니다.</summary>
         [SWGroup("잔향")]
         [SerializeField, Tooltip("잔향을 적용할 필터입니다. 비워 두면 오디오 리스너에 붙입니다.")]
         private AudioReverbFilter reverbFilter;
 
+        /// <summary>좁은 공간의 잔향 길이(초)입니다.</summary>
         [SerializeField, Min(0.1f), Tooltip("좁은 공간의 잔향 길이(초)입니다.")]
         private float narrowDecaySeconds = 0.7f;
 
+        /// <summary>넓은 공간의 잔향 길이(초)입니다.</summary>
         [SerializeField, Min(0.1f), Tooltip("넓은 공간의 잔향 길이(초)입니다.")]
         private float wideDecaySeconds = 2.6f;
 
+        /// <summary>잔향이 따라 변하는 빠르기입니다.</summary>
         [SerializeField, Min(0.1f), Tooltip("잔향이 따라 변하는 빠르기입니다.")]
         private float reverbBlendSpeed = 1.5f;
 
+        /// <summary>정적 구간에서 환경음 크기에 곱할 값입니다.</summary>
         [SWGroup("정적 구간")]
         [SerializeField, Range(0f, 1f), Tooltip("정적 구간에서 환경음 크기에 곱할 값입니다.")]
         private float quietVolumeScale = 0.12f;
 
+        /// <summary>정적 구간을 오갈 때 크기가 변하는 빠르기입니다.</summary>
         [SerializeField, Min(0.01f), Tooltip("정적 구간을 오갈 때 크기가 변하는 빠르기입니다.")]
         private float quietBlendSpeed = 0.5f;
 
@@ -202,7 +214,7 @@ namespace ProjectR.Backrooms.Audio
         /// <returns>만들어진 오디오 소스입니다.</returns>
         private AudioSource CreateLoopSource(string sourceName, AudioClip clip, float volume)
         {
-            GameObject sourceObject = new GameObject(sourceName);
+            GameObject sourceObject = new(sourceName);
             sourceObject.transform.SetParent(transform, false);
 
             AudioSource source = sourceObject.AddComponent<AudioSource>();

@@ -29,14 +29,31 @@ namespace ProjectR.Editor.Backrooms
         #endregion // 상수
 
         #region 필드
+        /// <summary>타일 광원의 밝기입니다.</summary>
         private float lightIntensity = 18f;
+
+        /// <summary>타일 광원이 닿는 거리입니다.</summary>
         private float lightRange = 6f;
+
+        /// <summary>타일 광원의 색상입니다.</summary>
         private Color lightColor = Color.white;
+
+        /// <summary>형광등 재질의 발광 색상입니다.</summary>
         private Color lampGlowColor = Color.white;
+
+        /// <summary>벽 재질의 기본 색상입니다.</summary>
         private Color wallColor = Color.gray;
+
+        /// <summary>바닥 재질의 기본 색상입니다.</summary>
         private Color floorColor = Color.gray;
+
+        /// <summary>천장 재질의 기본 색상입니다.</summary>
         private Color ceilingColor = Color.gray;
+
+        /// <summary>조절할 타일 프리팹을 불러왔는지 여부입니다.</summary>
         private bool isLoaded;
+
+        /// <summary>조명 굽기 도구를 펼쳐 표시할지 여부입니다.</summary>
         private bool showBakeTools;
         #endregion // 필드
 
@@ -251,7 +268,7 @@ namespace ProjectR.Editor.Backrooms
         /// <returns>타일 프리팹 목록입니다. 없으면 빈 목록을 반환합니다.</returns>
         private static List<GameObject> LoadTilePrefabs()
         {
-            List<GameObject> prefabs = new List<GameObject>();
+            List<GameObject> prefabs = new();
 
             if (AssetDatabase.IsValidFolder(TilePrefabFolder) == false) return prefabs;
 

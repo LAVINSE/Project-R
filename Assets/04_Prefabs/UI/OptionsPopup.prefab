@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33897139848264447924596786b120ef, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: ProjectR.UI::ProjectR.UI.OptionsPopup
+  m_EditorClassIdentifier: ProjectR.UI::ProjectR.UI.Popup.OptionsPopup
   useShowEffect: 1
   showEffect: {fileID: 0}
   showEffectTarget: {fileID: 0}

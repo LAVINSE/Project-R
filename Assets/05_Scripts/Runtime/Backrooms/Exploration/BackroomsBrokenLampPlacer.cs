@@ -29,16 +29,18 @@ namespace ProjectR.Backrooms.Exploration
         #endregion // 상수
 
         #region 필드
+        /// <summary>생성 결과를 받아 올 맵 조립 컴포넌트입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("생성 결과를 받아 올 맵 조립 컴포넌트입니다.")]
         private BackroomsMapBuilder mapBuilder;
 
+        /// <summary>고장 난 등을 하나씩 놓을 구역의 한 변 칸 수입니다.</summary>
         [SWGroup("배치")]
         [SerializeField, Range(2, 16), Tooltip("고장 난 등을 하나씩 놓을 구역의 한 변 칸 수입니다.")]
         private int regionSize = 6;
 
         /// <summary>고장 내 둔 등의 목록입니다.</summary>
-        private readonly List<FlickeringLamp> brokenLamps = new List<FlickeringLamp>();
+        private readonly List<FlickeringLamp> brokenLamps = new();
         #endregion // 필드
 
         #region 프로퍼티
@@ -80,7 +82,7 @@ namespace ProjectR.Backrooms.Exploration
             // 타일은 맵을 다시 만들 때 통째로 사라지므로 목록만 비우면 됩니다.
             brokenLamps.Clear();
 
-            System.Random random = new System.Random(result.Seed);
+            System.Random random = new(result.Seed);
 
             for (int regionY = 0; regionY < result.Grid.Height; regionY += regionSize)
             {
@@ -105,7 +107,7 @@ namespace ProjectR.Backrooms.Exploration
             int width = Mathf.Min(regionSize, result.Grid.Width - regionX);
             int height = Mathf.Min(regionSize, result.Grid.Height - regionY);
 
-            MazeCoordinate coordinate = new MazeCoordinate(
+            MazeCoordinate coordinate = new(
                 regionX + random.Next(width), regionY + random.Next(height));
 
             // 전등이 없는 칸은 깜빡일 등이 아예 없고, 시작 칸과 탈출 칸은 그 자체로 표식이라 건드리지 않습니다.

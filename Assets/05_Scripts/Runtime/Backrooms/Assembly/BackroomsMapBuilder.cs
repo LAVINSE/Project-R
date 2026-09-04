@@ -11,6 +11,7 @@ using SW.Debugging;
 using SW.Util;
 
 using ProjectR.Backrooms.Generation;
+using ProjectR.Enum;
 
 namespace ProjectR.Backrooms.Assembly
 {
@@ -25,28 +26,35 @@ namespace ProjectR.Backrooms.Assembly
     public class BackroomsMapBuilder : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>미로 생성에 사용할 설정입니다.</summary>
         [SWGroup("생성 설정")]
         [SerializeField, Tooltip("미로 생성에 사용할 설정입니다.")]
-        private MazeGenerationSettings generationSettings = new MazeGenerationSettings();
+        private MazeGenerationSettings generationSettings = new();
 
+        /// <summary>칸 모양에 맞는 타일 프리팹을 찾아 주는 라이브러리입니다.</summary>
         [SWGroup("타일")]
         [SerializeField, Tooltip("칸 모양에 맞는 타일 프리팹을 찾아 주는 라이브러리입니다.")]
         private MazeTileLibrary tileLibrary;
 
+        /// <summary>한 프레임에 배치할 타일의 최대 개수입니다.</summary>
         [SWGroup("조립")]
         [SerializeField, Range(1, 512), Tooltip("한 프레임에 배치할 타일의 최대 개수입니다.")]
         private int tilesPerFrame = 24;
 
+        /// <summary>조립이 끝난 뒤 정적 배칭으로 합쳐 드로우콜을 줄일지 여부입니다.</summary>
         [SerializeField, Tooltip("조립이 끝난 뒤 정적 배칭으로 합쳐 드로우콜을 줄일지 여부입니다.")]
         private bool useStaticBatching = true;
 
+        /// <summary>켜면 실행할 때마다 새 시드를 뽑고, 끄면 아래 시드를 그대로 씁니다.</summary>
         [SWGroup("시드")]
         [SerializeField, Tooltip("켜면 실행할 때마다 새 시드를 뽑고, 끄면 아래 시드를 그대로 씁니다.")]
         private bool useRandomSeed = true;
 
+        /// <summary>재현에 사용할 고정 시드입니다.</summary>
         [SerializeField, SWCondition("useRandomSeed", false), Tooltip("재현에 사용할 고정 시드입니다.")]
         private int fixedSeed;
 
+        /// <summary>씬이 시작될 때 맵을 바로 만들지 여부입니다.</summary>
         [SWGroup("자동 실행")]
         [SerializeField, Tooltip("씬이 시작될 때 맵을 바로 만들지 여부입니다.")]
         private bool buildOnStart = true;
@@ -62,7 +70,7 @@ namespace ProjectR.Backrooms.Assembly
 
         /// <summary>칸 좌표별로 배치한 타일입니다. 조립이 끝난 뒤 타일을 꾸미는 쪽에서 씁니다.</summary>
         private readonly Dictionary<MazeCoordinate, Transform> placedTiles =
-            new Dictionary<MazeCoordinate, Transform>();
+            new();
         #endregion // 필드
 
         #region 프로퍼티
@@ -188,7 +196,7 @@ namespace ProjectR.Backrooms.Assembly
             ClearTiles();
 
             Stopwatch generationWatch = Stopwatch.StartNew();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
             MazeBuildResult result = factory.Build(generationSettings, seed);
             generationWatch.Stop();
 
@@ -274,7 +282,7 @@ namespace ProjectR.Backrooms.Assembly
 
             placedTiles.Clear();
 
-            List<GameObject> tiles = new List<GameObject>(tileRoot.childCount);
+            List<GameObject> tiles = new(tileRoot.childCount);
 
             for (int index = 0; index < tileRoot.childCount; index += 1)
                 tiles.Add(tileRoot.GetChild(index).gameObject);

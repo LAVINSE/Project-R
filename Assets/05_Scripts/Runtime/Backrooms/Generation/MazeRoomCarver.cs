@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Generation
 {
     /// <summary>
@@ -28,7 +30,7 @@ namespace ProjectR.Backrooms.Generation
 
             int carvedCount = 0;
             int attemptLimit = settings.RoomCount * 8;
-            List<MazeCoordinate> occupied = new List<MazeCoordinate>();
+            List<MazeCoordinate> occupied = new();
 
             for (int attempt = 0; attempt < attemptLimit && carvedCount < settings.RoomCount; attempt += 1)
             {
@@ -37,7 +39,7 @@ namespace ProjectR.Backrooms.Generation
 
                 if (width > grid.Width || height > grid.Height) continue;
 
-                MazeCoordinate origin = new MazeCoordinate(
+                MazeCoordinate origin = new(
                     random.Next(grid.Width - width + 1),
                     random.Next(grid.Height - height + 1));
 
@@ -64,7 +66,7 @@ namespace ProjectR.Backrooms.Generation
             {
                 for (int offsetX = 0; offsetX < width; offsetX += 1)
                 {
-                    MazeCoordinate coordinate = new MazeCoordinate(origin.X + offsetX, origin.Y + offsetY);
+                    MazeCoordinate coordinate = new(origin.X + offsetX, origin.Y + offsetY);
 
                     if (offsetX + 1 < width) grid.CarvePassage(coordinate, EMazeDirection.East);
                     if (offsetY + 1 < height) grid.CarvePassage(coordinate, EMazeDirection.North);

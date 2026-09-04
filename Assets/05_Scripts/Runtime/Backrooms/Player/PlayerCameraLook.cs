@@ -19,27 +19,34 @@ namespace ProjectR.Backrooms.Player
     public class PlayerCameraLook : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>상하 회전을 적용할 카메라입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("상하 회전을 적용할 카메라입니다.")]
         private Transform cameraTransform;
 
+        /// <summary>자세를 읽어 눈높이를 맞출 이동 컴포넌트입니다.</summary>
         [SerializeField, Tooltip("자세를 읽어 눈높이를 맞출 이동 컴포넌트입니다.")]
         private PlayerController playerController;
 
+        /// <summary>옵션에서 고른 값이 없을 때 쓸 시점 회전 감도입니다.</summary>
         [SWGroup("감도")]
         [SerializeField, Min(0.01f), Tooltip("옵션에서 고른 값이 없을 때 쓸 시점 회전 감도입니다.")]
         private float sensitivity = GameSettings.DefaultMouseSensitivity;
 
+        /// <summary>위아래로 돌릴 수 있는 최대 각도입니다.</summary>
         [SerializeField, Range(30f, 89f), Tooltip("위아래로 돌릴 수 있는 최대 각도입니다.")]
         private float pitchLimit = 85f;
 
+        /// <summary>서 있을 때 발밑에서 눈까지의 높이(미터)입니다.</summary>
         [SWGroup("눈높이")]
         [SerializeField, Min(0f), Tooltip("서 있을 때 발밑에서 눈까지의 높이(미터)입니다.")]
         private float standingEyeHeight = 1.62f;
 
+        /// <summary>앉았을 때 발밑에서 눈까지의 높이(미터)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("앉았을 때 발밑에서 눈까지의 높이(미터)입니다.")]
         private float crouchingEyeHeight = 0.95f;
 
+        /// <summary>눈높이가 따라오는 빠르기입니다.</summary>
         [SerializeField, Min(0.1f), Tooltip("눈높이가 따라오는 빠르기입니다.")]
         private float eyeHeightSpeed = 9f;
 

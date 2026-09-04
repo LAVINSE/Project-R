@@ -10,6 +10,7 @@ using SW.Popup;
 
 using ProjectR.Activity;
 using ProjectR.Data;
+using ProjectR.Enum;
 
 namespace ProjectR.UI.Settlement
 {
@@ -24,27 +25,34 @@ namespace ProjectR.UI.Settlement
     public class SettlementPopup : SWPopupBase
     {
         #region 필드
+        /// <summary>이상물체 이름을 찾아 올 데이터베이스입니다.</summary>
         [SWGroup("에셋")]
         [SerializeField, Tooltip("이상물체 이름을 찾아 올 데이터베이스입니다.")]
         private SWIODatabase anomalyDatabase;
 
+        /// <summary>성공과 실패를 알릴 글상자입니다.</summary>
         [SWGroup("표시")]
         [SerializeField, Tooltip("성공과 실패를 알릴 글상자입니다.")]
         private Text headlineText;
 
+        /// <summary>가져온 이상물체를 적을 글상자입니다.</summary>
         [SerializeField, Tooltip("가져온 이상물체를 적을 글상자입니다.")]
         private Text itemsText;
 
+        /// <summary>후원금과 시청자 변동을 적을 글상자입니다.</summary>
         [SerializeField, Tooltip("후원금과 시청자 변동을 적을 글상자입니다.")]
         private Text rewardText;
 
+        /// <summary>성공했을 때의 제목 색입니다.</summary>
         [SWGroup("색")]
         [SerializeField, Tooltip("성공했을 때의 제목 색입니다.")]
-        private Color successColor = new Color(0.85f, 0.9f, 1f);
+        private Color successColor = new(0.85f, 0.9f, 1f);
 
+        /// <summary>실패했을 때의 제목 색입니다.</summary>
         [SerializeField, Tooltip("실패했을 때의 제목 색입니다.")]
-        private Color failureColor = new Color(1f, 0.35f, 0.3f);
+        private Color failureColor = new(1f, 0.35f, 0.3f);
 
+        /// <summary>화면을 닫는 버튼입니다.</summary>
         [SWGroup("버튼")]
         [SerializeField, Tooltip("화면을 닫는 버튼입니다.")]
         private Button confirmButton;
@@ -119,15 +127,15 @@ namespace ProjectR.UI.Settlement
                 return;
             }
 
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new();
 
-            for (int i = 0; i < items.Count; i++)
+            for (int index = 0; index < items.Count; index++)
             {
-                AnomalyDefinition definition = FindDefinition(items[i].ItemId);
+                AnomalyDefinition definition = FindDefinition(items[index].ItemId);
 
                 if (definition == null)
                 {
-                    builder.AppendLine(items[i].ItemId);
+                    builder.AppendLine(items[index].ItemId);
                     continue;
                 }
 
@@ -178,9 +186,9 @@ namespace ProjectR.UI.Settlement
         {
             if (anomalyDatabase == null) return null;
 
-            for (int i = 0; i < anomalyDatabase.Count; i++)
+            for (int index = 0; index < anomalyDatabase.Count; index++)
             {
-                if (anomalyDatabase[i] is AnomalyDefinition definition
+                if (anomalyDatabase[index] is AnomalyDefinition definition
                     && definition.DefinitionId == definitionId) return definition;
             }
 

@@ -5,7 +5,9 @@ using SW.Base;
 using SW.Util;
 
 using ProjectR.Activity;
+using ProjectR.Activity.Broadcast;
 using ProjectR.Backrooms.Player;
+using ProjectR.Enum;
 using ProjectR.Inventory;
 
 namespace ProjectR.Backrooms.Collect
@@ -26,29 +28,34 @@ namespace ProjectR.Backrooms.Collect
     {
         #region 상수
         /// <summary>한 번에 살펴볼 최대 충돌 수입니다.</summary>
-        private const int MaxHitCount = 8;
+        private const int MaximumHitCount = 8;
         #endregion // 상수
 
         #region 필드
+        /// <summary>어디를 보고 있는지 판정할 시점 카메라입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("어디를 보고 있는지 판정할 시점 카메라입니다.")]
         private Camera viewCamera;
 
+        /// <summary>줍기 입력을 읽어 올 입력 컴포넌트입니다.</summary>
         [SerializeField, Tooltip("줍기 입력을 읽어 올 입력 컴포넌트입니다.")]
         private PlayerInputReader inputReader;
 
+        /// <summary>주워 간 상자를 치울 배치 컴포넌트입니다.</summary>
         [SerializeField, Tooltip("주워 간 상자를 치울 배치 컴포넌트입니다.")]
         private BackroomsAnomalyPlacer anomalyPlacer;
 
+        /// <summary>주울 수 있는 최대 거리(미터)입니다.</summary>
         [SWGroup("판정")]
         [SerializeField, Min(0.5f), Tooltip("주울 수 있는 최대 거리(미터)입니다.")]
         private float reachDistance = 3f;
 
+        /// <summary>줍기 판정에 포함할 레이어입니다.</summary>
         [SerializeField, Tooltip("줍기 판정에 포함할 레이어입니다.")]
         private LayerMask pickupLayers = ~0;
 
         /// <summary>충돌 결과를 담아 두는 버퍼입니다. 매 프레임 새로 할당하지 않으려고 들고 있습니다.</summary>
-        private readonly RaycastHit[] hitBuffer = new RaycastHit[MaxHitCount];
+        private readonly RaycastHit[] hitBuffer = new RaycastHit[MaximumHitCount];
 
         /// <summary>지금 바라보고 있는 상자입니다. 없으면 null입니다.</summary>
         private AnomalyPickup focusedPickup;
@@ -115,9 +122,9 @@ namespace ProjectR.Backrooms.Collect
             AnomalyPickup nearest = null;
             float nearestDistance = float.MaxValue;
 
-            for (int i = 0; i < hitCount; i++)
+            for (int index = 0; index < hitCount; index++)
             {
-                RaycastHit hit = hitBuffer[i];
+                RaycastHit hit = hitBuffer[index];
 
                 if (hit.collider.transform.IsChildOf(transform)) continue;
                 if (hit.distance >= nearestDistance) continue;

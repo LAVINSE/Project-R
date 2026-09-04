@@ -8,6 +8,8 @@ using SW.Debugging;
 using SW.Util;
 
 using ProjectR.Activity;
+using ProjectR.Activity.Broadcast;
+using ProjectR.Enum;
 
 namespace ProjectR.Broadcast
 {
@@ -32,17 +34,21 @@ namespace ProjectR.Broadcast
     public class BroadcastDirector : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>상황마다의 시청자·후원 증감 규칙입니다.</summary>
         [SWGroup("조정값")]
         [SerializeField, Tooltip("상황마다의 시청자·후원 증감 규칙입니다.")]
         private BroadcastSettings settings = BroadcastSettings.Default;
 
+        /// <summary>시청자와 후원을 다시 계산하는 간격(초)입니다.</summary>
         [SerializeField, Min(0.05f), Tooltip("시청자와 후원을 다시 계산하는 간격(초)입니다.")]
         private float tickInterval = 0.25f;
 
+        /// <summary>상황 태그마다 쓸 채팅 문장을 담은 템플릿 세트입니다.</summary>
         [SWGroup("채팅")]
         [SerializeField, Tooltip("상황 태그마다 쓸 채팅 문장을 담은 템플릿 세트입니다.")]
         private ChatTemplateSet chatTemplates;
 
+        /// <summary>아무 일도 없을 때 채팅이 한 줄 올라오는 간격(초)입니다. 0이면 올리지 않습니다.</summary>
         [SerializeField, Min(0f), Tooltip("아무 일도 없을 때 채팅이 한 줄 올라오는 간격(초)입니다. 0이면 올리지 않습니다.")]
         private float idleChatInterval = 6f;
 

@@ -20,6 +20,7 @@ namespace ProjectR.Backrooms.Monster.Nodes
     public sealed class MonsterReturnNode : MonsterNodeBase
     {
         #region 필드
+        /// <summary>이 거리 안이면 이미 돌아온 것으로 봅니다(미터).</summary>
         [SerializeField, Min(1f), Tooltip("이 거리 안이면 이미 돌아온 것으로 봅니다(미터).")]
         private float arrivedDistance = 6f;
         #endregion // 필드

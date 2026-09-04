@@ -3,6 +3,8 @@ using UnityEngine;
 using SW.Attributes;
 using SW.Base;
 
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Audio
 {
     /// <summary>
@@ -16,6 +18,7 @@ namespace ProjectR.Backrooms.Audio
     public class FootstepSurface : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>이 바닥을 밟았을 때 낼 발소리 재질입니다.</summary>
         [SWGroup("재질")]
         [SerializeField, Tooltip("이 바닥을 밟았을 때 낼 발소리 재질입니다.")]
         private EFootstepSurface surface = EFootstepSurface.Concrete;

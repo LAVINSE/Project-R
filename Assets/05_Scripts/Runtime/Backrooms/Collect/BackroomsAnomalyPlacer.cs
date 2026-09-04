@@ -25,26 +25,31 @@ namespace ProjectR.Backrooms.Collect
     public class BackroomsAnomalyPlacer : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>생성 결과를 받아 올 맵 조립 컴포넌트입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("생성 결과를 받아 올 맵 조립 컴포넌트입니다.")]
         private BackroomsMapBuilder mapBuilder;
 
+        /// <summary>놓을 수 있는 이상물체 정의를 모아 둔 데이터베이스입니다.</summary>
         [SWGroup("에셋")]
         [SerializeField, Tooltip("놓을 수 있는 이상물체 정의를 모아 둔 데이터베이스입니다.")]
         private SWIODatabase anomalyDatabase;
 
+        /// <summary>월드에 놓을 이상물체 상자 프리팹입니다.</summary>
         [SerializeField, Tooltip("월드에 놓을 이상물체 상자 프리팹입니다.")]
         private AnomalyPickup pickupPrefab;
 
+        /// <summary>이상물체를 하나씩 놓을 구역의 한 변 칸 수입니다.</summary>
         [SWGroup("배치")]
         [SerializeField, Range(2, 16), Tooltip("이상물체를 하나씩 놓을 구역의 한 변 칸 수입니다.")]
         private int regionSize = 5;
 
+        /// <summary>칸 가운데에서 얼마나 떨어진 곳까지 놓을지(미터)입니다.</summary>
         [SerializeField, Min(0f), Tooltip("칸 가운데에서 얼마나 떨어진 곳까지 놓을지(미터)입니다.")]
         private float placementJitter = 1.2f;
 
         /// <summary>지금 월드에 놓여 있는 상자 목록입니다.</summary>
-        private readonly List<AnomalyPickup> spawnedPickups = new List<AnomalyPickup>();
+        private readonly List<AnomalyPickup> spawnedPickups = new();
 
         /// <summary>버린 물건을 되돌려 놓을 기준이 되는 플레이어입니다.</summary>
         private Transform playerTransform;
@@ -122,7 +127,7 @@ namespace ProjectR.Backrooms.Collect
                 return;
             }
 
-            System.Random random = new System.Random(result.Seed);
+            System.Random random = new(result.Seed);
 
             for (int regionY = 0; regionY < result.Grid.Height; regionY += regionSize)
             {
@@ -147,7 +152,7 @@ namespace ProjectR.Backrooms.Collect
             int width = Mathf.Min(regionSize, result.Grid.Width - regionX);
             int height = Mathf.Min(regionSize, result.Grid.Height - regionY);
 
-            MazeCoordinate coordinate = new MazeCoordinate(
+            MazeCoordinate coordinate = new(
                 regionX + random.Next(width), regionY + random.Next(height));
 
             // 시작 칸에 놓으면 나가기도 전에 주워지고, 탈출 칸에 놓으면 주우려다 나가집니다.
@@ -217,9 +222,9 @@ namespace ProjectR.Backrooms.Collect
         /// <remarks>맵을 다시 만들면 타일과 함께 상자도 의미가 없어지므로 함께 치웁니다.</remarks>
         private void ClearSpawned()
         {
-            for (int i = 0; i < spawnedPickups.Count; i++)
+            for (int index = 0; index < spawnedPickups.Count; index++)
             {
-                if (spawnedPickups[i] != null) Destroy(spawnedPickups[i].gameObject);
+                if (spawnedPickups[index] != null) Destroy(spawnedPickups[index].gameObject);
             }
 
             spawnedPickups.Clear();

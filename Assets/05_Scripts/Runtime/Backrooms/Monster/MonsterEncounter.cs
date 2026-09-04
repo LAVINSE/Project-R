@@ -28,10 +28,12 @@ namespace ProjectR.Backrooms.Monster
         #endregion // 상수
 
         #region 필드
+        /// <summary>붙잡을 대상으로 삼을 태그입니다.</summary>
         [SWGroup("대상")]
         [SerializeField, Tooltip("붙잡을 대상으로 삼을 태그입니다.")]
         private string playerTag = "Player";
 
+        /// <summary>거리를 다시 확인하는 간격(초)입니다.</summary>
         [SWGroup("판정")]
         [SerializeField, Min(0.02f), Tooltip("거리를 다시 확인하는 간격(초)입니다.")]
         private float checkInterval = 0.05f;

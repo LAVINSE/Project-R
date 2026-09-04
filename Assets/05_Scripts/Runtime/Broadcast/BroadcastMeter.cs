@@ -1,6 +1,6 @@
 using System;
 
-using ProjectR.Activity;
+using ProjectR.Enum;
 
 namespace ProjectR.Broadcast
 {
@@ -24,10 +24,16 @@ namespace ProjectR.Broadcast
     public class BroadcastMeter
     {
         #region 필드
+        /// <summary>방송 상황별 시청자와 후원금 증감 규칙입니다.</summary>
         private readonly BroadcastSettings settings;
+
+        /// <summary>방송을 시작했을 때의 시청자 수입니다.</summary>
         private readonly int startViewerCount;
 
+        /// <summary>아직 시청자 한 명으로 반영되지 않은 소수 부분입니다.</summary>
         private float viewerRemainder;
+
+        /// <summary>아직 후원금 한 단위로 반영되지 않은 소수 부분입니다.</summary>
         private float donationRemainder;
         #endregion // 필드
 
@@ -46,7 +52,7 @@ namespace ProjectR.Broadcast
         public int ViewerDelta => ViewerCount - startViewerCount;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 시작 시청자 수와 조정값을 지정해 계산기를 만듭니다.
         /// </summary>
@@ -60,7 +66,9 @@ namespace ProjectR.Broadcast
             ViewerCount = this.startViewerCount;
             State = EBroadcastState.Exploring;
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 내보내고 있는 방송 상황을 바꿉니다.
         /// </summary>

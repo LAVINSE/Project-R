@@ -5,6 +5,7 @@ using NUnit.Framework;
 using UnityEngine.TestTools;
 
 using ProjectR.Backrooms.Generation;
+using ProjectR.Enum;
 
 namespace ProjectR.Tests
 {
@@ -39,7 +40,7 @@ namespace ProjectR.Tests
         public void 생성_결과는_최소_순환로_개수를_만족합니다()
         {
             MazeGenerationSettings settings = CreateSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             for (int seed = 0; seed < SampleSeedCount; seed += 1)
             {
@@ -58,7 +59,7 @@ namespace ProjectR.Tests
         public void 생성_결과는_막다른_길_비율_상한을_지킵니다()
         {
             MazeGenerationSettings settings = CreateSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             for (int seed = 0; seed < SampleSeedCount; seed += 1)
             {
@@ -76,7 +77,7 @@ namespace ProjectR.Tests
         public void 생성_결과에는_탈출_경로가_존재합니다()
         {
             MazeGenerationSettings settings = CreateSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             for (int seed = 0; seed < SampleSeedCount; seed += 1)
             {
@@ -97,7 +98,7 @@ namespace ProjectR.Tests
         public void 같은_시드는_같은_미로를_만듭니다()
         {
             MazeGenerationSettings settings = CreateSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             for (int seed = 0; seed < SampleSeedCount; seed += 1)
             {
@@ -118,7 +119,7 @@ namespace ProjectR.Tests
         public void 다른_시드는_다른_미로를_만듭니다()
         {
             MazeGenerationSettings settings = CreateSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             List<EMazeDirection> firstWalls = ToWallList(factory.Build(settings, 1).Grid);
             List<EMazeDirection> secondWalls = ToWallList(factory.Build(settings, 2).Grid);
@@ -133,7 +134,7 @@ namespace ProjectR.Tests
         public void 생성_결과에_고립된_구역이_없습니다()
         {
             MazeGenerationSettings settings = CreateSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             for (int seed = 0; seed < SampleSeedCount; seed += 1)
             {
@@ -153,8 +154,8 @@ namespace ProjectR.Tests
             // 재시도 상한을 넘기면 MazeFactory가 의도적으로 에러 로그를 남기므로 실패로 세지 않습니다.
             LogAssert.ignoreFailingMessages = true;
 
-            MazeGenerationSettings impossibleSettings = new MazeGenerationSettings(4, 4, 1000, 0f, 3, 0, 2, 2, 0);
-            MazeFactory factory = new MazeFactory();
+            MazeGenerationSettings impossibleSettings = new(4, 4, 1000, 0f, 3, 0, 2, 2, 0);
+            MazeFactory factory = new();
 
             MazeBuildResult result = factory.Build(impossibleSettings, 12345);
 
@@ -173,7 +174,7 @@ namespace ProjectR.Tests
         public void 생성_결과에는_넓은_홀이_존재합니다()
         {
             MazeGenerationSettings settings = CreateSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             for (int seed = 0; seed < SampleSeedCount; seed += 1)
             {
@@ -195,7 +196,7 @@ namespace ProjectR.Tests
         public void 어두운_칸은_설정한_비율을_넘지_않습니다()
         {
             MazeGenerationSettings settings = CreateDarkZoneSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             for (int seed = 0; seed < SampleSeedCount; seed += 1)
             {
@@ -218,7 +219,7 @@ namespace ProjectR.Tests
         public void 시작_칸과_탈출_칸은_어두워지지_않습니다()
         {
             MazeGenerationSettings settings = CreateDarkZoneSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             for (int seed = 0; seed < SampleSeedCount; seed += 1)
             {
@@ -236,7 +237,7 @@ namespace ProjectR.Tests
         public void 같은_시드는_같은_어두운_칸을_만듭니다()
         {
             MazeGenerationSettings settings = CreateDarkZoneSettings();
-            MazeFactory factory = new MazeFactory();
+            MazeFactory factory = new();
 
             MazeBuildResult first = factory.Build(settings, 4242);
             MazeBuildResult second = factory.Build(settings, 4242);
@@ -264,7 +265,7 @@ namespace ProjectR.Tests
         /// <returns>칸 순서대로 담긴 벽 조합 목록입니다.</returns>
         private static List<EMazeDirection> ToWallList(MazeGrid grid)
         {
-            List<EMazeDirection> walls = new List<EMazeDirection>(grid.CellCount);
+            List<EMazeDirection> walls = new(grid.CellCount);
 
             foreach (MazeCoordinate coordinate in grid.EnumerateCoordinates())
                 walls.Add(grid.GetWalls(coordinate));

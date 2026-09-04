@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Generation
 {
     /// <summary>
@@ -50,7 +52,7 @@ namespace ProjectR.Backrooms.Generation
         /// <remarks>북쪽과 동쪽만 훑으면 이웃한 두 칸이 공유하는 벽을 한 번씩만 담게 됩니다.</remarks>
         private static List<MazeWallReference> CollectRemovableWalls(MazeGrid grid)
         {
-            List<MazeWallReference> walls = new List<MazeWallReference>();
+            List<MazeWallReference> walls = new();
 
             foreach (MazeCoordinate coordinate in grid.EnumerateCoordinates())
             {
@@ -107,7 +109,7 @@ namespace ProjectR.Backrooms.Generation
             public EMazeDirection Direction { get; }
             #endregion // 프로퍼티
 
-            #region 함수
+            #region 생성자
             /// <summary>
             /// 벽 참조를 만듭니다.
             /// </summary>
@@ -118,7 +120,7 @@ namespace ProjectR.Backrooms.Generation
                 Coordinate = coordinate;
                 Direction = direction;
             }
-            #endregion // 함수
+            #endregion // 생성자
         }
     }
 }

@@ -25,7 +25,7 @@ namespace ProjectR.Broadcast
         public bool IsValid => string.IsNullOrEmpty(Text) == false;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 닉네임과 내용을 지정해 한 줄을 만듭니다.
         /// </summary>
@@ -36,6 +36,6 @@ namespace ProjectR.Broadcast
             Nickname = nickname;
             Text = text;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 }

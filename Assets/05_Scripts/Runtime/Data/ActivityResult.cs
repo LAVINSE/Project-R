@@ -23,13 +23,13 @@ namespace ProjectR.Data
         public ConditionDelta Condition;
 
         /// <summary>활동으로 얻은 이상물체 목록입니다. 없으면 빈 목록입니다.</summary>
-        public List<ItemInstance> Items = new List<ItemInstance>();
+        public List<ItemInstance> Items = new();
 
         /// <summary>활동이 실패로 끝났는지 여부입니다.</summary>
         public bool IsFailure;
 
         /// <summary>후속 처리에 쓰이는 자유 형식 표식 목록입니다. 없으면 빈 목록입니다.</summary>
-        public List<string> Flags = new List<string>();
+        public List<string> Flags = new();
         #endregion // 필드
 
         #region 함수

@@ -20,6 +20,7 @@ namespace ProjectR.Backrooms.Monster.Nodes
     public sealed class MonsterSearchNode : MonsterNodeBase
     {
         #region 필드
+        /// <summary>마지막 단서에서 퍼져 나갈 최대 거리(미터)입니다.</summary>
         [SerializeField, Min(1f), Tooltip("마지막 단서에서 퍼져 나갈 최대 거리(미터)입니다.")]
         private float searchRadius = 10f;
 

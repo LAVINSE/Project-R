@@ -23,7 +23,7 @@ namespace ProjectR.Backrooms.Generation
             if (grid == null) return false;
             if (grid.IsInside(from) == false || grid.IsInside(to) == false) return false;
 
-            HashSet<MazeCoordinate> reachable = new HashSet<MazeCoordinate>();
+            HashSet<MazeCoordinate> reachable = new();
             CollectReachable(grid, from, reachable);
 
             return reachable.Contains(to);
@@ -41,7 +41,7 @@ namespace ProjectR.Backrooms.Generation
             if (grid.IsInside(from) == false) return;
             if (reachable.Add(from) == false) return;
 
-            Queue<MazeCoordinate> frontier = new Queue<MazeCoordinate>();
+            Queue<MazeCoordinate> frontier = new();
             frontier.Enqueue(from);
 
             while (frontier.Count > 0)
@@ -69,8 +69,8 @@ namespace ProjectR.Backrooms.Generation
         {
             if (grid == null || grid.IsInside(from) == false) return from;
 
-            HashSet<MazeCoordinate> visited = new HashSet<MazeCoordinate> { from };
-            Queue<MazeCoordinate> frontier = new Queue<MazeCoordinate>();
+            HashSet<MazeCoordinate> visited = new() { from };
+            Queue<MazeCoordinate> frontier = new();
             frontier.Enqueue(from);
 
             MazeCoordinate farthest = from;

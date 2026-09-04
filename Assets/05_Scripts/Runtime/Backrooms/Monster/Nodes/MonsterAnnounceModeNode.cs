@@ -4,6 +4,8 @@ using UnityEngine;
 
 using SW.BehaviourTree;
 
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Monster.Nodes
 {
     /// <summary>
@@ -21,6 +23,7 @@ namespace ProjectR.Backrooms.Monster.Nodes
     public sealed class MonsterAnnounceModeNode : SWBehaviourDecoratorNode
     {
         #region 필드
+        /// <summary>자식 행동이 시작될 때 알릴 행동 모드입니다.</summary>
         [SerializeField, Tooltip("자식 행동이 시작될 때 알릴 행동 모드입니다.")]
         private EMonsterMode mode = EMonsterMode.Patrol;
 

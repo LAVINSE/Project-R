@@ -19,25 +19,30 @@ namespace ProjectR.Backrooms.Monster
     public class MonsterMemory : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>기억해 둘 은신처의 최대 개수입니다.</summary>
         [SWGroup("은신처 기억")]
         [SerializeField, Range(1, 12), Tooltip("기억해 둘 은신처의 최대 개수입니다.")]
         private int maximumSpotCount = 6;
 
+        /// <summary>같은 은신처로 묶을 거리(미터)입니다.</summary>
         [SerializeField, Min(0.5f), Tooltip("같은 은신처로 묶을 거리(미터)입니다.")]
         private float sameSpotDistance = 4f;
 
+        /// <summary>수색할 때 은신처를 떠올릴 최대 거리(미터)입니다.</summary>
         [SerializeField, Min(1f), Tooltip("수색할 때 은신처를 떠올릴 최대 거리(미터)입니다.")]
         private float recallDistance = 18f;
 
+        /// <summary>수색 지점을 고를 때 기억해 둔 은신처를 고를 확률입니다.</summary>
         [SWGroup("수색 가중치")]
         [SerializeField, Range(0f, 1f), Tooltip("수색 지점을 고를 때 기억해 둔 은신처를 고를 확률입니다.")]
         private float recallChance = 0.45f;
 
+        /// <summary>클수록 수색 지점이 마지막 목격 위치에 붙습니다.</summary>
         [SerializeField, Range(1f, 4f), Tooltip("클수록 수색 지점이 마지막 목격 위치에 붙습니다.")]
         private float centerBias = 2f;
 
         /// <summary>기억해 둔 은신처 목록입니다.</summary>
-        private readonly List<HidingSpot> hidingSpots = new List<HidingSpot>();
+        private readonly List<HidingSpot> hidingSpots = new();
         #endregion // 필드
 
         #region 프로퍼티

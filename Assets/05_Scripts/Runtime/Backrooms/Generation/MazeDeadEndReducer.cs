@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Generation
 {
     /// <summary>
@@ -48,7 +50,7 @@ namespace ProjectR.Backrooms.Generation
         /// <returns>막다른 길 칸의 좌표 목록입니다. 없으면 빈 목록을 반환합니다.</returns>
         private static List<MazeCoordinate> CollectDeadEnds(MazeGrid grid)
         {
-            List<MazeCoordinate> deadEnds = new List<MazeCoordinate>();
+            List<MazeCoordinate> deadEnds = new();
 
             foreach (MazeCoordinate coordinate in grid.EnumerateCoordinates())
             {
@@ -67,7 +69,7 @@ namespace ProjectR.Backrooms.Generation
         /// <returns>허물었으면 true를 반환합니다. 격자 바깥 벽만 남았으면 false를 반환합니다.</returns>
         private static bool CarveRandomWall(MazeGrid grid, MazeCoordinate coordinate, Random random)
         {
-            List<EMazeDirection> candidates = new List<EMazeDirection>(4);
+            List<EMazeDirection> candidates = new(4);
 
             for (int index = 0; index < MazeDirections.All.Count; index += 1)
             {

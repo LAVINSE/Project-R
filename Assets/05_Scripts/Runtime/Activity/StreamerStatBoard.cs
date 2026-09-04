@@ -48,13 +48,16 @@ namespace ProjectR.Activity
         #endregion // 상수
 
         #region 필드
+        /// <summary>런타임 스탯 복제본을 만들어 관리하는 SWUtils 컴포넌트입니다.</summary>
         [SWGroup("참조")]
         [SerializeField, Tooltip("런타임 스탯 복제본을 만들어 관리하는 SWUtils 컴포넌트입니다.")]
         private SWStats stats;
 
+        /// <summary>코드명으로 스탯 정의를 찾을 데이터베이스입니다.</summary>
         [SerializeField, Tooltip("코드명으로 스탯 정의를 찾을 데이터베이스입니다.")]
         private SWIODatabase statDatabase;
 
+        /// <summary>코드명으로 업그레이드 정의를 찾을 데이터베이스입니다.</summary>
         [SerializeField, Tooltip("코드명으로 업그레이드 정의를 찾을 데이터베이스입니다.")]
         private SWIODatabase upgradeDatabase;
         #endregion // 필드
@@ -157,15 +160,15 @@ namespace ProjectR.Activity
 
             int applied = 0;
 
-            for (int i = 0; i < streamer.UpgradeIds.Count; i++)
+            for (int index = 0; index < streamer.UpgradeIds.Count; index++)
             {
                 UpgradeDefinition definition =
-                    upgradeDatabase.GetDataByCodeName<UpgradeDefinition>(streamer.UpgradeIds[i]);
+                    upgradeDatabase.GetDataByCodeName<UpgradeDefinition>(streamer.UpgradeIds[index]);
 
                 if (definition == null)
                 {
                     SWLog.LogWarning($"[{nameof(StreamerStatBoard)}] 모르는 업그레이드라 건너뜁니다: " +
-                        $"{streamer.UpgradeIds[i]}");
+                        $"{streamer.UpgradeIds[index]}");
                     continue;
                 }
 
@@ -192,8 +195,8 @@ namespace ProjectR.Activity
         {
             SWStat[] all = stats.All;
 
-            for (int i = 0; i < all.Length; i++)
-                all[i]?.RemoveBonusValue(UpgradeBonusKey);
+            for (int index = 0; index < all.Length; index++)
+                all[index]?.RemoveBonusValue(UpgradeBonusKey);
         }
 
         /// <summary>
@@ -211,13 +214,13 @@ namespace ProjectR.Activity
 
             SWStat[] all = stats.All;
 
-            for (int i = 0; i < all.Length; i++)
+            for (int index = 0; index < all.Length; index++)
             {
-                if (all[i] == null) continue;
+                if (all[index] == null) continue;
 
-                SWLog.Log($"[{nameof(StreamerStatBoard)}] {all[i].DisplayName} ({all[i].CodeName}) = " +
-                    $"{all[i].Value} (기본 {all[i].DefaultValue} + 보너스 {all[i].BonusValue}, " +
-                    $"상한 {all[i].MaxValue})");
+                SWLog.Log($"[{nameof(StreamerStatBoard)}] {all[index].DisplayName} ({all[index].CodeName}) = " +
+                    $"{all[index].Value} (기본 {all[index].DefaultValue} + 보너스 {all[index].BonusValue}, " +
+                    $"상한 {all[index].MaxValue})");
             }
         }
         #endregion // 함수

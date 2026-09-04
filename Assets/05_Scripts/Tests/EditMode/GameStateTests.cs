@@ -34,7 +34,7 @@ namespace ProjectR.Tests
         [Test]
         public void 생성자만으로는_구조_번호가_붙지_않는다()
         {
-            GameState state = new GameState();
+            GameState state = new();
 
             Assert.AreEqual(0, state.SaveVersion);
             Assert.AreNotEqual(GameState.CurrentSaveVersion, state.SaveVersion);
@@ -46,7 +46,7 @@ namespace ProjectR.Tests
         [Test]
         public void 새_진행으로_표시하면_현재_구조_번호가_붙는다()
         {
-            GameState state = new GameState();
+            GameState state = new();
 
             state.MarkAsCurrentVersion();
 
@@ -59,7 +59,7 @@ namespace ProjectR.Tests
         [Test]
         public void 같은_스트리머를_다시_골라도_진행도는_하나다()
         {
-            GameState state = new GameState();
+            GameState state = new();
 
             StreamerProgress first = state.SelectStreamer(StreamerA);
             StreamerProgress second = state.SelectStreamer(StreamerA);
@@ -75,10 +75,10 @@ namespace ProjectR.Tests
         [Test]
         public void 활동_결과가_채널과_스트리머로_나뉘어_반영된다()
         {
-            GameState state = new GameState();
+            GameState state = new();
             state.SelectStreamer(StreamerA);
 
-            ActivityResult result = new ActivityResult
+            ActivityResult result = new()
             {
                 DonationDelta = 500,
                 ViewerDelta = 120,
@@ -104,10 +104,10 @@ namespace ProjectR.Tests
         [Test]
         public void 스트리머를_바꾸면_진행도는_갈리고_채널은_이어진다()
         {
-            GameState state = new GameState();
+            GameState state = new();
             state.SelectStreamer(StreamerA);
 
-            ActivityResult result = new ActivityResult { DonationDelta = 500, ViewerDelta = 120 };
+            ActivityResult result = new() { DonationDelta = 500, ViewerDelta = 120 };
             result.Items.Add(new ItemInstance("BrokenEncoder"));
             state.Apply(result);
             state.ApplyDayEnd(new DayEndResult { NextBroadcastMinutes = 240 });
@@ -116,7 +116,7 @@ namespace ProjectR.Tests
 
             Assert.AreEqual(0, state.ViewerCount, "시청자는 스트리머마다 따로다");
             Assert.AreEqual(0, state.Items.Count, "이상물체는 스트리머마다 따로다");
-            Assert.AreEqual(ConditionState.MaxValue, state.Condition.Sleep, "컨디션은 스트리머마다 따로다");
+            Assert.AreEqual(ConditionState.MaximumValue, state.Condition.Sleep, "컨디션은 스트리머마다 따로다");
             Assert.AreEqual(500, state.Donation, "후원금은 채널이 들고 있어 이어진다");
             Assert.AreEqual(2, state.Day, "날짜는 채널이 들고 있어 이어진다");
         }
@@ -127,7 +127,7 @@ namespace ProjectR.Tests
         [Test]
         public void 되돌아가면_두고_간_진행도가_그대로다()
         {
-            GameState state = new GameState();
+            GameState state = new();
             state.SelectStreamer(StreamerA);
             state.Apply(new ActivityResult { ViewerDelta = 120 });
 
@@ -143,7 +143,7 @@ namespace ProjectR.Tests
         [Test]
         public void 방송_시간은_0_아래로_내려가지_않는다()
         {
-            GameState state = new GameState();
+            GameState state = new();
             state.SelectStreamer(StreamerA);
             state.ResetBroadcastTime(60);
 
@@ -159,7 +159,7 @@ namespace ProjectR.Tests
         [Test]
         public void 후원금은_0_아래로_내려가지_않는다()
         {
-            GameState state = new GameState();
+            GameState state = new();
             state.SelectStreamer(StreamerA);
             state.Apply(new ActivityResult { DonationDelta = 100 });
 

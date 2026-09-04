@@ -23,13 +23,16 @@ namespace ProjectR.Backrooms.Collect
     public class AnomalyPickup : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>모델이 없을 때 색을 칠해 대신 쓸 상자 렌더러입니다.</summary>
         [SWGroup("표시")]
         [SerializeField, Tooltip("모델이 없을 때 색을 칠해 대신 쓸 상자 렌더러입니다.")]
         private MeshRenderer boxRenderer;
 
+        /// <summary>격자 한 칸을 월드에서 몇 미터로 볼지입니다.</summary>
         [SerializeField, Min(0.02f), Tooltip("격자 한 칸을 월드에서 몇 미터로 볼지입니다.")]
         private float metersPerCell = 0.3f;
 
+        /// <summary>상자의 높이(미터)입니다.</summary>
         [SerializeField, Min(0.02f), Tooltip("상자의 높이(미터)입니다.")]
         private float boxHeight = 0.25f;
 
@@ -61,7 +64,7 @@ namespace ProjectR.Backrooms.Collect
             Definition = definition;
             name = $"Anomaly_{definition.DefinitionId}";
 
-            Vector3 size = new Vector3(
+            Vector3 size = new(
                 definition.Shape.Width * metersPerCell, boxHeight, definition.Shape.Height * metersPerCell);
 
             ApplyReach(size);
@@ -155,7 +158,7 @@ namespace ProjectR.Backrooms.Collect
 
             Bounds bounds = renderers[0].bounds;
 
-            for (int i = 1; i < renderers.Length; i++) bounds.Encapsulate(renderers[i].bounds);
+            for (int index = 1; index < renderers.Length; index++) bounds.Encapsulate(renderers[index].bounds);
 
             // 월드 범위를 자기 기준으로 옮깁니다. 붙인 직후라 회전과 배율이 없어 위치만 빼면 됩니다.
             bounds.center -= target.transform.position;

@@ -1,6 +1,6 @@
-using System;
-
 using UnityEngine;
+
+using ProjectR.Enum;
 
 namespace ProjectR.Backrooms.Audio
 {
@@ -38,7 +38,7 @@ namespace ProjectR.Backrooms.Audio
         {
             int sampleCount = SampleRate;
             float[] samples = new float[sampleCount];
-            System.Random random = new System.Random(NoiseSeed);
+            System.Random random = new(NoiseSeed);
 
             for (int index = 0; index < sampleCount; index += 1)
             {
@@ -69,7 +69,7 @@ namespace ProjectR.Backrooms.Audio
         {
             int sampleCount = SampleRate * 4;
             float[] samples = new float[sampleCount];
-            System.Random random = new System.Random(NoiseSeed + 1);
+            System.Random random = new(NoiseSeed + 1);
             float lowPassed = 0f;
 
             for (int index = 0; index < sampleCount; index += 1)
@@ -117,7 +117,7 @@ namespace ProjectR.Backrooms.Audio
         {
             int sampleCount = Mathf.RoundToInt(SampleRate * 0.9f);
             float[] samples = new float[sampleCount];
-            System.Random random = new System.Random(NoiseSeed + 2);
+            System.Random random = new(NoiseSeed + 2);
             float lowPassed = 0f;
 
             for (int index = 0; index < sampleCount; index += 1)
@@ -144,7 +144,7 @@ namespace ProjectR.Backrooms.Audio
         {
             int sampleCount = Mathf.RoundToInt(SampleRate * 2.8f);
             float[] samples = new float[sampleCount];
-            System.Random random = new System.Random(NoiseSeed + 3);
+            System.Random random = new(NoiseSeed + 3);
             float lowPassed = 0f;
 
             for (int index = 0; index < sampleCount; index += 1)
@@ -178,7 +178,7 @@ namespace ProjectR.Backrooms.Audio
 
             int sampleCount = Mathf.RoundToInt(SampleRate * durationSeconds);
             float[] samples = new float[sampleCount];
-            System.Random random = new System.Random(NoiseSeed + (int)surface * 31 + variation);
+            System.Random random = new(NoiseSeed + (int)surface * 31 + variation);
             float lowPassed = 0f;
 
             for (int index = 0; index < sampleCount; index += 1)
@@ -211,7 +211,7 @@ namespace ProjectR.Backrooms.Audio
         {
             int sampleCount = Mathf.RoundToInt(SampleRate * 1.6f);
             float[] samples = new float[sampleCount];
-            System.Random random = new System.Random(NoiseSeed + 11);
+            System.Random random = new(NoiseSeed + 11);
             float lowPassed = 0f;
 
             for (int index = 0; index < sampleCount; index += 1)
@@ -246,7 +246,7 @@ namespace ProjectR.Backrooms.Audio
         {
             int sampleCount = Mathf.RoundToInt(SampleRate * 1.1f);
             float[] samples = new float[sampleCount];
-            System.Random random = new System.Random(NoiseSeed + 12);
+            System.Random random = new(NoiseSeed + 12);
 
             for (int index = 0; index < sampleCount; index += 1)
             {
@@ -276,7 +276,7 @@ namespace ProjectR.Backrooms.Audio
         {
             int sampleCount = Mathf.RoundToInt(SampleRate * 2.2f);
             float[] samples = new float[sampleCount];
-            System.Random random = new System.Random(NoiseSeed + 13);
+            System.Random random = new(NoiseSeed + 13);
             float lowPassed = 0f;
 
             for (int index = 0; index < sampleCount; index += 1)
@@ -309,7 +309,7 @@ namespace ProjectR.Backrooms.Audio
         {
             int sampleCount = Mathf.RoundToInt(SampleRate * 0.42f);
             float[] samples = new float[sampleCount];
-            System.Random random = new System.Random(NoiseSeed + 14 + variation);
+            System.Random random = new(NoiseSeed + 14 + variation);
             float lowPassed = 0f;
 
             for (int index = 0; index < sampleCount; index += 1)

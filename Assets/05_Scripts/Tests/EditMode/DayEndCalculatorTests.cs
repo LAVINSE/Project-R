@@ -34,7 +34,7 @@ namespace ProjectR.Tests
                 viewersPerStep: 1000,
                 minutesPerStep: 30,
                 failurePenaltyMinutes: 60,
-                minBroadcastMinutes: 120);
+                minimumBroadcastMinutes: 120);
         }
 
         /// <summary>
@@ -117,10 +117,10 @@ namespace ProjectR.Tests
         [Test]
         public void 이탈이_가진_시청자보다_많아지지_않는다()
         {
-            DayEndSettings settings = new DayEndSettings(
+            DayEndSettings settings = new(
                 baseUpkeep: 0, upkeepPerViewer: 0f, idleChurnRate: 1f, activeChurnRate: 1f,
                 baseBroadcastMinutes: 240, viewersPerStep: 0, minutesPerStep: 0,
-                failurePenaltyMinutes: 0, minBroadcastMinutes: 0);
+                failurePenaltyMinutes: 0, minimumBroadcastMinutes: 0);
 
             DayEndResult result = DayEndCalculator.Calculate(settings, 10, 0, false);
 
@@ -165,10 +165,10 @@ namespace ProjectR.Tests
         [Test]
         public void 실패해도_방송_시간이_하한선_아래로_내려가지_않는다()
         {
-            DayEndSettings settings = new DayEndSettings(
+            DayEndSettings settings = new(
                 baseUpkeep: 0, upkeepPerViewer: 0f, idleChurnRate: 0f, activeChurnRate: 0f,
                 baseBroadcastMinutes: 240, viewersPerStep: 0, minutesPerStep: 0,
-                failurePenaltyMinutes: 999, minBroadcastMinutes: 120);
+                failurePenaltyMinutes: 999, minimumBroadcastMinutes: 120);
 
             DayEndResult result = DayEndCalculator.Calculate(settings, 0, 1, true);
 

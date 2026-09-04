@@ -15,6 +15,7 @@ namespace ProjectR.Data
     public class ItemInstance
     {
         #region 필드
+        /// <summary>이상물체 정의를 가리키는 식별자입니다.</summary>
         [SerializeField] private string itemId;
         #endregion // 필드
 
@@ -23,7 +24,7 @@ namespace ProjectR.Data
         public string ItemId => itemId;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 아이템 식별자를 지정해 실체를 만듭니다.
         /// </summary>
@@ -32,6 +33,6 @@ namespace ProjectR.Data
         {
             this.itemId = itemId;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 }

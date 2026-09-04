@@ -21,9 +21,9 @@ namespace ProjectR.Tests
         [Test]
         public void 피로도가_0이면_상한이_최대값이다()
         {
-            ConditionState condition = new ConditionState();
+            ConditionState condition = new();
 
-            Assert.AreEqual(ConditionState.MaxValue, condition.EffectiveMax);
+            Assert.AreEqual(ConditionState.MaximumValue, condition.EffectiveMaximum);
         }
 
         /// <summary>
@@ -36,11 +36,11 @@ namespace ProjectR.Tests
         [Test]
         public void 피로도가_최대여도_상한이_하한선_아래로_내려가지_않는다()
         {
-            ConditionState condition = new ConditionState();
+            ConditionState condition = new();
 
-            condition.Apply(new ConditionDelta { Fatigue = ConditionState.MaxValue });
+            condition.Apply(new ConditionDelta { Fatigue = ConditionState.MaximumValue });
 
-            Assert.AreEqual(ConditionState.MinCapValue, condition.EffectiveMax);
+            Assert.AreEqual(ConditionState.MinimumUpperLimitValue, condition.EffectiveMaximum);
         }
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace ProjectR.Tests
         [Test]
         public void 피로도_절반이면_눌러_내리는_폭도_절반이다()
         {
-            ConditionState condition = new ConditionState();
+            ConditionState condition = new();
 
             condition.Apply(new ConditionDelta { Fatigue = 50 });
 
-            Assert.AreEqual(70, condition.EffectiveMax);
+            Assert.AreEqual(70, condition.EffectiveMaximum);
         }
 
         /// <summary>
@@ -63,15 +63,15 @@ namespace ProjectR.Tests
         [Test]
         public void 피로도가_오르면_이미_찬_수치가_상한까지_눌린다()
         {
-            ConditionState condition = new ConditionState();
+            ConditionState condition = new();
 
-            Assert.AreEqual(ConditionState.MaxValue, condition.Sleep);
+            Assert.AreEqual(ConditionState.MaximumValue, condition.Sleep);
 
             condition.Apply(new ConditionDelta { Fatigue = 100 });
 
-            Assert.AreEqual(ConditionState.MinCapValue, condition.Sleep);
-            Assert.AreEqual(ConditionState.MinCapValue, condition.Hunger);
-            Assert.AreEqual(ConditionState.MinCapValue, condition.Mood);
+            Assert.AreEqual(ConditionState.MinimumUpperLimitValue, condition.Sleep);
+            Assert.AreEqual(ConditionState.MinimumUpperLimitValue, condition.Hunger);
+            Assert.AreEqual(ConditionState.MinimumUpperLimitValue, condition.Mood);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace ProjectR.Tests
         [Test]
         public void 상한_위로는_아무리_채워도_올라가지_않는다()
         {
-            ConditionState condition = new ConditionState();
+            ConditionState condition = new();
 
             condition.Apply(new ConditionDelta { Fatigue = 100, Sleep = -100 });
 
@@ -89,7 +89,7 @@ namespace ProjectR.Tests
 
             condition.Apply(new ConditionDelta { Sleep = 999 });
 
-            Assert.AreEqual(ConditionState.MinCapValue, condition.Sleep);
+            Assert.AreEqual(ConditionState.MinimumUpperLimitValue, condition.Sleep);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace ProjectR.Tests
         [Test]
         public void 같은_호출에서_오른_피로도가_그_회복분에도_걸린다()
         {
-            ConditionState condition = new ConditionState();
+            ConditionState condition = new();
 
             condition.Apply(new ConditionDelta { Sleep = -100 });
 
@@ -110,7 +110,7 @@ namespace ProjectR.Tests
 
             condition.Apply(new ConditionDelta { Fatigue = 100, Sleep = 100 });
 
-            Assert.AreEqual(ConditionState.MinCapValue, condition.Sleep);
+            Assert.AreEqual(ConditionState.MinimumUpperLimitValue, condition.Sleep);
         }
 
         /// <summary>
@@ -124,16 +124,16 @@ namespace ProjectR.Tests
         [Test]
         public void 피로도를_풀면_상한만_돌아오고_수치는_그대로다()
         {
-            ConditionState condition = new ConditionState();
+            ConditionState condition = new();
 
             condition.Apply(new ConditionDelta { Fatigue = 100 });
 
-            Assert.AreEqual(ConditionState.MinCapValue, condition.Sleep);
+            Assert.AreEqual(ConditionState.MinimumUpperLimitValue, condition.Sleep);
 
             condition.Apply(new ConditionDelta { Fatigue = -100 });
 
-            Assert.AreEqual(ConditionState.MaxValue, condition.EffectiveMax);
-            Assert.AreEqual(ConditionState.MinCapValue, condition.Sleep);
+            Assert.AreEqual(ConditionState.MaximumValue, condition.EffectiveMaximum);
+            Assert.AreEqual(ConditionState.MinimumUpperLimitValue, condition.Sleep);
         }
 
         /// <summary>
@@ -143,11 +143,11 @@ namespace ProjectR.Tests
         [Test]
         public void 피로도_자체는_상한에_눌리지_않는다()
         {
-            ConditionState condition = new ConditionState();
+            ConditionState condition = new();
 
-            condition.Apply(new ConditionDelta { Fatigue = ConditionState.MaxValue });
+            condition.Apply(new ConditionDelta { Fatigue = ConditionState.MaximumValue });
 
-            Assert.AreEqual(ConditionState.MaxValue, condition.Fatigue);
+            Assert.AreEqual(ConditionState.MaximumValue, condition.Fatigue);
         }
         #endregion // 함수
     }

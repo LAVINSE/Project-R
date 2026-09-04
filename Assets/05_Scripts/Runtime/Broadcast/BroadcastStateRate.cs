@@ -18,12 +18,15 @@ namespace ProjectR.Broadcast
     public struct BroadcastStateRate
     {
         #region 필드
+        /// <summary>이 상황에서 1분마다 들어오거나 빠지는 시청자 수입니다. 음수면 이탈입니다.</summary>
         [SerializeField, Tooltip("이 상황에서 1분마다 들어오거나 빠지는 시청자 수입니다. 음수면 이탈입니다.")]
         private float viewerFlatPerMinute;
 
+        /// <summary>이 상황에서 1분마다 현재 시청자 수에 곱해 더하는 비율입니다. 음수면 이탈입니다.</summary>
         [SerializeField, Tooltip("이 상황에서 1분마다 현재 시청자 수에 곱해 더하는 비율입니다. 음수면 이탈입니다.")]
         private float viewerRatePerMinute;
 
+        /// <summary>이 상황에서 시청자 한 명이 1분에 내는 후원금입니다.</summary>
         [SerializeField, Min(0f), Tooltip("이 상황에서 시청자 한 명이 1분에 내는 후원금입니다.")]
         private float donationPerViewerPerMinute;
         #endregion // 필드
@@ -39,7 +42,7 @@ namespace ProjectR.Broadcast
         public float DonationPerViewerPerMinute => donationPerViewerPerMinute;
         #endregion // 프로퍼티
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 한 상황의 증감 규칙을 만듭니다.
         /// </summary>
@@ -53,6 +56,6 @@ namespace ProjectR.Broadcast
             this.viewerRatePerMinute = viewerRatePerMinute;
             this.donationPerViewerPerMinute = donationPerViewerPerMinute;
         }
-        #endregion // 함수
+        #endregion // 생성자
     }
 }

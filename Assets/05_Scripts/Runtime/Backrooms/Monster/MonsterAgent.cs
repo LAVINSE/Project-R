@@ -7,6 +7,8 @@ using SW.Attributes;
 using SW.Base;
 using SW.Util;
 
+using ProjectR.Enum;
+
 namespace ProjectR.Backrooms.Monster
 {
     /// <summary>
@@ -22,10 +24,12 @@ namespace ProjectR.Backrooms.Monster
     public class MonsterAgent : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>목적지에 닿았다고 볼 거리(미터)입니다.</summary>
         [SWGroup("도착 판정")]
         [SerializeField, Min(0.1f), Tooltip("목적지에 닿았다고 볼 거리(미터)입니다.")]
         private float arrivalDistance = 1.2f;
 
+        /// <summary>무작위 지점을 NavMesh 위로 끌어올 때 허용할 거리(미터)입니다.</summary>
         [SWGroup("경로 찾기")]
         [SerializeField, Min(1f), Tooltip("무작위 지점을 NavMesh 위로 끌어올 때 허용할 거리(미터)입니다.")]
         private float navMeshSampleDistance = 4f;

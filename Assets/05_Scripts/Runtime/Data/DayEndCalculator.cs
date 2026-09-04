@@ -119,7 +119,7 @@ namespace ProjectR.Data
 
             if (hasFailure) minutes -= settings.FailurePenaltyMinutes;
 
-            return Math.Max(settings.MinBroadcastMinutes, minutes);
+            return Math.Max(settings.MinimumBroadcastMinutes, minutes);
         }
         #endregion // 함수
     }

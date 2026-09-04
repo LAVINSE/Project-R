@@ -43,7 +43,7 @@ namespace ProjectR.Backrooms
 
         /// <summary>가방에 담긴 실체 번호마다의 이상물체 정의입니다.</summary>
         private readonly Dictionary<int, AnomalyDefinition> carriedDefinitions =
-            new Dictionary<int, AnomalyDefinition>();
+            new();
 
         /// <summary>이번 탐험에서 모인 결과입니다. 탐험 중에 갱신됩니다.</summary>
         private ActivityResult result;
@@ -69,7 +69,7 @@ namespace ProjectR.Backrooms
         public event Action<AnomalyDefinition> AnomalyDropped;
         #endregion // 이벤트
 
-        #region 함수
+        #region 생성자
         /// <summary>
         /// 기본 가방 크기와 전량 소실 규칙으로 탐험을 만듭니다.
         /// </summary>
@@ -90,7 +90,9 @@ namespace ProjectR.Backrooms
             Backpack = new GridInventory(backpackWidth, backpackHeight);
             this.lossPolicy = lossPolicy ?? new TotalLossPolicy();
         }
+        #endregion // 생성자
 
+        #region 함수
         /// <summary>
         /// 백룸에 진입할 수 있는지 판정합니다.
         /// </summary>
@@ -230,7 +232,7 @@ namespace ProjectR.Backrooms
         /// </summary>
         private void Settle()
         {
-            List<ItemInstance> carriedItems = new List<ItemInstance>();
+            List<ItemInstance> carriedItems = new();
 
             result.Items.Clear();
             result.DonationDelta = 0;

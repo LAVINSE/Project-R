@@ -28,7 +28,7 @@ namespace ProjectR.Backrooms.Generation
         public static HashSet<MazeCoordinate> Carve(MazeGrid grid, Random random,
             MazeGenerationSettings settings, MazeCoordinate start, MazeCoordinate exit)
         {
-            HashSet<MazeCoordinate> darkCells = new HashSet<MazeCoordinate>();
+            HashSet<MazeCoordinate> darkCells = new();
 
             if (grid == null || random == null || settings == null) return darkCells;
             if (settings.DarkZoneCount <= 0 || settings.DarkCellRatio <= 0f) return darkCells;
@@ -59,7 +59,7 @@ namespace ProjectR.Backrooms.Generation
         {
             if (TryFindSeed(grid, random, darkCells, start, exit, out MazeCoordinate seed) == false) return;
 
-            List<MazeCoordinate> frontier = new List<MazeCoordinate> { seed };
+            List<MazeCoordinate> frontier = new() { seed };
             darkCells.Add(seed);
 
             int grownCount = 1;
@@ -100,7 +100,7 @@ namespace ProjectR.Backrooms.Generation
 
             for (int attempt = 0; attempt < attemptLimit; attempt += 1)
             {
-                MazeCoordinate candidate = new MazeCoordinate(
+                MazeCoordinate candidate = new(
                     random.Next(grid.Width), random.Next(grid.Height));
 
                 if (IsUsable(darkCells, candidate, start, exit) == false) continue;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Serialization;
 
 using SW.Base;
 using SW.Util;
@@ -20,19 +21,23 @@ namespace ProjectR.Backrooms.Lighting
     public class BakedLightmapData : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>굽기 시점에 저장한 렌더러별 라이트맵 정보입니다.</summary>
+        [FormerlySerializedAs("rendererInfos")]
         [SerializeField, Tooltip("굽기 시점에 저장한 렌더러별 라이트맵 정보입니다.")]
-        private RendererLightmapInfo[] rendererInfos = Array.Empty<RendererLightmapInfo>();
+        private RendererLightmapInformation[] rendererLightmapInformation = Array.Empty<RendererLightmapInformation>();
 
+        /// <summary>이 프리팹이 사용하는 라이트맵 색상 텍스처입니다.</summary>
         [SerializeField, Tooltip("이 프리팹이 사용하는 라이트맵 색상 텍스처입니다.")]
         private Texture2D[] lightmapColors = Array.Empty<Texture2D>();
 
+        /// <summary>이 프리팹이 사용하는 라이트맵 방향 텍스처입니다. 비어 있을 수 있습니다.</summary>
         [SerializeField, Tooltip("이 프리팹이 사용하는 라이트맵 방향 텍스처입니다. 비어 있을 수 있습니다.")]
         private Texture2D[] lightmapDirections = Array.Empty<Texture2D>();
         #endregion // 필드
 
         #region 프로퍼티
         /// <summary>되살릴 라이트맵 정보가 저장되어 있는지 여부입니다.</summary>
-        public bool HasBakedData => rendererInfos.Length > 0 && lightmapColors.Length > 0;
+        public bool HasBakedData => rendererLightmapInformation.Length > 0 && lightmapColors.Length > 0;
         #endregion // 프로퍼티
 
         #region 함수
@@ -53,26 +58,26 @@ namespace ProjectR.Backrooms.Lighting
 
             int[] remappedIndices = RegisterLightmaps();
 
-            for (int index = 0; index < rendererInfos.Length; index += 1)
+            for (int index = 0; index < rendererLightmapInformation.Length; index += 1)
             {
-                RendererLightmapInfo info = rendererInfos[index];
-                if (info.Renderer == null) continue;
-                if (info.LightmapIndex < 0 || info.LightmapIndex >= remappedIndices.Length) continue;
+                RendererLightmapInformation rendererInformation = rendererLightmapInformation[index];
+                if (rendererInformation.Renderer == null) continue;
+                if (rendererInformation.LightmapIndex < 0 || rendererInformation.LightmapIndex >= remappedIndices.Length) continue;
 
-                info.Renderer.lightmapIndex = remappedIndices[info.LightmapIndex];
-                info.Renderer.lightmapScaleOffset = info.LightmapScaleOffset;
+                rendererInformation.Renderer.lightmapIndex = remappedIndices[rendererInformation.LightmapIndex];
+                rendererInformation.Renderer.lightmapScaleOffset = rendererInformation.LightmapScaleOffset;
             }
         }
 
         /// <summary>
         /// 굽기 도구가 호출해 저장할 정보를 채웁니다.
         /// </summary>
-        /// <param name="infos">렌더러별 라이트맵 정보입니다.</param>
+        /// <param name="rendererInformationList">렌더러별 라이트맵 정보입니다.</param>
         /// <param name="colors">라이트맵 색상 텍스처 목록입니다.</param>
         /// <param name="directions">라이트맵 방향 텍스처 목록입니다. 없으면 빈 배열을 넘깁니다.</param>
-        public void StoreBakedData(RendererLightmapInfo[] infos, Texture2D[] colors, Texture2D[] directions)
+        public void StoreBakedData(RendererLightmapInformation[] rendererInformationList, Texture2D[] colors, Texture2D[] directions)
         {
-            rendererInfos = infos ?? Array.Empty<RendererLightmapInfo>();
+            rendererLightmapInformation = rendererInformationList ?? Array.Empty<RendererLightmapInformation>();
             lightmapColors = colors ?? Array.Empty<Texture2D>();
             lightmapDirections = directions ?? Array.Empty<Texture2D>();
         }
@@ -90,7 +95,7 @@ namespace ProjectR.Backrooms.Lighting
                 : LightmapsMode.NonDirectional;
 
             LightmapData[] currentLightmaps = LightmapSettings.lightmaps;
-            List<LightmapData> merged = new List<LightmapData>(currentLightmaps);
+            List<LightmapData> merged = new(currentLightmaps);
             int[] remappedIndices = new int[lightmapColors.Length];
             bool hasAdded = false;
 
@@ -100,7 +105,7 @@ namespace ProjectR.Backrooms.Lighting
 
                 if (existingIndex < 0)
                 {
-                    LightmapData lightmapData = new LightmapData
+                    LightmapData lightmapData = new()
                     {
                         lightmapColor = lightmapColors[index],
                         lightmapDir = index < lightmapDirections.Length ? lightmapDirections[index] : null,
@@ -159,7 +164,7 @@ namespace ProjectR.Backrooms.Lighting
     /// 렌더러 하나가 어느 라이트맵의 어느 영역을 쓰는지를 담은 정보입니다.
     /// </summary>
     [Serializable]
-    public struct RendererLightmapInfo
+    public struct RendererLightmapInformation
     {
         #region 필드
         /// <summary>라이트맵을 적용할 렌더러입니다.</summary>

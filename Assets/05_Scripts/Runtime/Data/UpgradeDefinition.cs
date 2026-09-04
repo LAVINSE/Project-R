@@ -27,17 +27,21 @@ namespace ProjectR.Data
     public class UpgradeDefinition : SWIdentifiedObject
     {
         #region 필드
+        /// <summary>보너스를 얹을 스탯의 코드명입니다. StatKeys를 참고합니다.</summary>
         [SWGroup("효과")]
         [SerializeField, Tooltip("보너스를 얹을 스탯의 코드명입니다. StatKeys를 참고합니다.")]
         private string targetStatCode;
 
+        /// <summary>대상 스탯에 더할 값입니다.</summary>
         [SerializeField, Tooltip("대상 스탯에 더할 값입니다.")]
         private float amount = 1f;
 
+        /// <summary>사는 데 드는 후원금입니다.</summary>
         [SWGroup("조건")]
         [SerializeField, Min(0), Tooltip("사는 데 드는 후원금입니다.")]
         private int cost = 1000;
 
+        /// <summary>먼저 갖고 있어야 하는 업그레이드의 코드명입니다. 비우면 조건이 없습니다.</summary>
         [SerializeField, Tooltip("먼저 갖고 있어야 하는 업그레이드의 코드명입니다. 비우면 조건이 없습니다.")]
         private string requiredUpgradeCode;
         #endregion // 필드

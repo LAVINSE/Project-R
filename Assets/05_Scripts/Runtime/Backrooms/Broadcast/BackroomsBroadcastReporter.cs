@@ -5,8 +5,10 @@ using SW.Base;
 using SW.Util;
 
 using ProjectR.Activity;
+using ProjectR.Activity.Broadcast;
 using ProjectR.Backrooms.Monster;
 using ProjectR.Backrooms.Player;
+using ProjectR.Enum;
 
 namespace ProjectR.Backrooms.Broadcast
 {
@@ -26,6 +28,7 @@ namespace ProjectR.Backrooms.Broadcast
     public class BackroomsBroadcastReporter : SWMonoBehaviour
     {
         #region 필드
+        /// <summary>앉아 있는지를 볼 플레이어 은신 컴포넌트입니다.</summary>
         [SWGroup("참조")]
         [SerializeField, Tooltip("앉아 있는지를 볼 플레이어 은신 컴포넌트입니다.")]
         private PlayerStealth playerStealth;

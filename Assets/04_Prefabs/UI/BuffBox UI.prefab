@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6553068261811007939}
   - component: {fileID: 5487908782089355294}
   m_Layer: 0
-  m_Name: FaciltyBuffBox UI
+  m_Name: BuffBox UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

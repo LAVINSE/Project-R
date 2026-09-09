@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: UpgradeDatabase
   m_EditorClassIdentifier: SWUtils.Runtime::SW.Base.SWIODatabase
   datas:
-  - {fileID: 11400000, guid: 303f8ecf71622e547964ac823c2b1ec9, type: 2}
-  - {fileID: 11400000, guid: 905b04d4b63efd44c939dd926e2b6692, type: 2}
-  - {fileID: 11400000, guid: 97d8008bf4b015346ad3a7c79d2d9d3b, type: 2}
-  - {fileID: 11400000, guid: 9b9e734577f55a34fa1e31d1f4e95879, type: 2}
+  - {fileID: 11400000, guid: e8d7d62745b7a024aa7a92ae7e1b7fed, type: 2}
+  - {fileID: 11400000, guid: 6300261022c2c004b8cd1d54af831b0e, type: 2}

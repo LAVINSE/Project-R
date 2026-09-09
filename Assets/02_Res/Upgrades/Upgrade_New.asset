@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc09640fb245a384dbe83620f384450d, type: 3}
-  m_Name: Upgrade_Backpack_01
+  m_Name: Upgrade_New
   m_EditorClassIdentifier: ProjectR.Data::ProjectR.Data.UpgradeDefinition
   categories: []
   id: 1
-  codeName: Backpack_01
-  displayName: "\uAC00\uBC29 \uD655\uC7A5 I"
-  description: "\uAC00\uBC29 \uC138\uB85C\uAC00 \uD55C \uCE78 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.
-    24\uCE78\uC5D0\uC11C 30\uCE78\uC774 \uB429\uB2C8\uB2E4."
+  codeName: Upgrade_New
+  displayName: 
+  description: 
   spriteIcon: {fileID: 0}
-  targetStatCode: BackpackHeight
+  targetStatCode: 
   amount: 1
-  cost: 1500
-  requiredUpgradeCode: 
+  cost: 1000
+  requiredUpgradeCodes: []
+  icon: {fileID: 0}
+  treePosition: {x: -308, y: -16}

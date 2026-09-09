@@ -808,6 +808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7303193148576957510}
   - component: {fileID: 6707897372313137121}
+  - component: {fileID: 1368566477844744628}
   m_Layer: 0
   m_Name: SkillInfo Popup
   m_TagString: Untagged
@@ -850,6 +851,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f44c53ee09f00c4ca80bd9185b3f1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ProjectR.UI::ProjectR.UI.SkillInfoPopup
+  skillNameText: {fileID: 7429614533861527136}
+  skillDescriptionText: {fileID: 6808531002608864406}
+  priceText: {fileID: 8487889941104272105}
+  stateText: {fileID: 1133174227709750875}
+  iconImage: {fileID: 0}
+  nodeOffset: {x: 24, y: 0}
+--- !u!225 &1368566477844744628
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721395160543827864}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7378332533762394657
 GameObject:
   m_ObjectHideFlags: 0

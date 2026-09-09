@@ -8,7 +8,8 @@
         "ProjectR.Data",
         "ProjectR.Inventory",
         "ProjectR.Activity",
-        "ProjectR.Backrooms"
+        "ProjectR.Backrooms",
+        "ProjectR.UI"
     ],
     "includePlatforms": [
         "Editor"

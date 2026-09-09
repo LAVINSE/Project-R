@@ -234,10 +234,10 @@ namespace ProjectR.Activity
                 return false;
             }
 
-            if (definition.HasRequirement && streamer.HasUpgrade(definition.RequiredUpgradeCode) == false)
+            if (definition.IsUnlockedBy(streamer) == false)
             {
                 SWLog.LogWarning($"[{nameof(GameManager)}] 선행 업그레이드가 없습니다: " +
-                    $"{definition.RequiredUpgradeCode}");
+                    $"{string.Join(", ", definition.RequiredUpgradeCodes)} 중 하나가 필요합니다.");
                 return false;
             }
 
